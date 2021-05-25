@@ -63,7 +63,7 @@ function Feeds() {
             {/* Contribute Card */}
             <div className="row d-flex justify-content-center mb-3">
                 <div className="card" style={styles.cardStyle}>
-                    <div className="card-header bg-success">
+                    <div className="card-header bg-success p-2 pb-0">
                         <h5 className="card-title text-white "><i className="fab fa-wpforms"></i> Contribution Form</h5>
                     </div>
                     <div className="card-body">
