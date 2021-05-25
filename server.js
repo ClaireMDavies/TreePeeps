@@ -4,7 +4,15 @@ const path = require("path");
 // const routes = require("./routes")
 const PORT = process.env.PORT || 3001;
 const app = express();
+const cors = require('cors')
 
+app.use(cors());
+
+app.use('/login', (req, res) => {
+  res.send({
+    token: 'test123'
+  });
+});
 // Define middleware 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
