@@ -3,10 +3,16 @@ const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
     id: {type: String, require:true},
-    firstname: {type: String, require:true},
+    username: {type: String, required: true,
+    unique: true, minlength: 8 },
+    firstname: {type: String, trim:true, required:'Enter a first name'},
     lastname: {type: String, require:true},
     email: {type: email, require:true},
-    
+    mainrole: {type: Array, require:true},
+    treeinterest: {type: Boolean, require:false}
+    },
+    { 
+        timestamps: true,
     });
 
 //left in here because believe will be calculation
