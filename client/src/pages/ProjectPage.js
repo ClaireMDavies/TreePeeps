@@ -1,55 +1,59 @@
-import Navbar from "Navbar";
-
+import React from "react";
 
 
 const Project = () => {
     return (
-        <main class="container-fluid">
+        <main className="container-fluid">
 
-            <div class="row p-3 myDashboard">
+            <div className="row p-3 myDashboard">
                 <h1>New Project Form</h1>
             </div>
 
-            <div class="row p-3">
-                <div class="col">
-                    <div class="row p-3 rounded m-2">
-                        <div class="dashCard" style="width: 20rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">Land Specifications</h5>
+            <div className="row p-3">
+                <div className="col">
+                    <div className="row p-3 rounded m-2">
+                        <div className="dashCard" style="width: 20rem;">
+                            <div className="card-body">
+                                <h5 className="card-title">Land Specifications</h5>
                             </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Area(m2): </li>
-                                <li class="list-group-item">Location: </li>
-                                <li class="list-group-item">Owner: </li>
+                            <ul className="list-group list-group-flush">
+                                <li className="list-group-item">Area(m2): </li>
+                                <li className="list-group-item">Location: </li>
+                                <li className="list-group-item">Owner: </li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="row p-3 rounded m-2">
-                        <div class="dashCard" style="width: 20rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">Time Specifications</h5>
+                    <div className="row p-3 rounded m-2">
+                        <div className="dashCard" style="width: 20rem;">
+                            <div className="card-body">
+                                <h5 className="card-title">Time Specifications</h5>
                             </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Work Hours Needed: </li>
-                                <li class="list-group-item">Number of trees: </li>
+                            <ul className="list-group list-group-flush">
+                                <li className="list-group-item">Work Hours Needed: </li>
+                                <li className="list-group-item">Number of trees: </li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="row p-3 rounded m-2">
-                        <div class="dashCard" style="width: 20rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">Resource Specifications</h5>
+                    <div className="row p-3 rounded m-2">
+                        <div className="dashCard" style="width: 20rem;">
+                            <div className="card-body">
+                                <h5 className="card-title">Resource Specifications</h5>
                             </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Trees: </li>
-                                <li class="list-group-item">Spades: </li>
-                                <li class="list-group-item">Fertilizer: </li>
-                                <li class="list-group-item">Stakes: </li>
-                                <li class="list-group-item">Spirals: </li>
+                            <ul className="list-group list-group-flush">
+                                <li className="list-group-item">Trees: </li>
+                                <li className="list-group-item">Spades: </li>
+                                <li className="list-group-item">Fertilizer: </li>
+                                <li className="list-group-item">Stakes: </li>
+                                <li className="list-group-item">Spirals: </li>
                             </ul>
                         </div>
+                    </div>
+                </div>
+                <div className="row p-3">
+                    <div className="col-md-4">
+                        <button type="button" className="row btn-create">Create</button>
                     </div>
                 </div>
             </div>
