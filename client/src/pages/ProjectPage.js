@@ -12,7 +12,7 @@ const Project = () => {
             <div className="row p-3">
                 <div className="col">
                     <div className="row p-3 rounded m-2">
-                        <div className="dashCard" style="width: 20rem;">
+                        <div className="dashCard" style={{width: "20rem"}}>
                             <div className="card-body">
                                 <h5 className="card-title">Land Specifications</h5>
                             </div>
@@ -25,7 +25,7 @@ const Project = () => {
                     </div>
 
                     <div className="row p-3 rounded m-2">
-                        <div className="dashCard" style="width: 20rem;">
+                        <div className="dashCard" style={{width: "20rem"}}>
                             <div className="card-body">
                                 <h5 className="card-title">Time Specifications</h5>
                             </div>
@@ -37,7 +37,7 @@ const Project = () => {
                     </div>
 
                     <div className="row p-3 rounded m-2">
-                        <div className="dashCard" style="width: 20rem;">
+                        <div className="dashCard" style={{width: "20rem"}}>
                             <div className="card-body">
                                 <h5 className="card-title">Resource Specifications</h5>
                             </div>
