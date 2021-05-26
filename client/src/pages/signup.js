@@ -1,7 +1,18 @@
+import { useState } from "react";
 import React from "react";
 import { Link } from "react-router-dom";
 
 function SignUp() {
+    const [userName, setUserName] = useState ("");
+    const [userEmail, setUserEmail]= useState("");
+    const [userPassword, setUserPassword] = useState("");
+    const [userLocation, setUserLocation] = useState("");
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        console.log(userName, userEmail, userPassword, userLocation);
+        
+      };
 
     return (
         <>
@@ -18,7 +29,7 @@ function SignUp() {
                             <Link
                                 to="/"
                                 className={
-                                    window.location.pathname === "/" || window.location.pathname === "/aboutus"
+                                    window.location.pathname === "/" || window.location.pathname === "/about"
                                         ? "nav-link active"
                                         : "nav-link"
                                 }
@@ -26,8 +37,8 @@ function SignUp() {
                         </li>
                         <li className="nav-item">
                             <Link
-                                to="/contactus"
-                                className={window.location.pathname === "/contactus" ? "nav-link active" : "nav-link"
+                                to="/contact"
+                                className={window.location.pathname === "/contact" ? "nav-link active" : "nav-link"
                                 }
                             >Contact Us</Link>
                         </li>
@@ -43,7 +54,7 @@ function SignUp() {
                                 <h4>User name:</h4>
                             </div>
                             <div className="col-md-6" style={{ margin: 10 }}>
-                                <input className="form-control" type="text"></input>
+                                <input className="form-control" type="text" value= {userName} onChange={e => setUserName(e.target.value)}></input>
                             </div>
                         </div>
                         <div className="row" style={{ margin: 10 }}>
@@ -51,7 +62,7 @@ function SignUp() {
                                 <h4>Email address:</h4>
                             </div>
                             <div className="col-md-6" style={{ margin: 10 }}>
-                                <input className="form-control" type="text"></input>
+                                <input className="form-control" type="email" value= {userEmail} onChange={e => setUserEmail(e.target.value)}></input>
                             </div>
                         </div>
                         <div className="row" style={{ margin: 10 }}>
@@ -59,7 +70,7 @@ function SignUp() {
                                 <h4>Password:</h4>
                             </div>
                             <div className="col-md-6" style={{ margin: 10 }}>
-                                <input className="form-control" type="text"></input>
+                                <input className="form-control" type="password" value= {userPassword} onChange={e => setUserPassword(e.target.value)}></input>
                             </div>
                         </div>
                         <div className="row" style={{ margin: 10 }}>
@@ -67,7 +78,7 @@ function SignUp() {
                                 <h4>Password:</h4>
                             </div>
                             <div className="col-md-6"style={{ margin: 10 }} >
-                                <input className="form-control" type="text"></input>
+                                <input className="form-control" type="password"></input>
                             </div>
                         </div>
                         <div className="row" style={{ margin: 10 }}>
@@ -75,13 +86,13 @@ function SignUp() {
                                 <h4>Location:</h4>
                             </div>
                             <div className="col-md-6" style={{margin:10}}>
-                                <input className="form-control" type="text"></input>
+                                <input className="form-control" type="text"value= {userLocation} onChange={e => setUserLocation(e.target.value)} ></input>
                             </div>
                         </div>
                         <div className="row" style={{ margin: 30 }}>
                             <div className="col-md-5"></div>
                             <div className="col-md-5">
-                                <button className="btn btn-outline" style={{ backgroundColor: "green", color: "white" }} type="submit">Sign Up</button>
+                                <button className="btn btn-outline" style={{ backgroundColor: "green", color: "white" }} onClick={handleSubmit} type="submit">Sign Up</button>
                             </div>
                         </div>
                         <div className="row" style={{ margin: 30 }}>
