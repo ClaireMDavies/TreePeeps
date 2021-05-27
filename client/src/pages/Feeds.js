@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import ContributeCard from "../components/ContributeCard";
 
 const styles = {
@@ -21,7 +21,7 @@ const styles = {
 
 function Feeds() {
     const [showCard, setShowCard] = useState(false)
-    const showContribute = () => setShowCard(true)
+    const showContribute = () => { if (!showCard) { setShowCard(true) } else { setShowCard(false) } }
 
     function sendEmail(e) {
         e.preventDefault();
@@ -30,6 +30,7 @@ function Feeds() {
             Username: "treepeeps@hotmail.com",
             Password: "A5AD02A0D6C4DE5041F65A10ABAFD7151952",
             To: 'treepeeps@hotmail.com',
+            Cc: 'treepeeps@hotmail.com',
             From: "treepeeps@hotmail.com",
             Subject: "Test Email",
             Body: "<html><h2>Header</h2><strong>Bold text</strong><br></br><em>Italic</em></html>"
@@ -78,7 +79,7 @@ function Feeds() {
                 </div>
             </div>
             {/* Contribute Card */}
-            { showCard ? <ContributeCard/> : null }
+            { showCard ? <ContributeCard /> : null}
         </div>
     )
 };
