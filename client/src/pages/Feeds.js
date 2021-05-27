@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import ContributeCard from "../components/ContributeCard";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const styles = {
     cardStyle: {
@@ -20,6 +22,7 @@ const styles = {
 
 
 function Feeds() {
+    const ContactNotify = () => toast("Your contact info is sent to the project creator");
     const [showCard, setShowCard] = useState(false)
     const showContribute = () => { if (!showCard) { setShowCard(true) } else { setShowCard(false) } }
 
@@ -74,12 +77,13 @@ function Feeds() {
                     </div>
                     <div className="card-footer text-center">
                         <button className="btn btn-success btn-sm m-2" onClick={showContribute} ><i className="fas fa-hands-helping"></i> Contribute</button>
-                        <button className="btn btn-success btn-sm m-2" onClick={sendEmail}><i className="fas fa-envelope" ></i> Contact me</button>
+                        <button className="btn btn-success btn-sm m-2" onClick={sendEmail, ContactNotify}><i className="fas fa-envelope" ></i> Contact me</button>
+                        <ToastContainer />
                     </div>
                 </div>
             </div>
             {/* Contribute Card */}
-            { showCard ? <ContributeCard /> : null}
+            {showCard ? <ContributeCard /> : null}
         </div>
     )
 };

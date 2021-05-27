@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import {toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const styles = {
     cardStyle: {
@@ -9,6 +11,7 @@ const styles = {
 
 
 function ContributeCard() {
+    const ContributionNotify = () => toast("Your interest is sent to the project creator");
     const [message, setMessage] = useState("Empty message");
     const [form, setForm] = useState({
         Land: '',
@@ -67,7 +70,7 @@ function ContributeCard() {
                     </div>
                     <form onSubmit={handleSubmit}>
                         <div className="card-footer text-center">
-                            <button className="btn btn-danger btn-sm m-2">Submit</button>
+                            <button className="btn btn-danger btn-sm m-2" onClick={ContributionNotify}>Submit</button>
                         </div>
                     </form>
                 </div>
