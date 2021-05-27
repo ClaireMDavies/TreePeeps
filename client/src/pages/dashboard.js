@@ -18,7 +18,7 @@ const dashboard = () => {
                         <div className="row ">
                             <h5>Projects you have created</h5>
                         </div>
-                        <div className="row ">
+                        <div className="row myCards">
                             <div className="dashCard " style={{ width: "20rem" }}>
                                 <div className="card-body ">
                                     <h5 className="card-title">Project Title</h5>
