@@ -17,8 +17,22 @@ const styles = {
 
 };
 
+
 function Feeds() {
 
+    function sendEmail(e) {
+        e.preventDefault();
+        window.Email.send({
+            Host: "smtp.elasticemail.com",
+            Username: "treepeeps@hotmail.com",
+            Password: "A5AD02A0D6C4DE5041F65A10ABAFD7151952",
+            To: 'treepeeps@hotmail.com',
+            From: "treepeeps@hotmail.com",
+            Subject: "Test Email",
+            Body: "<html><h2>Header</h2><strong>Bold text</strong><br></br><em>Italic</em></html>"
+        }).then(
+            console.log("email sent"))
+    }
     return (
         <div>
             {/* Navbar */}
@@ -56,7 +70,7 @@ function Feeds() {
                     </div>
                     <div className="card-footer text-center">
                         <button className="btn btn-success btn-sm m-2" ><i className="fas fa-hands-helping"></i> Contribute</button>
-                        <button className="btn btn-success btn-sm m-2"><i className="fas fa-envelope"></i> Contact me</button>
+                        <button className="btn btn-success btn-sm m-2" onClick={sendEmail}><i className="fas fa-envelope" ></i> Contact me</button>
                     </div>
                 </div>
             </div>
@@ -67,21 +81,21 @@ function Feeds() {
                         <h5 className="card-title text-white "><i className="fab fa-wpforms"></i> Contribution Form</h5>
                     </div>
                     <div className="card-body">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="Land" />
-                            <label class="form-check-label" for="Land">Land</label>
+                        <div className="form-check">
+                            <input className="form-check-input" type="checkbox" value="" id="Land" />
+                            <label className="form-check-label" htmlFor="Land">Land</label>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="Time" />
-                            <label class="form-check-label" for="Time">Time</label>
+                        <div className="form-check">
+                            <input className="form-check-input" type="checkbox" value="" id="Time" />
+                            <label className="form-check-label" htmlFor="Time">Time</label>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="Resources" />
-                            <label class="form-check-label" for="Resources">Resources</label>
+                        <div className="form-check">
+                            <input className="form-check-input" type="checkbox" value="" id="Resources" />
+                            <label className="form-check-label" htmlFor="Resources">Resources</label>
                         </div>
-                        <div class="input-group mt-3">
-                            <span class="input-group-text">Message</span>
-                            <input type="text" aria-label="First name" class="form-control" />
+                        <div className="input-group mt-3">
+                            <span className="input-group-text">Message</span>
+                            <input type="text" aria-label="First name" className="form-control" />
                         </div>
                     </div>
                     <div className="card-footer text-center">
