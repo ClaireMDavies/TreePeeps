@@ -11,12 +11,16 @@ const styles = {
 function ContributeCard() {
     const [message, setMessage] = useState("Empty message");
     const [form, setForm] = useState({
-        Land: "",
-        Time: "",
-        Resources: ""
+        Land: '',
+        Time: '',
+        Resources: ''
     });
     const onChange = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value});
+        var currentState = form[e.target.name]
+        if (!currentState) currentState = e.target.value;
+        else currentState = '';
+        setForm({ ...form, [e.target.name]: currentState})
+        ;
     }
     const sendEmail = () => {
         window.Email.send({
