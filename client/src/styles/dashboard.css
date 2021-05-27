@@ -1,7 +1,8 @@
 .btn-create {
     background-color: #296e2b;
   border: #443a03;
-  color: #100A00;
+  border-style: solid;
+  color: white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -38,6 +39,11 @@
     font-size: 16px;
   }
 
+  .myCards {
+    justify-content: space-between;
+    
+  }
+
 .myDashboard {
     background-color: #8be2b2;
     border: #067b5e;
@@ -62,6 +68,7 @@
     background-clip: border-box;
     border: 1px solid #067b5e;
     border-radius: .25rem;
+    
 }
 
 .dashboard-list-group {
