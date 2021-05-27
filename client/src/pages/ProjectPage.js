@@ -6,16 +6,15 @@ const Project = () => {
     return (
 
         <main className="container-fluid p-3">
-            <div className="container-fluid myDashboard">
+            <div className="container-fluid ">
 
-                <div className="row p-3 ">
+                <div className="row p-3 myDashboard">
                     <h1>New Project Form</h1>
-                </div>
 
-                <div className="row p-3">
-                    
-                        <div className="row p-3 rounded m-2">
-                            <div className="" style={{ width: "100" }}>
+                    <div className="row p-3">
+                        <div className="row p-3 rounded m-2 dashCard">
+                            <div className="" >
+                                {/* // style={{ width: "80" }}> */}
                                 <div className="card-body">
                                     <h5 className="card-title">Land Specifications</h5>
                                 </div>
@@ -27,8 +26,9 @@ const Project = () => {
                             </div>
                         </div>
 
-                        <div className="row p-3 rounded m-2">
-                            <div className="" style={{ width: "100" }}>
+                        <div className="row p-3 rounded m-2 dashCard">
+                            <div className="">
+                                {/* // style={{ width: "100" }}> */}
                                 <div className="card-body">
                                     <h5 className="card-title">Time Specifications</h5>
                                 </div>
@@ -39,8 +39,9 @@ const Project = () => {
                             </div>
                         </div>
 
-                        <div className="row p-3 rounded m-2">
-                            <div className="" style={{ width: "100" }}>
+                        <div className="row p-3 rounded m-2 dashCard">
+                            <div className="" >
+                                {/* // style={{ width: "100" }}> */}
                                 <div className="card-body">
                                     <h5 className="card-title">Resource Specifications</h5>
                                 </div>
@@ -54,12 +55,13 @@ const Project = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="row p-3">
-                        <div className="col-md-4">
-                            <button type="button" className="row float-right btn-create">Create</button>
+                    <div className="row p-3 float-right">
+                        <div className="float-right">
+                            <button type="button" className="row btn-create">Create</button>
                         </div>
                     </div>
                 </div>
+            </div>
         </main>
 
     );
