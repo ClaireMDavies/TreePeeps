@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import dashboard from "./pages/dashboard";
+import dashboard from "./components/dashboard";
 
 
 // Calling all components and using router to render pages
