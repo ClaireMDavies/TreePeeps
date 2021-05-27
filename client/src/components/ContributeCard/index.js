@@ -9,7 +9,15 @@ const styles = {
 
 
 function ContributeCard() {
-    const [message, setMessage] = useState("message");
+    const [message, setMessage] = useState("Empty message");
+    const [form, setForm] = useState({
+        Land: "",
+        Time: "",
+        Resources: ""
+    });
+    const onChange = (e) => {
+        setForm({ ...form, [e.target.name]: e.target.value});
+    }
     const sendEmail = () => {
         window.Email.send({
             Host: "smtp.elasticemail.com",
@@ -18,7 +26,7 @@ function ContributeCard() {
             To: 'treepeeps@hotmail.com',
             From: "treepeeps@hotmail.com",
             Subject: "Contribution",
-            Body: `<html><h2>Contribution</h2><br><p>${message}</p></html>`
+            Body: `<html><h2>Contribution</h2><br><p>I want to contribute by ${form.Land} ${form.Time} ${form.Resources} <br>${message}</p></html>`
         }).then(
             console.log("Contribution sent"))
     }
@@ -37,15 +45,15 @@ function ContributeCard() {
                     </div>
                     <div className="card-body">
                         <div className="form-check">
-                            <input className="form-check-input" type="checkbox" value="" id="Land" />
+                            <input className="form-check-input" type="checkbox" value="Land" name="Land" checked={form.Land} onChange={onChange} />
                             <label className="form-check-label" htmlFor="Land">Land</label>
                         </div>
                         <div className="form-check">
-                            <input className="form-check-input" type="checkbox" value="" id="Time" />
+                            <input className="form-check-input" type="checkbox" value="Time" name="Time" checked={form.Time} onChange={onChange} />
                             <label className="form-check-label" htmlFor="Time">Time</label>
                         </div>
                         <div className="form-check">
-                            <input className="form-check-input" type="checkbox" value="" id="Resources" />
+                            <input className="form-check-input" type="checkbox" value="Resources" name="Resources" checked={form.Resources} onChange={onChange} />
                             <label className="form-check-label" htmlFor="Resources">Resources</label>
                         </div>
                         <div className="input-group mt-3">
