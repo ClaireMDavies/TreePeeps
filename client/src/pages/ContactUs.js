@@ -1,28 +1,26 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import NavItem from "../components/NavItem";
 
-const styles = {
-    cardStyle: {
-        width: '60%',
-        padding: 0
-    },
-    treeIcon: {
-        color: "green"
-    },
-    clockIcon: {
-        color: "red"
-    },
-    mapIcon: {
-        color: "brown"
-    }
-
-};
 
 function ContactUs() {
 
     return (
         <div>
-            <Navbar />
+            <Navbar>
+                <NavItem
+                    link="/dashboard"
+                    name="Dashboard">
+                </NavItem>
+                <NavItem
+                    link="/"
+                    name="About Us">
+                </NavItem>
+                <NavItem
+                    link="/"
+                    name="Logout">
+                </NavItem>
+            </Navbar>
             {/* Contact Card */}
             <section className="contact-section mt-5">
                 <div className="container">

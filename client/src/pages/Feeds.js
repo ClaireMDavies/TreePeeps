@@ -3,6 +3,7 @@ import ContributeCard from "../components/ContributeCard";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Navbar from "../components/Navbar";
+import NavItem from "../components/NavItem";
 
 const styles = {
     cardStyle: {
@@ -43,7 +44,24 @@ function Feeds() {
     }
     return (
         <div>
-            <Navbar />
+            <Navbar>
+                <NavItem
+                    link="/dashboard"
+                    name="Dashboard">
+                </NavItem>
+                <NavItem
+                    link="/"
+                    name="About Us">
+                </NavItem>
+                <NavItem
+                    link="/contact"
+                    name="Contact Us">
+                </NavItem>
+                <NavItem
+                    link="/"
+                    name="Logout">
+                </NavItem>
+            </Navbar>
             {/* Post Card */}
             <div className="row d-flex justify-content-center mb-3">
                 <div className="card" style={styles.cardStyle}>

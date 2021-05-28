@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import loginImg from '../images/login-img.jpg';
+import NavItem from "../components/NavItem";
 
 const styles = {
     cardStyle: {
@@ -27,7 +28,16 @@ function Login() {
 
     return (
         <div>
-            <Navbar />
+            <Navbar>
+                <NavItem
+                    link="/"
+                    name="About Us">
+                </NavItem>
+                <NavItem
+                    link="/contact"
+                    name="Contact Us">
+                </NavItem>
+            </Navbar>
             {/* Login Card */}
             <div className="container d-flex justify-content-center mb-3 mt-5">
                 <div className="card border-success" style={styles.cardStyle}>

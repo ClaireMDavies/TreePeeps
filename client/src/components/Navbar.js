@@ -1,8 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import NavItem from "./NavItem";
 
-const Navbar = () => {
+const Navbar = (props) => {
     return (
         < nav className="navbar navbar-expand-lg navbar-light bg-light shadow mb-3" >
             <div className="container-fluid">
@@ -13,22 +11,7 @@ const Navbar = () => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <NavItem
-                            link="/dashboard"
-                            name="Dashboard">
-                        </NavItem>
-                        <NavItem
-                            link="/"
-                            name="About Us">
-                        </NavItem>
-                        <NavItem
-                            link="/contact"
-                            name="Contact Us">
-                        </NavItem>
-                        <NavItem
-                            link="/"
-                            name="Logout">
-                        </NavItem>
+                        {props.children}
 
                     </ul>
                     <form className="d-flex">

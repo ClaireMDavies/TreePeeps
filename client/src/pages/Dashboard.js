@@ -1,11 +1,25 @@
 import React from "react";
 import Navbar from "../components/Navbar";
+import NavItem from "../components/NavItem";
 import "../styles/dashboard.css";
 
 const Dashboard = () => {
     return (
         <div>
-            <Navbar/>
+            <Navbar>
+                <NavItem
+                    link="/"
+                    name="About Us">
+                </NavItem>
+                <NavItem
+                    link="/contact"
+                    name="Contact Us">
+                </NavItem>
+                <NavItem
+                    link="/"
+                    name="Logout">
+                </NavItem>
+            </Navbar>
             <main className="container-fluid">
 
                 <div className="row p-3">

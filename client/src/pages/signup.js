@@ -1,7 +1,7 @@
 import { useState } from "react";
 import React from "react";
-import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import NavItem from "../components/NavItem";
 
 function SignUp() {
     const [userName, setUserName] = useState("");
@@ -17,36 +17,16 @@ function SignUp() {
 
     return (
         <div>
-            <Navbar></Navbar>
-            {/* <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: "green" }}>
-                <span className="navbar-brand mb-0 h1">TreePeeps</span>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
-                    aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className="nav-item">
-                            <Link
-                                to="/"
-                                className={
-                                    window.location.pathname === "/" || window.location.pathname === "/about"
-                                        ? "nav-link active"
-                                        : "nav-link"
-                                }
-                            >About Us</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link
-                                to="/contact"
-                                className={window.location.pathname === "/contact" ? "nav-link active" : "nav-link"
-                                }
-                            >Contact Us</Link>
-                        </li>
-                    </ul>
-                </div>
-            </nav> */}
+            <Navbar>
+                <NavItem
+                    link="/"
+                    name="About Us">
+                </NavItem>
+                <NavItem
+                    link="/contact"
+                    name="Contact Us">
+                </NavItem>
+            </Navbar>
 
             <div className="container">
                 <div className="card" style={{ padding: 40, margin: 20, backgroundColor: "#50AF53" }}>
