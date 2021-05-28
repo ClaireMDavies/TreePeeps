@@ -1,10 +1,12 @@
 import React from "react";
+import Navbar from "../components/Navbar";
 import "../styles/project.css"
 
 
 const Project = () => {
     return (
-
+<div>
+    <Navbar></Navbar>
         <main className="container-fluid p-3">
             <div className="container-fluid ">
 
@@ -63,7 +65,7 @@ const Project = () => {
                 </div>
             </div>
         </main>
-
+</div>
     );
 }
 
