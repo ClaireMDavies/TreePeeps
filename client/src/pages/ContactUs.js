@@ -9,16 +9,12 @@ function ContactUs() {
         <div>
             <Navbar>
                 <NavItem
-                    link="/dashboard"
-                    name="Dashboard">
+                    link="/contact"
+                    name="Contact Us">
                 </NavItem>
                 <NavItem
                     link="/"
                     name="About Us">
-                </NavItem>
-                <NavItem
-                    link="/"
-                    name="Logout">
                 </NavItem>
             </Navbar>
             {/* Contact Card */}
