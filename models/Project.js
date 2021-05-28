@@ -63,18 +63,8 @@ const ProjectSchema = new Schema({
 // latitude and longitude coords
 // northings & eastings
 
-
-//the model will be named User
 const Project = mongoose.model("Project", UserSchema);
 
 module.exports = Project;
 
 
-
-
-id: {type: String, require: true},
-title: { type: String, require: true},
-authors: [{ type: String, require: true}],
-description: { type: String, require: true},
-image: { type: String, unique: true, dropDups: true},
-link: { type: String, required: true}
