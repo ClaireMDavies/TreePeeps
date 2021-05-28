@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import NavItem from "./NavItem";
 
 const Navbar = () => {
     return (
@@ -12,45 +13,23 @@ const Navbar = () => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className="nav-item ps-2">
-                            <Link
-                                to="/dashboard"
-                                className={
-                                    window.location.pathname === "/dashboard"
-                                        ? "nav-link active"
-                                        : "nav-link"
-                                }
-                            >Dashboard</Link>
-                        </li>
-                        <li className="nav-item ps-2">
-                            <Link
-                                to="/"
-                                className={
-                                    window.location.pathname === "/" || window.location.pathname === "/about"
-                                        ? "nav-link active"
-                                        : "nav-link"
-                                }
-                            >About Us</Link></li>
-                        <li className="nav-item ps-2">
-                            <Link
-                                to="/contact"
-                                className={
-                                    window.location.pathname === "/contact"
-                                        ? "nav-link active"
-                                        : "nav-link"
-                                }
-                            >Contact Us</Link>
-                        </li>
-                        <li className="nav-item ps-2">
-                            <Link
-                                to="/"
-                                className={
-                                    window.location.pathname === "/"
-                                        ? "nav-link active"
-                                        : "nav-link"
-                                }
-                            >Logout</Link>
-                        </li>
+                        <NavItem
+                            link="/dashboard"
+                            name="Dashboard">
+                        </NavItem>
+                        <NavItem
+                            link="/"
+                            name="About Us">
+                        </NavItem>
+                        <NavItem
+                            link="/contact"
+                            name="Contact Us">
+                        </NavItem>
+                        <NavItem
+                            link="/"
+                            name="Logout">
+                        </NavItem>
+
                     </ul>
                     <form className="d-flex">
                         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
