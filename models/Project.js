@@ -5,12 +5,15 @@ const ProjectSchema = new Schema({
     
     Ownerid: {
         type: String,
-        require:true
+        //required:true
         },
     title: {
         type: String,
-        require:true
+        required:true
         },
+    image: {
+        default:"https://unsplash.com/@pavlenko?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+    },
     //wip because Ben says is a good idea to store coords: northings and eastings AND
     // longitude and latitude
     shortLocation: {
@@ -22,11 +25,13 @@ const ProjectSchema = new Schema({
         require:true
         }, 
     hoursNeeded: {
-        type: Number, 
+        type: Number,
+        min: 0, 
         require:false
         },
     numTrees: {
         type: Number, 
+        min: 0,
         require:false
         },
     //likely to change to array?
@@ -39,7 +44,8 @@ const ProjectSchema = new Schema({
         require:false
         },
     amtFertilizer: {
-        type: Number, 
+        type: Number,
+        min: 0, 
         require:false
         }, 
     numSpirals: {
