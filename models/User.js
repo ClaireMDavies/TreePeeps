@@ -18,19 +18,25 @@ const UserSchema = new Schema({
                 },
     lastname: {
                 type: String, 
-                require: true, 
+                trim: true, 
+                required: true, 
                 description: 'Enter a last name'
                  },
     email:    {
                 type: email, 
-                require: true, 
+                required: true, 
                 description: "Please enter an email"
                 },
+    password: {
+                type: String,
+                required: true,
+                minlength: 8
+            },
     imgUrl: {
                type: String, 
-               require: false, 
+               required: false, 
                description: "Load an image - you, a tree or an Avatar!"
-             }
+             },
     //main role whether they are contributing land/trees/other
     mainRole: {
               type: Array, 
@@ -42,11 +48,11 @@ const UserSchema = new Schema({
                 }
 
     },
-    { 
-        timestamps: {
+     
+    timestamp: {
             type: Date
         }
-    });
+    );
 
 //left in here because believe will be calculation
     // virtual to add the total duration of excercises and add to a new field called totalDuration
