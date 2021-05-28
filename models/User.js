@@ -2,17 +2,50 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-    id: {type: String, require:true},
-    username: {type: String, required: true,
-    unique: true, minlength: 8 },
-    firstname: {type: String, trim:true, required:'Enter a first name'},
-    lastname: {type: String, require:true},
-    email: {type: email, require:true},
-    mainrole: {type: Array, require:true},
-    treeinterest: {type: Boolean, require:false}
+    
+    username: {
+               type: String,
+               require: true,
+               trim: true, 
+               unique: true, 
+               minlength: 8,
+               description: "Your username should be a minimum of 8 characters"
+               },
+    firstname: {
+                type: String,
+                trim: true, 
+                description:'Enter a first name'
+                },
+    lastname: {
+                type: String, 
+                require: true, 
+                description: 'Enter a last name'
+                 },
+    email:    {
+                type: email, 
+                require: true, 
+                description: "Please enter an email"
+                },
+    imgUrl: {
+               type: String, 
+               require: false, 
+               description: "Load an image - you, a tree or an Avatar!"
+             }
+    //main role whether they are contributing land/trees/other
+    mainRole: {
+              type: Array, 
+              require: true
+              },
+    treeInterest: {
+                type: Boolean, 
+                require: false
+                }
+
     },
     { 
-        timestamps: true,
+        timestamps: {
+            type: Date
+        }
     });
 
 //left in here because believe will be calculation
@@ -24,6 +57,6 @@ const UserSchema = new Schema({
 //});
 
 //the model will be named User
-const User = mongoose.model("User", UserSchema);
+const Project = mongoose.model("Project", UserSchema);
 
-module.exports = User;
+module.exports = Project;
