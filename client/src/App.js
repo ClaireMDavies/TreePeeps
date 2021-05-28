@@ -1,18 +1,24 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Project from "../src/pages/ProjectPage";
+import Feeds from "../src/pages/Feeds";
+import Login from "../src/pages/Login";
+import ContactUs from "./pages/ContactUs";
 
-// Calling all components and using router to render pages
+
 function App() {
+
   return (
+    <div>
     <Router>
-      <div>
-        <Route exact path="/ProjectPage" component={Project} />
-      </div>
-      <div>
-        <Route exact path="/" component={Project} />
-      </div>
+      <Switch>
+         <Route exact path="/ProjectPage" component={Project} />
+        <Route exact path="/feeds" component={Feeds} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/contact" component={ContactUs} />
+        </Switch>
     </Router>
+    </div>
   )
 
 }
