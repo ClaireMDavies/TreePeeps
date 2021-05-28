@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Feeds from "../src/pages/Feeds";
 import Login from "../src/pages/Login";
+import ContactUs from "./pages/ContactUs";
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Switch>
         <Route exact path="/feeds" component={Feeds} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/contact" component={ContactUs} />
         </Switch>
     </Router>
     </div>
