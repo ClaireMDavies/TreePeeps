@@ -15,14 +15,14 @@ function SignUp() {
     const passwordField = useRef(null);
     const confirmPasswordField = useRef(null);
 
-    const handleConfirmPassword = e => {
-        e.preventDefault();
-        if (userPassword.target.value !== userConfirmPassword.target.value) {
-            console.log("passwords don't match");
+    // const handleConfirmPassword = e => {
+    //     e.preventDefault();
+    //     if (userPassword.target.value !== userConfirmPassword.target.value) {
+    //         console.log("passwords don't match");
 
-        }
-        setUserConfirmPassword(e.target.value)
-    }
+    //     }
+    //     setUserConfirmPassword(e.target.value)
+    // }
 
     const handleSubmit = e => {
 
@@ -69,7 +69,8 @@ function SignUp() {
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-dark" style={{ backgroundColor: "green" }}>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light shadow mb-3">
+            <img className='ps-3 pe-2' src='../../favicon-32x32.png' alt='icon'></img>
                 <span className="navbar-brand mb-0 h1">TreePeeps</span>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
                     aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -100,54 +101,60 @@ function SignUp() {
             </nav>
 
             <div className="container">
-                <div className="card" style={{ padding: 40, margin: 20, backgroundColor: "#50AF53" }}>
+                <div className="card border-success" style={{ padding: 40, margin: 20, }}>
                     <div className="card-body" >
+                    <div className="brand-wrapper">
+                                    <img className='pe-2 pb-2' src='../../favicon-32x32.png' alt='icon'></img>
+                                    <span className="fs-4">TreePeeps</span>
+                                    
+                                </div>
+                        <h2 className="col-md-12" style={{textAlign: "center"}}>Create an account</h2>
 
                         <div className="row" style={{ margin: 10 }}>
-                            <div className="col-md-5 card" style={{ backgroundColor: "palegreen", textAlign: "center", margin: 10 }}>
+                            <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
                                 <h4>Full name:</h4>
                             </div>
                             <div className="col-md-6" style={{ margin: 10 }}>
-                                <input className="form-control" type="text"></input>
+                                <input className="form-control" type="text" placeholder="Enter full name"></input>
                             </div>
                         </div>
 
                         <div className="row" style={{ margin: 10 }}>
-                            <div className="col-md-5 card" style={{ backgroundColor: "palegreen", textAlign: "center", margin: 10 }}>
+                            <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
                                 <h4>Email address:</h4>
                             </div>
                             <div className="col-md-6" style={{ margin: 10 }}>
-                                <input className="form-control" type="email"></input>
+                                <input className="form-control" type="email" placeholder="Enter email"></input>
                             </div>
                         </div>
 
                         <div className="row" style={{ margin: 10 }}>
-                            <div className="col-md-5 card" style={{ backgroundColor: "palegreen", textAlign: "center", margin: 10 }}>
+                            <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
                                 <h4>Password:</h4>
                             </div>
                             <div className="col-md-6" style={{ margin: 10 }}>
                                 <input ref={passwordField}
-                                    className="form-control" type="password" onBlur={passwordLostFocus}></input>
+                                    className="form-control" type="password" onBlur={passwordLostFocus} placeholder="Enter password of 8 or more characters"></input>
                             </div>
                         </div>
 
                         <div className="row" style={{ margin: 10 }}>
-                            <div className="col-md-5 card" style={{ backgroundColor: "palegreen", textAlign: "center", margin: 10 }}>
+                            <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
                                 <h4>Confirm password:</h4>
                             </div>
                             <div className="col-md-6" style={{ margin: 10 }} >
                                 <input ref={confirmPasswordField}
-                                    className="form-control" type="password" onBlur={confirmPasswordLostFocus}></input>
+                                    className="form-control" type="password" onBlur={confirmPasswordLostFocus} placeholder="Re-enter password"></input>
                             </div>
-                            <span>{passwordError}</span>
+                            <span className= "has-error">{passwordError}</span>
                         </div>
 
                         <div className="row" style={{ margin: 10 }}>
-                            <div className="col-md-5 card" style={{ backgroundColor: "palegreen", textAlign: "center", margin: 10 }}>
+                            <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
                                 <h4>Location:</h4>
                             </div>
                             <div className="col-md-6" style={{ margin: 10 }}>
-                                <input className="form-control" type="text"></input>
+                                <input className="form-control" type="text" placeholder="Enter nearest town"></input>
                             </div>
                         </div>
 
