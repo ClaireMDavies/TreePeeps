@@ -2,32 +2,66 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ProjectSchema = new Schema({
-    id: {type: String, require:true},
-    Ownerid: {type: String, require:true},
-    title: {type: String, require:true},
-    shortlocation: {type: email, require:true},
-    location: {type: String, require:true}, 
-    hoursneeded: {type: Number, require:false},
-    numtrees: {type: Number, require:false},
-    treetype: {type: String, require:false}, 
-    numstakes: {type: Number, require:false},
-    amtfertilizer: {type: Number, require:false}, 
-    numspirals: {type: Number, require:false},   
+    
+    Ownerid: {
+        type: String,
+        require:true
+        },
+    title: {
+        type: String,
+        require:true
+        },
+    //wip because Ben says is a good idea to store coords: northings and eastings AND
+    // longitude and latitude
+    shortLocation: {
+        type: email,
+        require:true
+        },
+    location: {
+        type: String,
+        require:true
+        }, 
+    hoursNeeded: {
+        type: Number, 
+        require:false
+        },
+    numTrees: {
+        type: Number, 
+        require:false
+        },
+    //likely to change to array?
+    treeType: {
+        type: String, 
+        require:false
+        }, 
+    numStakes: {
+        type: Number,
+        require:false
+        },
+    amtFertilizer: {
+        type: Number, 
+        require:false
+        }, 
+    numSpirals: {
+        type: Number, 
+        require:false
+        },   
+    timestamps: {
+        type: Date
+    }
+
 
 });
 
-//left in here because believe will be calculation
-    // virtual to add the total duration of excercises and add to a new field called totalDuration
-//WorkoutSchema.virtual("totalDuration").get(function () {
-//    return this.exercises.reduce((ttl, exc) => {
-//        return ttl + exc.duration
-//    }, 0);
-//});
+//locAation - w3words - three word string - convert to l&l and vice versa - store both, no coversion
+// latitude and longitude coords
+// northings & eastings
+
 
 //the model will be named User
-const User = mongoose.model("User", UserSchema);
+const Project = mongoose.model("Project", UserSchema);
 
-module.exports = User;
+module.exports = Project;
 
 
 
