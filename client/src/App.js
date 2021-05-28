@@ -13,14 +13,14 @@ function App() {
 
   return (
     <div>
-    <Router>
-<Route exact path="/dashboard" component={dashboard} />
-       <Route exact path="/ProjectPage" component={Project} />
+      <Router>
+        <Route exact path="/dashboard" component={dashboard} />
+        <Route exact path="/ProjectPage" component={Project} />
         <Route exact path="/feeds" component={Feeds} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/contact" component={ContactUs} />
-         <Route exact path="/signup" component={SignUp} />
-    </Router>
+        <Route exact path="/signup" component={SignUp} />
+      </Router>
     </div>
   )
 
