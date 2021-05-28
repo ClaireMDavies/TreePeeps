@@ -5,8 +5,9 @@ const UserSchema = new Schema({
     
     username: {
                type: String,
-               require: true,
+               required: true,
                trim: true, 
+               required: true, 
                unique: true, 
                minlength: 8,
                description: "Your username should be a minimum of 8 characters"
@@ -21,7 +22,7 @@ const UserSchema = new Schema({
                 trim: true, 
                 required: true, 
                 description: 'Enter a last name'
-                 },
+              },
     email:    {
                 type: email, 
                 required: true, 
@@ -31,7 +32,7 @@ const UserSchema = new Schema({
                 type: String,
                 required: true,
                 minlength: 8
-            },
+              },
     imgUrl: {
                type: String, 
                required: false, 
@@ -40,19 +41,17 @@ const UserSchema = new Schema({
     //main role whether they are contributing land/trees/other
     mainRole: {
               type: Array, 
-              require: true
+              required: true
               },
     treeInterest: {
                 type: Boolean, 
-                require: false
-                }
-
-    },
+                required: false
+                },
      
     timestamp: {
             type: Date
         }
-    );
+});
 
 //left in here because believe will be calculation
     // virtual to add the total duration of excercises and add to a new field called totalDuration
@@ -63,6 +62,6 @@ const UserSchema = new Schema({
 //});
 
 //the model will be named User
-const Project = mongoose.model("Project", UserSchema);
+const User = mongoose.model("User", UserSchema);
 
-module.exports = Project;
+module.exports = User;
