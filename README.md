@@ -114,11 +114,11 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 <!-- CONTACT -->
 ## Creators
-* Drew - [GitHub](https://github.com/drewbassett24/Portfolio)
-* Saadia - [GitHub](https://github.com/SaadiaELF/Portfolio_SEF)
-* Maryum - [GitHub](https://github.com/Maryum97/My_Latest_Portfolio)
-* Claire - [GitHub](https://github.com/ClaireMDavies/portfolio)
-* Sally - [GitHub](https://github.com/sallyxp/Personal-Portfolio)
+* Drew - [GitHub](https://drewbassett24.github.io/Portfolio/)
+* Saadia - [GitHub](https://SaadiaELF.github.io/Portfolio_SEF)
+* Maryum - [GitHub](https://Maryum97.github.io//My_Latest_Portfolio)
+* Claire - [GitHub](https://ClaireMDavies.github.io/portfolio)
+* Sally - [GitHub](https://sallyxp.github.io/Personal-Portfolio)
 * Lucas - [GitHub](https://github.com/lukedesmond)
 
 
