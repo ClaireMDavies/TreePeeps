@@ -1,5 +1,7 @@
-import React, { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import React from "react";
+import Navbar from "../components/Navbar";
+import NavItem from "../components/NavItem";
 
 
 function SignUp() {
@@ -18,8 +20,7 @@ function SignUp() {
         console.log(emailAddress);
         console.log(location);
 
-        if (password.length > 0 && passwordError.length == 0)
-        {
+        if (password.length > 0 && passwordError.length == 0) {
             // we have a valid password
             console.log(password);
         }
@@ -58,37 +59,17 @@ function SignUp() {
     }
 
     return (
-        <>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light shadow mb-3">
-                <img className='ps-3 pe-2' src='../../favicon-32x32.png' alt='icon'></img>
-                <span className="navbar-brand mb-0 h1">TreePeeps</span>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
-                    aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className="nav-item">
-                            <Link
-                                to="/"
-                                className={
-                                    window.location.pathname === "/" || window.location.pathname === "/about"
-                                        ? "nav-link active"
-                                        : "nav-link"
-                                }
-                            >About Us</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link
-                                to="/contact"
-                                className={window.location.pathname === "/contact" ? "nav-link active" : "nav-link"
-                                }
-                            >Contact Us</Link>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+        <div>
+            <Navbar>
+                <NavItem
+                    link="/"
+                    name="About Us">
+                </NavItem>
+                <NavItem
+                    link="/contact"
+                    name="Contact Us">
+                </NavItem>
+            </Navbar>
 
             <div className="container">
                 <div className="card border-success" style={{ padding: 40, margin: 20, }}>
@@ -124,7 +105,7 @@ function SignUp() {
                                 <h4>Password:</h4>
                             </div>
                             <div className="col-md-6" style={{ margin: 10 }}>
-                                <input  className="form-control" type="password" onBlur={passwordLostFocus} placeholder="Enter password of 8 or more characters" onChange={e => setPassword(e.target.value)}></input>
+                                <input className="form-control" type="password" onBlur={passwordLostFocus} placeholder="Enter password of 8 or more characters" onChange={e => setPassword(e.target.value)}></input>
                             </div>
                         </div>
 
@@ -161,7 +142,7 @@ function SignUp() {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 
