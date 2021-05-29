@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const bcrypt = require('bcrypt');
 
 const UserSchema = new Schema({
     
@@ -33,20 +34,29 @@ const UserSchema = new Schema({
                 required: true,
                 minlength: 8
               },
-    imgUrl: {
-               type: String, 
-               required: false, 
-               description: "Load an image - you, a tree or an Avatar!"
+    location: {
+                type: String,
+                required: true
              },
-    //main role whether they are contributing land/trees/other
-    mainRole: {
-              type: Array, 
-              required: true
-              },
-    treeInterest: {
-                type: Boolean, 
-                required: false
-                },
+     {
+    hooks: {
+      beforeCreate: async (newUser) => {
+        newUser.password = await bcrypt.hash(newUser.password, 8);
+        return newUser;
+      },
+      beforeUpdate: async (updatedUser) => {
+        updatedUser.password = await bcrypt.hash(updatedUser.password, 8);
+        return updatedUser;
+      },
+    },
+    // Provision for number of projects created to present
+
+    //imgUrl: {
+    //           type: String, 
+    //           required: false, 
+    //           description: "Load an image - you, a tree or an Avatar!"
+     //        },
+    
      
     timestamp: {
             type: Date
