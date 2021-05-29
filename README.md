@@ -116,7 +116,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## Creators
 * Drew - [GitHub](https://drewbassett24.github.io/Portfolio/)
 * Saadia - [GitHub](https://SaadiaELF.github.io/Portfolio_SEF)
-* Maryum - [GitHub](https://Maryum97.github.io//My_Latest_Portfolio)
+* Maryum - [GitHub](https://maryum97.github.io/My_Latest_Portfolio/)
 * Claire - [GitHub](https://ClaireMDavies.github.io/portfolio)
 * Sally - [GitHub](https://sallyxp.github.io/Personal-Portfolio)
 * Lucas - [GitHub](https://github.com/lukedesmond)
