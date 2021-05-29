@@ -114,10 +114,15 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 <!-- CONTACT -->
 ## Creators
+* Drew [GitHub](https://github.com/drewbassett24)
+* Saadia [GitHub](https://github.com/SaadiaELF)
+* Maryum [GitHub](https://github.com/Maryum97)
+* Claire[GitHub](https://github.com/ClaireMDavies)
+* Sally [GitHub](https://github.com/sallyxp)
+* Lucas [GitHub](https://github.com/lukedesmond)
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/drewbassett24/TreePeeps]([https://github.com/drewbassett24/TreePeeps)
 
 
 
