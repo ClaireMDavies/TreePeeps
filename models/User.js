@@ -60,13 +60,8 @@ const UserSchema = new Schema({
      
     timestamp: {
             type: Date
-        }
-   
-    timestamp: {
-        type: Date
-    }
-
-});
+        } 
+   });
 
 //left in here because believe will be calculation
 // virtual to add the total duration of excercises and add to a new field called totalDuration
