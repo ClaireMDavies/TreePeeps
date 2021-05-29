@@ -6,7 +6,7 @@
     <img src="TREEPEEPS.png" alt="TreePeeps">
   </a>
 
-  <h3 align="center">A tree-planting app for tree-minded people</h3>
+  <h3 align="center">*A tree-planting app for tree-minded people*</h3>
 </p>
 
 
