@@ -3,7 +3,7 @@
 <br />
 <p align="center">
   <a href="logo">
-    <img src="TreePeeps.png" alt="TreePeeps" width="264" height="97">
+    <img src="TreePeeps/client/src/assets/TreePeeps.png" alt="TreePeeps" width="264" height="97">
   </a>
 
   <h3 align="center">A tree-planting app for tree-minded people</h3>
