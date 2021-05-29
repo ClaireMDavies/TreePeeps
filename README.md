@@ -122,7 +122,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 * Lucas - [GitHub](https://github.com/lukedesmond)
 
 
-Project Link: [https://github.com/drewbassett24/TreePeeps]([https://github.com/drewbassett24/TreePeeps)
+Project Link: [TreePeeps]([https://github.com/drewbassett24/TreePeeps)
 
 
 
