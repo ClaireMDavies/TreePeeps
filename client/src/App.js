@@ -6,12 +6,15 @@ import Project from "../src/pages/ProjectPage";
 import Feeds from "../src/pages/Feeds";
 import Login from "../src/pages/Login";
 import ContactUs from "./pages/ContactUs";
+import dashboard from "./components/dashboard";
+
 
 function App() {
 
   return (
     <div>
     <Router>
+<Route exact path="/dashboard" component={dashboard} />
        <Route exact path="/ProjectPage" component={Project} />
         <Route exact path="/feeds" component={Feeds} />
         <Route exact path="/login" component={Login} />
