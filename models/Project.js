@@ -11,6 +11,9 @@ const ProjectSchema = new Schema({
         type: String,
         required:true
         },
+    description: {
+        type: String
+    }
     image: {
         default:"https://unsplash.com/@pavlenko?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
     },
