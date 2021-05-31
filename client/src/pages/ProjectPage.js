@@ -1,10 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import NavItem from "../components/NavItem";
 import "../styles/project.css"
 
+import MapPicker from 'react-google-map-picker'
+
+const DefaultLocation = { lat: 51.5073509, lng: -0.1277583 };
+const DefaultZoom = 10;
+
 
 const Project = () => {
+    const [defaultLocation, setDefaultLocation] = useState(DefaultLocation);
+
+    const [location, setLocation] = useState(defaultLocation);
+    const [zoom, setZoom] = useState(DefaultZoom);
+
+    function handleChangeLocation(lat, lng) {
+        setLocation({ lat: lat, lng: lng });
+    }
+
+    function handleChangeZoom(newZoom) {
+        setZoom(newZoom);
+    }
+
+    function handleResetLocation() {
+        setDefaultLocation({ ...DefaultLocation });
+        setZoom(DefaultZoom);
+    }
+
     return (
         <div>
             <Navbar>
@@ -41,6 +64,18 @@ const Project = () => {
                                     <ul className="list-group list-group-flush">
                                         <li className="list-group-item">Area(m2): </li>
                                         <li className="list-group-item">Location: </li>
+                                        {/* Adding Google map */}
+                                        <button onClick={handleResetLocation}>Reset Location</button>
+                                        <label>Latitute:</label><input type='text' value={location.lat} disabled />
+                                        <label>Longitute:</label><input type='text' value={location.lng} disabled />
+                                        {/* <label>Zoom:</label><input type='text' value={zoom} disabled /> */}
+
+                                        <MapPicker defaultLocation={defaultLocation}
+                                            zoom={zoom}
+                                            style={{ height: '400px'}}
+                                            onChangeLocation={handleChangeLocation}
+                                            onChangeZoom={handleChangeZoom}
+                                            apiKey='AIzaSyAz6OTYEn4bTxvnyDOW2NQTXnDVsZeXzVA' />
                                         <li className="list-group-item">Owner: </li>
                                     </ul>
                                 </div>
