@@ -2,56 +2,61 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ProjectSchema = new Schema({
-    
+
     Ownerid: {
         type: String,
         //required:true
-        },
+    },
     title: {
         type: String,
         required:true
         },
+    description: {
+        type: String
+    }
+        required: true
+    },
     image: {
-        default:"https://unsplash.com/@pavlenko?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+        default: "https://unsplash.com/@pavlenko?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
     },
     //wip because Ben says is a good idea to store coords: northings and eastings AND
     // longitude and latitude
     shortLocation: {
         type: email,
-        require:true
-        },
+        require: true
+    },
     location: {
         type: String,
-        require:true
-        }, 
+        require: true
+    },
     hoursNeeded: {
         type: Number,
-        min: 0, 
-        require:false
-        },
-    numTrees: {
-        type: Number, 
         min: 0,
-        require:false
-        },
+        require: false
+    },
+    numTrees: {
+        type: Number,
+        min: 0,
+        require: false
+    },
     //likely to change to array?
     treeType: {
-        type: String, 
-        require:false
-        }, 
+        type: String,
+        require: false
+    },
     numStakes: {
         type: Number,
-        require:false
-        },
+        require: false
+    },
     amtFertilizer: {
         type: Number,
-        min: 0, 
-        require:false
-        }, 
+        min: 0,
+        require: false
+    },
     numSpirals: {
-        type: Number, 
-        require:false
-        },   
+        type: Number,
+        require: false
+    },
     timestamps: {
         type: Date
     }
@@ -63,18 +68,8 @@ const ProjectSchema = new Schema({
 // latitude and longitude coords
 // northings & eastings
 
-
-//the model will be named User
 const Project = mongoose.model("Project", UserSchema);
 
 module.exports = Project;
 
 
-
-
-id: {type: String, require: true},
-title: { type: String, require: true},
-authors: [{ type: String, require: true}],
-description: { type: String, require: true},
-image: { type: String, unique: true, dropDups: true},
-link: { type: String, required: true}

@@ -3,7 +3,7 @@ import "../styles/dashboard.css";
 
 const dashInYourAreaView = () => {
     return ( 
-        
+        <div>Hello!</div>
      );
 }
  
