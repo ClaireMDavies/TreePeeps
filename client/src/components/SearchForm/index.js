@@ -8,7 +8,7 @@ const SearchForm = () => {
             <FormGroup>
                 <Input type="text" name="message" id="message" placeholder="search-by-location..." />
             </FormGroup><br></br>  
-            <Button type="submit" value="submit">Search</Button>
+            <Button type="submit" value="submit" color="success">Search</Button>
         </form>
 
     );
