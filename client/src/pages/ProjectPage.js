@@ -75,7 +75,7 @@ const Project = () => {
                                             style={{ height: '400px'}}
                                             onChangeLocation={handleChangeLocation}
                                             onChangeZoom={handleChangeZoom}
-                                            apiKey='AIzaSyAz6OTYEn4bTxvnyDOW2NQTXnDVsZeXzVA' />
+                                            apiKey={process.env.API_KEY} />
                                         <li className="list-group-item">Owner: </li>
                                     </ul>
                                 </div>
