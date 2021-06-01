@@ -1,0 +1,56 @@
+.masthead {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 35rem;
+    padding: 15rem 0;
+    background-image: url("../assets/background.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+}
+.masthead h1 {
+    font-family:'Lobster', cursive, Georgia, 'Times New Roman', Times, serif;
+    font-size: 4rem;
+    line-height: 2.5rem; 
+    color: rgb(255, 255, 255);
+}
+.masthead h3 {
+    font-family: 'Slabo 27px', serif, Georgia, 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    line-height: 2.5rem; 
+    margin-top: 20px;
+    color: rgb(255, 255, 255);
+}
+.masthead p {
+    font-family: 'Slabo 27px', serif, Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.5rem;
+    line-height: 2rem; 
+    margin-top: 20px;
+    color: rgb(255, 255, 255);
+}
+/* icons styling */
+.buttons {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}  
+.buttons li {
+    display: inline-block;
+}
+.fab {
+    color :black;
+}
+@media (max-width: 768px) {
+    .masthead h1 {
+      font-size: 2.5rem;
+    }
+    .masthead h3 {
+        font-size: 1.5rem;
+    }
+}
+img#logo {
+        width: 30%;
+        height: auto;
+}
