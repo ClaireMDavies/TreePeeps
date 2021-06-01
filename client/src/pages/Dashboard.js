@@ -1,12 +1,12 @@
 import React from "react";
-import Navbar from "../components/Navbar";
+import NavbarTreePeeps from "../components/NavbarTreePeeps";
 import NavItem from "../components/NavItem";
 import "../styles/dashboard.css";
 
 const Dashboard = () => {
     return (
         <div>
-            <Navbar>
+            <NavbarTreePeeps>
                 <NavItem
                     link="/"
                     name="About Us">
@@ -19,7 +19,7 @@ const Dashboard = () => {
                     link="/"
                     name="Logout">
                 </NavItem>
-            </Navbar>
+            </NavbarTreePeeps>
             <main className="container-fluid">
 
                 <div className="row p-3">
