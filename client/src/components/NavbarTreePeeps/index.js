@@ -34,16 +34,11 @@ function NavbarTreePeeps() {
             <Navbar color="faded" light>
                 <img className='ps-3 pe-2' src='../../favicon-32x32.png' alt='icon'></img>
                 <NavbarBrand href="/" className="mr-auto"><b>Tree</b>Peeps</NavbarBrand>
+                <SearchForm />
                 <NavbarToggler onClick={toggleNavbar} className="mr-2" />
                 <Collapse isOpen={!collapsed} navbar>
                     <Nav navbar>
-                        <NavItem>
-                            <NavLink href="/components/">Components</NavLink>
-                        </NavItem>
-                        <NavItem>
-                            <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-                        </NavItem>
-                        <SearchForm />
+                        <NavItem />
                     </Nav>
                 </Collapse>
             </Navbar>
