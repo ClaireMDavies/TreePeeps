@@ -6,7 +6,9 @@ import NavItem from "../components/NavItem";
 
 function SignUp() {
 
-    const [fullName, setFullName] = useState("");
+    const [userName, setUserName] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
     const [emailAddress, setEmailAddress] = useState("");
     const [location, setLocation] = useState("");
     const [password, setPassword] = useState("");
@@ -16,7 +18,9 @@ function SignUp() {
 
     function handleSubmit() {
 
-        console.log(fullName);
+        console.log(userName);
+        console.log(firstName);
+        console.log(lastName);
         console.log(emailAddress);
         console.log(location);
 
@@ -84,10 +88,28 @@ function SignUp() {
 
                         <div className="row" style={{ margin: 10 }}>
                             <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
-                                <h4>Full name:</h4>
+                                <h4>User name:</h4>
                             </div>
                             <div className="col-md-6" style={{ margin: 10 }}>
-                                <input className="form-control" type="text" placeholder="Enter full name" onChange={e => setFullName(e.target.value)}></input>
+                                <input className="form-control" type="text" placeholder="Choose a user name of 8 characters or more" onChange={e => setUserName(e.target.value)}></input>
+                            </div>
+                        </div>
+
+                        <div className="row" style={{ margin: 10 }}>
+                            <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
+                                <h4>First name:</h4>
+                            </div>
+                            <div className="col-md-6" style={{ margin: 10 }}>
+                                <input className="form-control" type="text" placeholder="Enter first name" onChange={e => setFirstName(e.target.value)}></input>
+                            </div>
+                        </div>
+
+                        <div className="row" style={{ margin: 10 }}>
+                            <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
+                                <h4>Last name:</h4>
+                            </div>
+                            <div className="col-md-6" style={{ margin: 10 }}>
+                                <input className="form-control" type="text" placeholder="Enter last name" onChange={e => setLastName(e.target.value)}></input>
                             </div>
                         </div>
 
