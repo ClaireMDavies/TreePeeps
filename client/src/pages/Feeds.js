@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Container, Card, CardTitle, CardSubtitle, CardBody, CardText, Button } from 'reactstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Navbar from "../components/NavbarTreePeeps";
@@ -64,21 +65,20 @@ function Feeds() {
             </Navbar>
             {/* Post Card */}
             <div className="row d-flex justify-content-center mb-3">
-                <div className="card" style={styles.cardStyle}>
-                    <div className="card-header pb-0">
-                        <h5 className="card-title">Project Name <i className="fas fa-map-marked-alt ps-3" style={styles.mapIcon} data-bs-toggle="tooltip" data-bs-placement="top" title="Land needed"></i><i className="fas fa-clock ps-3" style={styles.clockIcon} data-bs-toggle="tooltip" data-bs-placement="top" title="Time needed"></i><i className="fas fa-tree ps-3" style={styles.treeIcon} data-bs-toggle="tooltip" data-bs-placement="top" title="Resources needed"></i></h5>
-                        <h6 className="text-muted">Username</h6>
-
-                    </div>
-                    <div className="card-body">
-                        <p className="card-text">Project description</p>
-                    </div>
-                    <div className="card-footer text-center">
-                        <button className="btn btn-success btn-sm m-2" onClick={showContribute} ><i className="fas fa-hands-helping"></i> Contribute</button>
-                        <button className="btn btn-success btn-sm m-2" onClick={sendEmail, ContactNotify}><i className="fas fa-envelope" ></i> Contact me</button>
-                        <ToastContainer />
-                    </div>
-                </div>
+                <Card style={styles.cardStyle}>
+                    <Container>
+                        <CardTitle><h5>Project Name <i className="fas fa-map-marked-alt ps-3" style={styles.mapIcon} data-bs-toggle="tooltip" data-bs-placement="top" title="Land needed"></i><i className="fas fa-clock ps-3" style={styles.clockIcon} data-bs-toggle="tooltip" data-bs-placement="top" title="Time needed"></i><i className="fas fa-tree ps-3" style={styles.treeIcon} data-bs-toggle="tooltip" data-bs-placement="top" title="Resources needed"></i></h5></CardTitle>
+                        <CardSubtitle><h6>Username</h6></CardSubtitle>
+                        <CardBody>
+                            <CardText>Project description</CardText>
+                        </CardBody>
+                        <div className="card-footer text-center">
+                            <Button color="success" onClick={showContribute} ><i className="fas fa-hands-helping"></i> Contribute</Button>
+                            <Button color="success" onClick={sendEmail, ContactNotify}><i className="fas fa-envelope" ></i> Contact me</Button>
+                            <ToastContainer />
+                        </div>
+                    </Container>
+                </Card>
             </div>
             {/* Contribute Card */}
             {showCard ? <ContributeCard /> : null}
