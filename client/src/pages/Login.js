@@ -1,5 +1,5 @@
 import React from "react";
-import {  } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import Navbar from "../components/NavbarTreePeeps";
 import loginImg from '../images/login-img.jpg';
 import NavItem from "../components/NavItem";
@@ -40,13 +40,13 @@ function Login() {
                 </NavItem>
             </Navbar>
             {/* Login Card */}
-            <div className="container d-flex justify-content-center mb-3 mt-5">
+            <Container>
                 <div className="card border-success" style={styles.cardStyle}>
-                    <div className="row g-0">
-                        <div className="col-md-6">
+                    <Row>
+                        <Col xs="6">
                             <img className="img-fluid" src={loginImg} alt="login" />
-                        </div>
-                        <div className="col-md-6">
+                        </Col>
+                        <Col xs="6">
                             <div className="card-body">
                                 <div className="brand-wrapper">
                                     <img className='pe-2 pb-2' src='../../favicon-32x32.png' alt='icon'></img>
@@ -68,10 +68,10 @@ function Login() {
                                 </div>
                                 <p className="login-card-footer-text">Don't have an account? <a href="#!" className="text-reset">Register here</a></p>
                             </div>
-                        </div>
-                    </div>
+                        </Col>
+                    </Row>
                 </div>
-            </div>
+            </Container>
         </div>
     )
 };
