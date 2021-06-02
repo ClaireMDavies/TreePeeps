@@ -12,24 +12,24 @@
     
 }
 .masthead h1 {
-    font-family:'Lobster', cursive, Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Paytone One', sans-serif;
     font-size: 4rem;
     line-height: 2.5rem; 
-    color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255, 0.5);
 }
 .masthead h3 {
-    font-family: 'Slabo 27px', serif, Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Paytone One', sans-serif;
     font-size: 2rem;
     line-height: 2.5rem; 
     margin-top: 20px;
-    color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255, 0.5);
 }
 .masthead p {
-    font-family: 'Slabo 27px', serif, Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Paytone One', sans-serif;
     font-size: 1.5rem;
     line-height: 2rem; 
     margin-top: 20px;
-    color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255, 0.5);
 }
 /* icons styling */
 .buttons {
@@ -69,5 +69,9 @@ img#logo {
 }
 
 .btn-outline {
-background-color: white;
+    background-color: white;
+}
+
+#navlogo{
+    image: url("../assets/TREEPEEPS-NAV.png")
 }
