@@ -2,10 +2,11 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import "../styles/homepage.css"
 import logo from "../assets/TREEPEEPS.png"
+
 function HomePage() {
     return (
         <div>
-            <Navbar id="navlogo" src={logo}/>
+            <Navbar />
             <header className="masthead">
                 <div className="container d-flex h-100 align-items-center">
                     <div className="mx-auto text-center">
