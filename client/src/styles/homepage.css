@@ -58,3 +58,9 @@ img#logo {
 .div {
     background-color: #0f5132;
 }
+
+.mx-auto.text-center {
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 25px;
+    padding: 20px;
+}
