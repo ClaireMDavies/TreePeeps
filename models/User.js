@@ -34,11 +34,23 @@ const UserSchema = new Schema({
                 required: true,
                 minlength: 8
               },
-    location: {
-                type: String,
-                required: true
-             },
-     {
+    country: {
+              type: String,
+              required: true
+              },
+    city: {
+              type: String,
+              required: true
+    },
+    latitude: {
+              type: String,
+              required: false
+    },
+    longitude: {
+              type: String,
+              required: false
+    }
+    {
     hooks: {
       beforeCreate: async (newUser) => {
         newUser.password = await bcrypt.hash(newUser.password, 8);
@@ -60,13 +72,8 @@ const UserSchema = new Schema({
      
     timestamp: {
             type: Date
-        }
-   
-    timestamp: {
-        type: Date
-    }
-
-});
+        } 
+   });
 
 //left in here because believe will be calculation
 // virtual to add the total duration of excercises and add to a new field called totalDuration
