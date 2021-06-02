@@ -5,7 +5,7 @@ import logo from "../assets/TREEPEEPS.png"
 function HomePage() {
     return (
         <div>
-            <Navbar />
+            <Navbar id="navlogo" src={logo}/>
             <header className="masthead">
                 <div className="container d-flex h-100 align-items-center">
                     <div className="mx-auto text-center">

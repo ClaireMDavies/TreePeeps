@@ -9,6 +9,7 @@
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-size: cover;
+    
 }
 .masthead h1 {
     font-family:'Lobster', cursive, Georgia, 'Times New Roman', Times, serif;
@@ -53,4 +54,7 @@
 img#logo {
         width: 30%;
         height: auto;
+}
+.div {
+    background-color: #0f5132;
 }
