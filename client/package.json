@@ -7,6 +7,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "bootstrap": "^5.0.1",
+    "isemail": "^3.2.0",
     "react": "^16.6.3",
     "react-country-region-selector": "^3.1.0",
     "react-dom": "^16.6.3",

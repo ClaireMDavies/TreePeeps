@@ -187,7 +187,7 @@ function SignUp() {
                                 country={country}
                                 value={region}
                                 onChange={e => setRegion(e)} />
-                                {/* <input className="form-control" type="text" placeholder="Enter nearest town" onChange={e => setLocation(e.target.value)}></input> */}
+                               
                             </div>
                         </div>
 
@@ -200,7 +200,7 @@ function SignUp() {
                         </form>
 
                         <div className="row" style={{ margin: 30 }}>
-                            <h4 style={{ textAlign: "center" }}>Already got an account? <Link className="navbar-brand" style={{color:"black", textDecorationLine:"underline"}} to="/login">Log in</Link></h4>                
+                            <h4 style={{ textAlign: "center" }}>Already got an account? <Link  style={{color:"black", textDecorationLine:"underline"}} to="/login">Log in</Link></h4>                
                  
                         </div>
 
