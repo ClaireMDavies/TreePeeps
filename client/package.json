@@ -7,13 +7,19 @@
   "dependencies": {
     "axios": "^0.21.1",
     "bootstrap": "^5.0.1",
+<<<<<<< HEAD
     "isemail": "^3.2.0",
     "react": "^16.6.3",
     "react-country-region-selector": "^3.1.0",
     "react-dom": "^16.6.3",
+=======
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+>>>>>>> d8a7f184acb71e06ff15300c3f861da7ebbafc77
     "react-router-dom": "^5.2.0",
     "react-scripts": "^2.1.1",
-    "react-toastify": "^7.0.4"
+    "react-toastify": "^7.0.4",
+    "reactstrap": "^8.9.0"
   },
   "scripts": {
     "start": "react-scripts start",

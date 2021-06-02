@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import React from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/NavbarTreePeeps";
 import NavItem from "../components/NavItem";
 import { Link } from "react-router-dom";
 import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
