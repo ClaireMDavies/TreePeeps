@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Feeds from "../src/pages/Feeds"
+import HomePage from "./pages/homepage";
 
+// Calling all components and using router to render pages
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <div>
+        <Route exact path="/feeds" component={Feeds} />
+        <Route exact path="/" component={HomePage} />
+      </div>
+    </Router>
+  )
+
 }
 
 export default App;
