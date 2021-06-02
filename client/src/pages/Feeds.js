@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import ContributeCard from "../components/ContributeCard";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Navbar from "../components/NavbarTreePeeps";
 import NavItem from "../components/NavItem";
+import ContributeCard from "../components/ContributeCard";
 
 const styles = {
     cardStyle: {
