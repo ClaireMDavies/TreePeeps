@@ -1,5 +1,5 @@
 import React from "react";
-import {  } from 'reactstrap';
+import { Container, Row, Button, CardBody, CardTitle } from 'reactstrap';
 import Navbar from "../components/NavbarTreePeeps";
 import NavItem from "../components/NavItem";
 
@@ -28,45 +28,45 @@ const Project = () => {
                 </NavItem>
             </Navbar>
             <main className="container-fluid p-3">
-                <div className="container-fluid ">
+                <Container>
 
-                    <div className="row p-3 myDashboard">
+                    <Row className="p-3 myDashboard">
                         <h1>New Project Form</h1>
 
-                        <div className="row p-3">
-                            <div className="row p-3 rounded m-2 dashCard">
-                                <div className="" >
+                        <Row>
+                            <Row className="p-3 rounded m-2 dashCard">
+                                <CardBody>
                                     {/* // style={{ width: "80" }}> */}
-                                    <div className="card-body">
-                                        <h5 className="card-title">Land Specifications</h5>
-                                    </div>
+                                    <CardTitle>
+                                        <h5>Land Specifications</h5>
+                                    </CardTitle>
                                     <ul className="list-group list-group-flush">
                                         <li className="list-group-item">Area(m2): </li>
                                         <li className="list-group-item">Location: </li>
                                         <li className="list-group-item">Owner: </li>
                                     </ul>
-                                </div>
-                            </div>
+                                </CardBody>
+                            </Row>
 
-                            <div className="row p-3 rounded m-2 dashCard">
-                                <div className="">
+                            <Row className="p-3 rounded m-2 dashCard">
+                                <CardBody>
                                     {/* // style={{ width: "100" }}> */}
-                                    <div className="card-body">
-                                        <h5 className="card-title">Time Specifications</h5>
-                                    </div>
+                                    <CardTitle>
+                                        <h5>Time Specifications</h5>
+                                    </CardTitle>
                                     <ul className="list-group list-group-flush">
                                         <li className="list-group-item">Work Hours Needed: </li>
                                         <li className="list-group-item">Number of trees: </li>
                                     </ul>
-                                </div>
-                            </div>
+                                </CardBody>
+                            </Row>
 
-                            <div className="row p-3 rounded m-2 dashCard">
-                                <div className="" >
+                            <Row className="p-3 rounded m-2 dashCard">
+                                <CardBody>
                                     {/* // style={{ width: "100" }}> */}
-                                    <div className="card-body">
+                                    <CardTitle>
                                         <h5 className="card-title">Resource Specifications</h5>
-                                    </div>
+                                    </CardTitle>
                                     <ul className="list-group list-group-flush">
                                         <li className="list-group-item">Trees: </li>
                                         <li className="list-group-item">Spades: </li>
@@ -74,16 +74,16 @@ const Project = () => {
                                         <li className="list-group-item">Stakes: </li>
                                         <li className="list-group-item">Spirals: </li>
                                     </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="row p-3 float-right">
+                                </CardBody>
+                            </Row>
+                        </Row>
+                        <Row className="p-3 float-right">
                             <div className="float-right">
-                                <button type="button" className="row btn-create">Create</button>
+                                <Button className="create" color="success">Create</Button>
                             </div>
-                        </div>
-                    </div>
-                </div>
+                        </Row>
+                    </Row>
+                </Container>
             </main>
         </div>
     );
