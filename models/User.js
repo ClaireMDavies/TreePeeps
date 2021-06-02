@@ -1,51 +1,67 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const bcrypt = require('bcrypt');
 
 const UserSchema = new Schema({
 
     username: {
-        type: String,
-        require: true,
-        trim: true,
-        unique: true,
-        minlength: 8,
-        description: "Your username should be a minimum of 8 characters"
-    },
+               type: String,
+               required: true,
+               trim: true, 
+               required: true, 
+               unique: true, 
+               minlength: 8,
+               description: "Your username should be a minimum of 8 characters"
+               },
     firstname: {
-        type: String,
-        trim: true,
-        description: 'Enter a first name'
+                type: String,
+                trim: true,
+                description: 'Enter a first name'
     },
     lastname: {
-        type: String,
-        trim: true,
-        required: true,
-        description: 'Enter a last name'
-    },
-    email: {
-        type: email,
-        required: true,
-        description: "Please enter an email"
-    },
+                type: String, 
+                trim: true, 
+                required: true, 
+                description: 'Enter a last name'
+              },
+    email:    {
+                type: email, 
+                required: true, 
+                description: "Please enter an email"
+                },
     password: {
-        type: String,
-        required: true,
-        minlength: 8
+                type: String,
+                required: true,
+                minlength: 8
+              },
+    location: {
+                type: String,
+                required: true
+             },
+     {
+    hooks: {
+      beforeCreate: async (newUser) => {
+        newUser.password = await bcrypt.hash(newUser.password, 8);
+        return newUser;
+      },
+      beforeUpdate: async (updatedUser) => {
+        updatedUser.password = await bcrypt.hash(updatedUser.password, 8);
+        return updatedUser;
+      },
     },
-    imgUrl: {
-        type: String,
-        required: false,
-        description: "Load an image - you, a tree or an Avatar!"
-    },
-    //main role whether they are contributing land/trees/other
-    mainRole: {
-        type: Array,
-        require: true
-    },
-    treeInterest: {
-        type: Boolean,
-        require: false
-    },
+    // Provision for number of projects created to present
+
+    //imgUrl: {
+    //           type: String, 
+    //           required: false, 
+    //           description: "Load an image - you, a tree or an Avatar!"
+     //        },
+    
+     
+    timestamp: {
+            type: Date
+        }
+   
     timestamp: {
         type: Date
     }
@@ -61,6 +77,6 @@ const UserSchema = new Schema({
 //});
 
 //the model will be named User
-const Project = mongoose.model("Project", UserSchema);
+const User = mongoose.model("User", UserSchema);
 
-module.exports = Project;
+module.exports = User;
