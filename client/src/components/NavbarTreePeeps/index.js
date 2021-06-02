@@ -1,7 +1,7 @@
 import React from "react";
 import SearchForm from "../SearchForm";
 
-const Navbar = (props) => {
+const NavbarTreePeeps = (props) => {
     return (
         < nav className="navbar navbar-expand-lg navbar-light bg-light shadow mb-3" >
             <div className="container-fluid">
@@ -25,4 +25,4 @@ const Navbar = (props) => {
     );
 }
 
-export default Navbar;
+export default NavbarTreePeeps;
