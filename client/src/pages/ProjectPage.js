@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/NavbarTreePeeps";
 import NavItem from "../components/NavItem";
 import env from "react-dotenv";
 import "../styles/project.css"
