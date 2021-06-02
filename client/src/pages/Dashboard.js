@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/NavbarTreePeeps";
 import NavItem from "../components/NavItem";
 import "../styles/dashboard.css";
 
@@ -7,6 +7,10 @@ const Dashboard = () => {
     return (
         <div>
             <Navbar>
+                <NavItem
+                    link="/dashboard"
+                    name="Dashboard">
+                </NavItem>
                 <NavItem
                     link="/"
                     name="About Us">
