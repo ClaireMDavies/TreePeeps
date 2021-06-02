@@ -2,6 +2,7 @@ import { useState } from "react";
 import React from "react";
 import Navbar from "../components/Navbar";
 import NavItem from "../components/NavItem";
+import { Link } from "react-router-dom";
 
 
 function SignUp() {
@@ -13,22 +14,41 @@ function SignUp() {
     const [location, setLocation] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [emailError, setEmailError]= useState("")
 
     const [passwordError, setPasswordError] = useState("");
 
-    function handleSubmit() {
+    function handleSubmit(event) {
+        event.preventDefault();
 
         console.log(userName);
         console.log(firstName);
         console.log(lastName);
-        console.log(emailAddress);
+        // console.log(emailAddress);
         console.log(location);
+
+        
 
         if (password.length > 0 && passwordError.length == 0) {
             // we have a valid password
             console.log(password);
         }
+        
+        // if (emailError.length == 0) {
+        //     console.log (emailAddress);
+        // }
     };
+
+    // function checkEmailValidity() {
+    //     if (emailAddress.value ===  emailAddress.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
+        
+    //         console.log(emailAddress);
+    //     }
+    //     else {
+    //         setEmailError("invalid email");
+    //     }
+        
+    // }
 
     function passwordLostFocus() {
         checkPasswordValidity();
@@ -45,7 +65,7 @@ function SignUp() {
         }
 
         if (password.length === 0 || confirmPassword.length === 0) {
-            setPasswordError("");
+            setPasswordError("you must enter a password");
             return;
         }
 
@@ -85,6 +105,7 @@ function SignUp() {
                         </div>
 
                         <h2 className="col-md-12" style={{ textAlign: "center" }}>Create an account</h2>
+                        <form>
 
                         <div className="row" style={{ margin: 10 }}>
                             <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
@@ -118,8 +139,10 @@ function SignUp() {
                                 <h4>Email address:</h4>
                             </div>
                             <div className="col-md-6" style={{ margin: 10 }}>
-                                <input className="form-control" type="email" placeholder="Enter email" onChange={e => setEmailAddress(e.target.value)}></input>
+                                <input className="form-control" type="email"  placeholder="Enter email" onChange={e => setEmailAddress(e.target.value)}></input>
                             </div>
+                            <div className="col-md-5"></div>
+                            <span className="has-error col-md-6" style= {{ color:"red", textAlign: "center"}}>{emailError}</span>
                         </div>
 
                         <div className="row" style={{ margin: 10 }}>
@@ -138,7 +161,8 @@ function SignUp() {
                             <div className="col-md-6" style={{ margin: 10 }} >
                                 <input className="form-control" type="password" onBlur={confirmPasswordLostFocus} placeholder="Re-enter password" onChange={e => setConfirmPassword(e.target.value)}></input>
                             </div>
-                            <span className="has-error">{passwordError}</span>
+                            <div className="col-md-5"></div>
+                            <span className="has-error col-md-6" style= {{ color:"red", textAlign: "center"}}>{passwordError}</span>
                         </div>
 
                         <div className="row" style={{ margin: 10 }}>
@@ -156,9 +180,11 @@ function SignUp() {
                                 <button className="btn btn-outline" style={{ backgroundColor: "green", color: "white" }} onClick={handleSubmit} type="submit">Sign Up</button>
                             </div>
                         </div>
+                        </form>
 
                         <div className="row" style={{ margin: 30 }}>
-                            <h4 style={{ textAlign: "center" }}>Already got an account?<a href="#" style={{ color: "black" }}>Log in</a></h4>
+                            <h4 style={{ textAlign: "center" }}>Already got an account? <Link className="navbar-brand" style={{color:"black", textDecorationLine:"underline"}} to="/login">Log in</Link></h4>                
+                 
                         </div>
 
                     </div>
