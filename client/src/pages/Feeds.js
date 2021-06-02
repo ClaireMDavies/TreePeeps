@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Card, CardTitle, CardSubtitle, CardBody, CardText, Button } from 'reactstrap';
+import { Container, Row, Col, Card, CardTitle, CardSubtitle, CardBody, CardText, Button } from 'reactstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Navbar from "../components/NavbarTreePeeps";
@@ -73,9 +73,15 @@ function Feeds() {
                             <CardText>Project description</CardText>
                         </CardBody>
                         <div className="card-footer text-center">
-                            <Button color="success" onClick={showContribute} ><i className="fas fa-hands-helping"></i> Contribute</Button>
-                            <Button color="success" onClick={sendEmail, ContactNotify}><i className="fas fa-envelope" ></i> Contact me</Button>
-                            <ToastContainer />
+                            <Row>
+                                <Col xs="6">
+                                    <Button color="success" onClick={showContribute} ><i className="fas fa-hands-helping"></i> Contribute</Button>
+                                </Col>
+                                <Col xs="6">
+                                    <Button color="success" onClick={sendEmail, ContactNotify}><i className="fas fa-envelope" ></i> Contact me</Button>
+                                </Col>
+                                <ToastContainer />
+                            </Row>
                         </div>
                     </Container>
                 </Card>
