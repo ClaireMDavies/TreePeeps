@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import React from "react";
 import Navbar from "../components/Navbar";
 import NavItem from "../components/NavItem";
 import { Link } from "react-router-dom";
-
+import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 
 function SignUp() {
 
@@ -14,10 +14,18 @@ function SignUp() {
     const [location, setLocation] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [emailError, setEmailError]= useState("")
+    const [emailError, setEmailError]= useState("");
+    
+
+    const [country, setCountry]= useState("");
+    const [region, setRegion]= useState("");
+
+
 
     const [passwordError, setPasswordError] = useState("");
 
+
+    
     function handleSubmit(event) {
         event.preventDefault();
 
@@ -25,11 +33,12 @@ function SignUp() {
         console.log(firstName);
         console.log(lastName);
         // console.log(emailAddress);
-        console.log(location);
+        console.log(country);
+        console.log(region);
 
         
 
-        if (password.length > 0 && passwordError.length == 0) {
+        if (password.length > 0 && passwordError.length === 0) {
             // we have a valid password
             console.log(password);
         }
@@ -170,7 +179,15 @@ function SignUp() {
                                 <h4>Location:</h4>
                             </div>
                             <div className="col-md-6" style={{ margin: 10 }}>
-                                <input className="form-control" type="text" placeholder="Enter nearest town" onChange={e => setLocation(e.target.value)}></input>
+                                <CountryDropdown className="form-control"
+                                value={country}
+                                onChange={e => setCountry(e)}
+                                type="text" />
+                                <RegionDropdown className="form-control"
+                                country={country}
+                                value={region}
+                                onChange={e => setRegion(e)} />
+                                {/* <input className="form-control" type="text" placeholder="Enter nearest town" onChange={e => setLocation(e.target.value)}></input> */}
                             </div>
                         </div>
 
