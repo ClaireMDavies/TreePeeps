@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Card } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import Navbar from "../components/NavbarTreePeeps";
 import NavItem from "../components/NavItem";
 import "../styles/dashboard.css";
