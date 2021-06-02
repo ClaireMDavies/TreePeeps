@@ -54,6 +54,9 @@
 img#logo {
         width: 30%;
         height: auto;
+        background-color: rgba(0,0,0,0.5);
+        padding: 20px;
+        border-radius: 25px;
 }
 .div {
     background-color: #0f5132;
@@ -63,4 +66,8 @@ img#logo {
     background-color: rgba(0,0,0,0.5);
     border-radius: 25px;
     padding: 20px;
+}
+
+.btn-outline {
+background-color: white;
 }
