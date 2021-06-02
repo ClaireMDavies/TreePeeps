@@ -12,22 +12,19 @@ const ProjectSchema = new Schema({
         required:true
         },
     description: {
-        type: String
-    }
+        type: String,
         required: true
     },
     image: {
         default: "https://unsplash.com/@pavlenko?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
     },
-    //wip because Ben says is a good idea to store coords: northings and eastings AND
-    // longitude and latitude
-    shortLocation: {
-        type: email,
-        require: true
-    },
-    location: {
+    latitude: {
         type: String,
-        require: true
+        require: false
+    },
+    longitude: {
+        type: String,
+        require: false
     },
     hoursNeeded: {
         type: Number,
@@ -40,10 +37,15 @@ const ProjectSchema = new Schema({
         require: false
     },
     //likely to change to array?
-    treeType: {
+    numContributors: {
+        type: Number,
+        require: false,
+        min: 0
+    },
+    ContributorNames: {
         type: String,
         require: false
-    },
+    }
     numStakes: {
         type: Number,
         require: false
