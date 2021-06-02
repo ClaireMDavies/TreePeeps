@@ -1,5 +1,5 @@
 import React from "react";
-import {  } from 'reactstrap';
+import { Container, Row, Col, Card } from 'reactstrap';
 import Navbar from "../components/NavbarTreePeeps";
 import NavItem from "../components/NavItem";
 import "../styles/dashboard.css";
@@ -25,21 +25,22 @@ const Dashboard = () => {
                     name="Logout">
                 </NavItem>
             </Navbar>
-            <main className="container-fluid">
 
-                <div className="row p-3">
-                    <div className="col-md-4">
+            <Container>
+
+                <Row>
+                    <Col sm={{ size: 6, order: 2, offset: 1 }}>
                         <button type="button" className="row btn-create">Create</button>
-                    </div>
-                </div>
+                    </Col>
+                </Row>
 
-                <div className="row p-3">
-                    <div className="col col-md-9">
-                        <div className="row p-3 rounded m-2 myDashboard">
-                            <div className="row ">
+                <Row>
+                    <Col xs="9">
+                        <Row className="row p-3 rounded m-2 myDashboard">
+                            <Row>
                                 <h5>Projects you have created</h5>
-                            </div>
-                            <div className="row myCards">
+                            </Row>
+                            <Row className="myCards">
                                 <div className="dashCard " style={{ width: "20rem" }}>
                                     <div className="card-body ">
                                         <h5 className="card-title">Project Title</h5>
@@ -91,10 +92,10 @@ const Dashboard = () => {
                                         <a href="#" className="card-link">Another link</a>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            </Row>
+                        </Row>
 
-                        <div className="row p-3 rounded m-2 myDashboard">
+                        <Row className="row p-3 rounded m-2 myDashboard">
                             <div className="row ">
                                 <h5>Projects you have contributed to</h5>
                             </div>
@@ -116,20 +117,20 @@ const Dashboard = () => {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        </Row>
+                    </Col>
 
-                    <div className="col col-md p-3 m-2 rounded object-fit float-right justify-content myDashboard">
+                    <Col className="col col-md p-3 m-2 rounded object-fit float-right justify-content myDashboard">
                         <ul>
                             <h5>Projects in your area</h5>
                             <li><a>Item</a></li>
                             <li><a>Another item</a></li>
                             <li><a>Something else here</a></li>
                         </ul>
-                    </div>
+                    </Col>
 
-                </div>
-            </main>
+                </Row>
+            </Container>
         </div>
     );
 }
