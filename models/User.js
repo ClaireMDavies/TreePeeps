@@ -34,11 +34,23 @@ const UserSchema = new Schema({
                 required: true,
                 minlength: 8
               },
-    location: {
-                type: String,
-                required: true
-             },
-     {
+    country: {
+              type: String,
+              required: true
+              },
+    city: {
+              type: String,
+              required: true
+    },
+    latitude: {
+              type: String,
+              required: false
+    },
+    longitude: {
+              type: String,
+              required: false
+    }
+    {
     hooks: {
       beforeCreate: async (newUser) => {
         newUser.password = await bcrypt.hash(newUser.password, 8);

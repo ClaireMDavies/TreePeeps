@@ -1,6 +1,12 @@
 import React from "react";
+<<<<<<< HEAD
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SignUp from "../src/pages/SignUp";
+=======
+
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import SignUp from "./pages/SignUp";
+>>>>>>> debb0890f7d5380a80fb51fc7b151af704425193
 import Project from "../src/pages/ProjectPage";
 import Feeds from "../src/pages/Feeds";
 import Login from "../src/pages/Login";
