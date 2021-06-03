@@ -1,6 +1,8 @@
 import React from "react";
+import { Modal } from "reactstrap";
 import Navbar from "../components/NavbarTreePeeps";
 import NavItem from "../components/NavItem";
+import ProjectForm from "../components/ProjectForm";
 import "../styles/dashboard.css";
 
 const Dashboard = () => {
@@ -26,12 +28,27 @@ const Dashboard = () => {
             </Navbar>
             <main className="container-fluid">
 
-                <div className="row p-3">
-                    <div className="col-md-4">
-                        <button type="button" className="row btn-create">Create</button>
+                <div className="mb-3 p-3">
+                    <button type="button" className="btn btn-success" data-bs-toggle="modal" data-bs-target="#Modal" >Create New Project</button>
+                </div>
+                {/* <Modal /> */}
+                <div className="modal fade" id="Modal" tabIndex="-1" aria-labelledby="projectModal" aria-hidden="true">
+                    <div className="modal-dialog modal-lg">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="projectModal">New Project Form</h5>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div className="modal-body">
+                                <ProjectForm />
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" className="btn btn-success">Create New Project</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
                 <div className="row p-3">
                     <div className="col col-md-9">
                         <div className="row p-3 rounded m-2 myDashboard">
