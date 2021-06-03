@@ -75,8 +75,22 @@ function SignUp() {
             return;
         }
 
-        if (password.length === 0 || confirmPassword.length === 0) {
-            setPasswordError("you must enter a password");
+        if (password.length === 0 ) {
+            setPasswordError("You must enter a password");
+            return;
+        }
+
+        if (password.search(/[a-z]/i) < 0) {
+            setPasswordError("Password must contain at least one lowercase letter");
+            return;
+        }
+
+        if (password.search(/[A-Z]/) < 0) {                         
+            setPasswordError("Password must contain at least one uppercase letter");
+        return;                     }
+
+        if (password.search(/[0-9]/) < 0) {
+            setPasswordError("Password must contain at least one digit"); 
             return;
         }
 
@@ -163,7 +177,10 @@ function SignUp() {
                                 <div className="col-md-6" style={{ margin: 10 }}>
                                     <input className="form-control" type="password" onBlur={passwordLostFocus} placeholder="Enter password of 8 or more characters" onChange={e => setPassword(e.target.value)}></input>
                                 </div>
+                                <div className="col-md-5"></div>
+                                <span className="has-error col-md-6" style={{ color: "red", textAlign: "center" }}>{passwordError}</span>
                             </div>
+                            
 
                             <div className="row" style={{ margin: 10 }}>
                                 <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
@@ -172,8 +189,8 @@ function SignUp() {
                                 <div className="col-md-6" style={{ margin: 10 }} >
                                     <input className="form-control" type="password" onBlur={confirmPasswordLostFocus} placeholder="Re-enter password" onChange={e => setConfirmPassword(e.target.value)}></input>
                                 </div>
-                                <div className="col-md-5"></div>
-                                <span className="has-error col-md-6" style={{ color: "red", textAlign: "center" }}>{passwordError}</span>
+                                {/* <div className="col-md-5"></div>
+                                <span className="has-error col-md-6" style={{ color: "red", textAlign: "center" }}>{passwordError}</span> */}
                             </div>
 
                             <div className="row" style={{ margin: 10 }}>
