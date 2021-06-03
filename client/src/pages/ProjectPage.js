@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/NavbarTreePeeps";
 import NavItem from "../components/NavItem";
@@ -27,7 +26,7 @@ const Project = () => {
         if (!city) {
             return;
         }
-        
+
         API.convert(city)
             .then(results => {
                 setTimeout(() => {
