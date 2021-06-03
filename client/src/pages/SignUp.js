@@ -5,6 +5,7 @@ import NavItem from "../components/NavItem";
 import { Link } from "react-router-dom";
 import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 
+
 function SignUp() {
 
     const [userName, setUserName] = useState("");
@@ -14,16 +15,15 @@ function SignUp() {
     const [location, setLocation] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [emailError, setEmailError]= useState("");
-    
+    const [emailError, setEmailError] = useState("");
 
-    const [country, setCountry]= useState("");
-    const [region, setRegion]= useState("");
+
+    const [country, setCountry] = useState("");
+    const [region, setRegion] = useState("");
 
 
 
     const [passwordError, setPasswordError] = useState("");
-
 
     
     function handleSubmit(event) {
@@ -36,28 +36,30 @@ function SignUp() {
         console.log(country);
         console.log(region);
 
-        
+        checkEmailValidity();
 
         if (password.length > 0 && passwordError.length === 0) {
             // we have a valid password
             console.log(password);
         }
+
         
-        // if (emailError.length == 0) {
-        //     console.log (emailAddress);
-        // }
     };
 
-    // function checkEmailValidity() {
-    //     if (emailAddress.value ===  emailAddress.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
-        
-    //         console.log(emailAddress);
-    //     }
-    //     else {
-    //         setEmailError("invalid email");
-    //     }
-        
-    // }
+    function checkEmailValidity() {
+        if (emailIsValid(emailAddress)) {
+
+            console.log(emailAddress);
+        }
+        else {
+            setEmailError("invalid email");
+        }
+
+    }
+
+    function emailIsValid (email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+    }    
 
     function passwordLostFocus() {
         checkPasswordValidity();
@@ -116,92 +118,92 @@ function SignUp() {
                         <h2 className="col-md-12" style={{ textAlign: "center" }}>Create an account</h2>
                         <form>
 
-                        <div className="row" style={{ margin: 10 }}>
-                            <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
-                                <h4>User name:</h4>
+                            <div className="row" style={{ margin: 10 }}>
+                                <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
+                                    <h4>User name:</h4>
+                                </div>
+                                <div className="col-md-6" style={{ margin: 10 }}>
+                                    <input className="form-control" type="text" placeholder="Choose a user name of 8 characters or more" onChange={e => setUserName(e.target.value)}></input>
+                                </div>
                             </div>
-                            <div className="col-md-6" style={{ margin: 10 }}>
-                                <input className="form-control" type="text" placeholder="Choose a user name of 8 characters or more" onChange={e => setUserName(e.target.value)}></input>
-                            </div>
-                        </div>
 
-                        <div className="row" style={{ margin: 10 }}>
-                            <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
-                                <h4>First name:</h4>
+                            <div className="row" style={{ margin: 10 }}>
+                                <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
+                                    <h4>First name:</h4>
+                                </div>
+                                <div className="col-md-6" style={{ margin: 10 }}>
+                                    <input className="form-control" type="text" placeholder="Enter first name" onChange={e => setFirstName(e.target.value)}></input>
+                                </div>
                             </div>
-                            <div className="col-md-6" style={{ margin: 10 }}>
-                                <input className="form-control" type="text" placeholder="Enter first name" onChange={e => setFirstName(e.target.value)}></input>
-                            </div>
-                        </div>
 
-                        <div className="row" style={{ margin: 10 }}>
-                            <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
-                                <h4>Last name:</h4>
+                            <div className="row" style={{ margin: 10 }}>
+                                <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
+                                    <h4>Last name:</h4>
+                                </div>
+                                <div className="col-md-6" style={{ margin: 10 }}>
+                                    <input className="form-control" type="text" placeholder="Enter last name" onChange={e => setLastName(e.target.value)}></input>
+                                </div>
                             </div>
-                            <div className="col-md-6" style={{ margin: 10 }}>
-                                <input className="form-control" type="text" placeholder="Enter last name" onChange={e => setLastName(e.target.value)}></input>
-                            </div>
-                        </div>
 
-                        <div className="row" style={{ margin: 10 }}>
-                            <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
-                                <h4>Email address:</h4>
+                            <div className="row" style={{ margin: 10 }}>
+                                <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
+                                    <h4>Email address:</h4>
+                                </div>
+                                <div className="col-md-6" style={{ margin: 10 }}>
+                                    <input className="form-control" type="email" placeholder="Enter email" onChange={e => setEmailAddress(e.target.value)}></input>
+                                </div>
+                                <div className="col-md-5"></div>
+                                <span className="has-error col-md-6" style={{ color: "red", textAlign: "center" }}>{emailError}</span>
                             </div>
-                            <div className="col-md-6" style={{ margin: 10 }}>
-                                <input className="form-control" type="email"  placeholder="Enter email" onChange={e => setEmailAddress(e.target.value)}></input>
-                            </div>
-                            <div className="col-md-5"></div>
-                            <span className="has-error col-md-6" style= {{ color:"red", textAlign: "center"}}>{emailError}</span>
-                        </div>
 
-                        <div className="row" style={{ margin: 10 }}>
-                            <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
-                                <h4>Password:</h4>
+                            <div className="row" style={{ margin: 10 }}>
+                                <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
+                                    <h4>Password:</h4>
+                                </div>
+                                <div className="col-md-6" style={{ margin: 10 }}>
+                                    <input className="form-control" type="password" onBlur={passwordLostFocus} placeholder="Enter password of 8 or more characters" onChange={e => setPassword(e.target.value)}></input>
+                                </div>
                             </div>
-                            <div className="col-md-6" style={{ margin: 10 }}>
-                                <input className="form-control" type="password" onBlur={passwordLostFocus} placeholder="Enter password of 8 or more characters" onChange={e => setPassword(e.target.value)}></input>
-                            </div>
-                        </div>
 
-                        <div className="row" style={{ margin: 10 }}>
-                            <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
-                                <h4>Confirm password:</h4>
+                            <div className="row" style={{ margin: 10 }}>
+                                <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
+                                    <h4>Confirm password:</h4>
+                                </div>
+                                <div className="col-md-6" style={{ margin: 10 }} >
+                                    <input className="form-control" type="password" onBlur={confirmPasswordLostFocus} placeholder="Re-enter password" onChange={e => setConfirmPassword(e.target.value)}></input>
+                                </div>
+                                <div className="col-md-5"></div>
+                                <span className="has-error col-md-6" style={{ color: "red", textAlign: "center" }}>{passwordError}</span>
                             </div>
-                            <div className="col-md-6" style={{ margin: 10 }} >
-                                <input className="form-control" type="password" onBlur={confirmPasswordLostFocus} placeholder="Re-enter password" onChange={e => setConfirmPassword(e.target.value)}></input>
-                            </div>
-                            <div className="col-md-5"></div>
-                            <span className="has-error col-md-6" style= {{ color:"red", textAlign: "center"}}>{passwordError}</span>
-                        </div>
 
-                        <div className="row" style={{ margin: 10 }}>
-                            <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
-                                <h4>Location:</h4>
-                            </div>
-                            <div className="col-md-6" style={{ margin: 10 }}>
-                                <CountryDropdown className="form-control"
-                                value={country}
-                                onChange={e => setCountry(e)}
-                                type="text" />
-                                <RegionDropdown className="form-control"
-                                country={country}
-                                value={region}
-                                onChange={e => setRegion(e)} />
-                               
-                            </div>
-                        </div>
+                            <div className="row" style={{ margin: 10 }}>
+                                <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
+                                    <h4>Location:</h4>
+                                </div>
+                                <div className="col-md-6" style={{ margin: 10 }}>
+                                    <CountryDropdown className="form-control"
+                                        value={country}
+                                        onChange={e => setCountry(e)}
+                                        type="text" />
+                                    <RegionDropdown className="form-control"
+                                        country={country}
+                                        value={region}
+                                        onChange={e => setRegion(e)} />
 
-                        <div className="row" style={{ margin: 30 }}>
-                            <div className="col-md-5"></div>
-                            <div className="col-md-5">
-                                <button className="btn btn-outline" style={{ backgroundColor: "green", color: "white" }} onClick={handleSubmit} type="submit">Sign Up</button>
+                                </div>
                             </div>
-                        </div>
+
+                            <div className="row" style={{ margin: 30 }}>
+                                <div className="col-md-5"></div>
+                                <div className="col-md-5">
+                                    <button className="btn btn-outline" style={{ backgroundColor: "green", color: "white" }} onClick={handleSubmit} type="submit">Sign Up</button>
+                                </div>
+                            </div>
                         </form>
 
                         <div className="row" style={{ margin: 30 }}>
-                            <h4 style={{ textAlign: "center" }}>Already got an account? <Link  style={{color:"black", textDecorationLine:"underline"}} to="/login">Log in</Link></h4>                
-                 
+                            <h4 style={{ textAlign: "center" }}>Already got an account? <Link style={{ color: "black", textDecorationLine: "underline" }} to="/login">Log in</Link></h4>
+
                         </div>
 
                     </div>
