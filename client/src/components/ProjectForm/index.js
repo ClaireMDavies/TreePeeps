@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import env from "react-dotenv";
 import API from "../../utils/API"
@@ -20,7 +19,9 @@ const ProjectForm = () => {
         }
         API.convert(city)
             .then(results => {
-                setDefaultLocation({ lat: results.data.results[0].geometry.location.lat, lng: results.data.results[0].geometry.location.lng });
+                setTimeout(() => {
+                    setDefaultLocation({ lat: results.data.results[0].geometry.location.lat, lng: results.data.results[0].geometry.location.lng });
+                }, 500);
             })
             .catch(err => console.log(err));
     }, [city]);
@@ -75,10 +76,6 @@ const ProjectForm = () => {
                     <div className="input-group mb-3">
                         <span className="input-group-text" >Location </span>
                         <input type='text' className="form-control" value={city} onChange={handleChangeCity} />
-                        {/* <span className="input-group-text" >Latitude </span>
-                                <input type='text' className="form-control" value={location.lat} disabled />
-                                <span className="input-group-text" >Longitude </span>
-                                <input type="text" className="form-control" value={location.lng} disabled /> */}
                         <button className="btn btn-secondary" onClick={handleResetLocation}>Reset Location</button>
                     </div>
                     <div className="border">

@@ -27,9 +27,12 @@ const Project = () => {
         if (!city) {
             return;
         }
+        
         API.convert(city)
             .then(results => {
-                setDefaultLocation({ lat: results.data.results[0].geometry.location.lat, lng: results.data.results[0].geometry.location.lng });
+                setTimeout(() => {
+                    setDefaultLocation({ lat: results.data.results[0].geometry.location.lat, lng: results.data.results[0].geometry.location.lng });
+                }, 500);
             })
             .catch(err => console.log(err));
     }, [city]);
