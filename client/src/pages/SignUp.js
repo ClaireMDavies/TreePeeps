@@ -12,10 +12,10 @@ function SignUp() {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [emailAddress, setEmailAddress] = useState("");
-    const [location, setLocation] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [emailError, setEmailError] = useState("");
+    const [buttonState, setButtonState] = useState("disabled")
 
 
     const [country, setCountry] = useState("");
@@ -25,25 +25,33 @@ function SignUp() {
 
     const [passwordError, setPasswordError] = useState("");
 
+
     
+
     function handleSubmit(event) {
         event.preventDefault();
+        if (userName.length > 7 && firstName.length > 0 && lastName.length > 0 && country.length > 0 && region.length > 0) {
 
-        console.log(userName);
-        console.log(firstName);
-        console.log(lastName);
-        // console.log(emailAddress);
-        console.log(country);
-        console.log(region);
+            console.log(userName);
+            console.log(firstName);
+            console.log(lastName);
+            // console.log(emailAddress);
+            console.log(country);
+            console.log(region);
+            checkEmailValidity();
+            if (password.length > 0 && passwordError.length === 0) {
+                // we have a valid password
+                console.log(password);
 
-        checkEmailValidity();
+            }
+            setButtonState("")
 
-        if (password.length > 0 && passwordError.length === 0) {
-            // we have a valid password
-            console.log(password);
+        }
+        else{
+            
         }
 
-        
+
     };
 
     function checkEmailValidity() {
@@ -57,9 +65,9 @@ function SignUp() {
 
     }
 
-    function emailIsValid (email) {
+    function emailIsValid(email) {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-    }    
+    }
 
     function passwordLostFocus() {
         checkPasswordValidity();
@@ -75,34 +83,35 @@ function SignUp() {
             return;
         }
 
-        if (password.length === 0 ) {
+        if (password.length === 0) {
             setPasswordError("You must enter a password");
             return;
         }
 
-        if (password.search(/[a-z]/i) < 0) {
-            setPasswordError("Password must contain at least one lowercase letter");
+        if (password.search(/[a-z]/i) < 0 || password.search(/[A-Z]/) < 0 || password.search(/[0-9]/) < 0  || password.length < 8) {
+            setPasswordError("Password must contain at least one lowercase letter, one uppercase letter, one digit and be 8 characters long");
             return;
         }
 
-        if (password.search(/[A-Z]/) < 0) {                         
-            setPasswordError("Password must contain at least one uppercase letter");
-        return;                     }
+        // if (password.search(/[A-Z]/) < 0) {
+        //     setPasswordError("Password must contain at least one lowercase letter, one uppercase letter, one digit and be 8 characters long");
+        //     return;
+        // }
 
-        if (password.search(/[0-9]/) < 0) {
-            setPasswordError("Password must contain at least one digit"); 
-            return;
-        }
+        // if () {
+        //     setPasswordError("Password must contain at least one digit");
+        //     return;
+        // }
 
         if (password !== confirmPassword) {
             setPasswordError("Passwords don't match");
             return;
         }
 
-        if (password.length < 8) {
-            setPasswordError("Password must be at least 8 characters");
-            return;
-        }
+        // if (password.length < 8) {
+        //     setPasswordError("Password must be at least 8 characters");
+        //     return;
+        // }
 
         setPasswordError("");
     }
@@ -180,7 +189,7 @@ function SignUp() {
                                 <div className="col-md-5"></div>
                                 <span className="has-error col-md-6" style={{ color: "red", textAlign: "center" }}>{passwordError}</span>
                             </div>
-                            
+
 
                             <div className="row" style={{ margin: 10 }}>
                                 <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
@@ -213,7 +222,7 @@ function SignUp() {
                             <div className="row" style={{ margin: 30 }}>
                                 <div className="col-md-5"></div>
                                 <div className="col-md-5">
-                                    <button className="btn btn-outline" style={{ backgroundColor: "green", color: "white" }} onClick={handleSubmit} type="submit">Sign Up</button>
+                                    <button className="btn btn-outline" id="submit" style={{ backgroundColor: "green", color: "white" }} onClick={handleSubmit} type="submit" >Sign Up</button>
                                 </div>
                             </div>
                         </form>
