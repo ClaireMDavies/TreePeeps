@@ -43,87 +43,107 @@ const ProjectForm = () => {
     }
 
     return (
-            <div className="container-fluid ">
-                    <div className="card">
-                        <div className="card-header">
-                            <h5 className="card-title">Land Specifications</h5>
-                        </div>
-                        <div className="card-body">
-                            <div className="input-group mb-3">
-                                <span className="input-group-text" >Area (m²) </span>
-                                <input type="text" className="form-control" placeholder="Area" />
-                            </div>
-                            <div className="input-group mb-3">
-                                <span className="input-group-text" >Location </span>
-                                <input type='text' className="form-control" value={city} onChange={handleChangeCity} />
-                                {/* <span className="input-group-text" >Latitude </span>
+        <div>
+            <div className="card">
+                <div className="card-header">
+                    <h5 className="card-title">Project Specifications</h5>
+                </div>
+                <div className="card-body">
+                    <div className="input-group mb-3">
+                        <span className="input-group-text" >Description</span>
+                        <input type="textarea" className="form-control" placeholder="Description" />
+                    </div>
+                    <div className="input-group mb-3">
+                        <span className="input-group-text" >Start Date </span>
+                        <input type="date" className="form-control" />
+                    </div>
+                    <div className="input-group mb-3">
+                        <span className="input-group-text" >End Date </span>
+                        <input type="date" className="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div className="card mt-2">
+                <div className="card-header">
+                    <h5 className="card-title">Land Specifications</h5>
+                </div>
+                <div className="card-body">
+                    <div className="input-group mb-3">
+                        <span className="input-group-text" >Area (m²) </span>
+                        <input type="number" className="form-control" placeholder="0" />
+                    </div>
+                    <div className="input-group mb-3">
+                        <span className="input-group-text" >Location </span>
+                        <input type='text' className="form-control" value={city} onChange={handleChangeCity} />
+                        {/* <span className="input-group-text" >Latitude </span>
                                 <input type='text' className="form-control" value={location.lat} disabled />
                                 <span className="input-group-text" >Longitude </span>
                                 <input type="text" className="form-control" value={location.lng} disabled /> */}
-                                <button className="btn btn-secondary" onClick={handleResetLocation}>Reset Location</button>
-                            </div>
-                            <div className="border">
-                                <MapPicker defaultLocation={defaultLocation}
-                                    zoom={zoom}
-                                    style={{ height: '400px' }}
-                                    onChangeLocation={handleChangeLocation}
-                                    onChangeZoom={handleChangeZoom}
-                                    apiKey={env.API_KEY} />
-                            </div>
-                            <div className="input-group mb-3 pt-3">
-                                <span className="input-group-text" >Owner </span>
-                                <input type="text" className="form-control" placeholder="Owner" />
-                            </div>
-                        </div>
+                        <button className="btn btn-secondary" onClick={handleResetLocation}>Reset Location</button>
                     </div>
-                    <div className="card mt-2">
-                        <div className="card-header pb-0">
-                            <h5 className="card-title">Time Specifications</h5>
-                        </div>
-                        <div className="card-body">
-                            <div className="input-group mb-3">
-                                <span className="input-group-text" >Work Hours Needed </span>
-                                <input type="text" className="form-control" placeholder="Hours" />
-                            </div>
-                            <div className="input-group mb-3">
-                                <span className="input-group-text" >Number of trees </span>
-                                <input type="text" className="form-control" placeholder="Trees" />
-                            </div>
-                        </div>
+                    <div className="border">
+                        <MapPicker defaultLocation={defaultLocation}
+                            zoom={zoom}
+                            style={{ height: '400px' }}
+                            onChangeLocation={handleChangeLocation}
+                            onChangeZoom={handleChangeZoom}
+                            apiKey={env.API_KEY} />
                     </div>
-                    <div className="card mt-2">
-                        <div className="card-header pb-0">
-                            <h5 className="card-title">Resource Specifications</h5>
-                        </div>
-                        <div className="card-body">
-                            <div className="input-group mb-3">
-                                <span className="input-group-text" >Trees </span>
-                                <input type="text" className="form-control" placeholder="Trees" />
-                            </div>
-                            <div className="input-group mb-3">
-                                <span className="input-group-text" >Spades </span>
-                                <input type="text" className="form-control" placeholder="Spades" />
-                            </div>
-                            <div className="input-group mb-3">
-                                <span className="input-group-text" >Fertilizer </span>
-                                <input type="text" className="form-control" placeholder="Fertilizer" />
-                            </div>
-                            <div className="input-group mb-3">
-                                <span className="input-group-text" >Stakes </span>
-                                <input type="text" className="form-control" placeholder="Stakes" />
-                            </div>
-                            <div className="input-group mb-3">
-                                <span className="input-group-text" >Spades </span>
-                                <input type="text" className="form-control" placeholder="Spirals" />
-                            </div>
-                            <div className="input-group mb-3">
-                                <span className="input-group-text" >Others </span>
-                                <input type="text" className="form-control" placeholder="Others" />
-                            </div>
-                        </div>
+                    <div className="input-group mb-3 pt-3">
+                        <span className="input-group-text" >Owner </span>
+                        <input type="text" className="form-control" placeholder="Owner" />
                     </div>
                 </div>
-    );
+            </div>
+            <div className="card mt-2">
+                <div className="card-header pb-0">
+                    <h5 className="card-title">Time Specifications</h5>
+                </div>
+                <div className="card-body">
+                    <div className="input-group mb-3">
+                        <span className="input-group-text" >Work Hours Needed </span>
+                        <input type="number" className="form-control" placeholder="0" />
+                    </div>
+                    <div className="input-group mb-3">
+                        <span className="input-group-text" >Number of trees </span>
+                        <input type="number" className="form-control" placeholder="0" />
+                    </div>
+                </div>
+            </div>
+            <div className="card mt-2">
+                <div className="card-header pb-0">
+                    <h5 className="card-title">Resource Specifications</h5>
+                </div>
+                <div className="card-body">
+                    <div className="input-group mb-3">
+                        <span className="input-group-text" >Trees </span>
+                        <input type="number" className="form-control" placeholder="0" />
+                    </div>
+                    <div className="input-group mb-3">
+                        <span className="input-group-text" >Spades </span>
+                        <input type="number" className="form-control" placeholder="0" />
+                    </div>
+                    <div className="input-group mb-3">
+                        <span className="input-group-text" >Fertilizer </span>
+                        <input type="number" className="form-control" placeholder="0" />
+                    </div>
+                    <div className="input-group mb-3">
+                        <span className="input-group-text" >Stakes </span>
+                        <input type="number" className="form-control" placeholder="0" />
+                    </div>
+                    <div className="input-group mb-3">
+                        <span className="input-group-text" >Spades </span>
+                        <input type="number" className="form-control" placeholder="0" />
+                    </div>
+                    <div className="input-group mb-3">
+                        <span className="input-group-text" >Others </span>
+                        <input type="number" className="form-control" placeholder="0" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    )
 }
 
 export default ProjectForm;
