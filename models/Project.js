@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const ProjectSchema = new Schema({
 
-    Ownerid: {
+    ownerid: {
         type: String,
         //required:true
     },
