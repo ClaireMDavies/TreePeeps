@@ -16,6 +16,7 @@ const ProjectSchema = new Schema({
         required: true
     },
     image: {
+        type: String,
         default: "https://unsplash.com/@pavlenko?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
     },
     latitude: {
@@ -45,7 +46,7 @@ const ProjectSchema = new Schema({
     ContributorNames: {
         type: String,
         require: false
-    }
+    },
     numStakes: {
         type: Number,
         require: false
@@ -70,7 +71,7 @@ const ProjectSchema = new Schema({
 // latitude and longitude coords
 // northings & eastings
 
-const Project = mongoose.model("Project", UserSchema);
+const Project = mongoose.model("Project", ProjectSchema);
 
 module.exports = Project;
 
