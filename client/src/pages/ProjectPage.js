@@ -1,10 +1,11 @@
-
-import React, { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
+import React, { useState, useEffect, useContext } from "react";
+import { Container } from 'reactstrap';
+import Navbar from "../components/NavbarTreePeeps";
 import NavItem from "../components/NavItem";
 import env from "react-dotenv";
-import "../styles/project.css"
-import API from "../utils/API"
+import "../styles/project.css";
+import API from "../utils/API";
+// import ProjectContext from "../utils/ProjectContext";
 
 import MapPicker from 'react-google-map-picker'
 
@@ -18,6 +19,7 @@ const styles = {
 }
 
 const Project = () => {
+    // const [projects] = useContext(ProjectContext);
     const [city, setCity] = useState('London')
     const [defaultLocation, setDefaultLocation] = useState(DefaultLocation);
     const [location, setLocation] = useState(defaultLocation);
@@ -45,9 +47,17 @@ const Project = () => {
         setZoom(newZoom);
     }
 
-    // function handleResetLocation() {
-    //     setDefaultLocation({ ...DefaultLocation });
-    //     setZoom(DefaultZoom);
+    function handleResetLocation() {
+        setDefaultLocation({ ...DefaultLocation });
+        setCity('London');
+        setZoom(DefaultZoom);
+    }
+
+    // function handleSaveProject(id) {
+    //     const project = projects.find((project) => project.id === id);
+    //     API.saveProject({
+    //     // Add model fields
+    //     }).then(() => console.log("project saved"));
     // }
 
     return (
@@ -71,7 +81,7 @@ const Project = () => {
                 </NavItem>
             </Navbar>
             <main className="container-fluid p-3">
-                <div className="container-fluid ">
+                <Container>
 
 
                     <h2 className="text-center">New Project Form</h2>
@@ -88,11 +98,11 @@ const Project = () => {
                                 <div className="input-group mb-3">
                                     <span className="input-group-text" >Location </span>
                                     <input type='text' className="form-control" value={city} onChange={handleChangeCity} />
-                                    <span className="input-group-text" >Latitude </span>
+                                    {/* <span className="input-group-text" >Latitude </span>
                                     <input type='text' className="form-control" value={location.lat} disabled />
                                     <span className="input-group-text" >Longitude </span>
-                                    <input type="text" className="form-control" value={location.lng} disabled />
-                                    {/* <button className="btn btn-secondary" onClick={handleResetLocation}>Reset Location</button> */}
+                                    <input type="text" className="form-control" value={location.lng} disabled /> */}
+                                    <button className="btn btn-secondary" onClick={handleResetLocation}>Reset Location</button>
                                 </div>
                                 <div className="border">
                                     <MapPicker defaultLocation={defaultLocation}
@@ -159,13 +169,12 @@ const Project = () => {
                             </div>
                         </div>
                     </div>
-
-                </div>
+                
+                </Container>
                 <div className="text-center mb-3 p-3">
-                    <button type="button" className="btn btn-success">Create New Project</button>
+                    <button type="button" className="btn btn-success" >Create New Project</button>
+                    {/* <button type="button" className="btn btn-success" onClick={() => { handleProjectSave(project.id) }}>Create New Project</button> */}
                 </div>
-
-
             </main>
         </div>
     );
