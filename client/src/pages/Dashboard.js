@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col } from 'reactstrap';
 import Navbar from "../components/NavbarTreePeeps";
 import NavItem from "../components/NavItem";
+import ProjectCard from "../components/ProjectCard";
+import ProjectForm from "../components/ProjectForm";
 import "../styles/dashboard.css";
 import Footer from "../components/Footer";
 
 const Dashboard = () => {
+
+
     return (
         <div>
             <Navbar>
@@ -28,71 +32,35 @@ const Dashboard = () => {
             </Navbar>
 
             <Container>
-
+                <div className="mb-3 p-3">
+                    <button type="button" className="btn btn-success" data-bs-toggle="modal" data-bs-target="#Modal" >Create New Project</button>
+                </div>
+                {/* <Modal /> */}
+                <div className="modal fade" id="Modal" tabIndex="-1" aria-labelledby="projectModal" aria-hidden="true">
+                    <div className="modal-dialog modal-lg">
+                        <div className="modal-content">
+                            <div className="modal-header bg-success ">
+                                <h5 className="modal-title" id="projectModal">New Project Form</h5>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div className="modal-body">
+                                <ProjectForm />
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" className="btn btn-success">Create New Project</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <Row>
-                    <Col sm={{ size: 6, order: 2, offset: 1 }}>
-                        <button type="button" className="row btn-create">Create</button>
-                    </Col>
-                </Row>
-
-                <Row>
-                    <Col xs="9">
-                        <Row className="row p-3 rounded m-2 myDashboard">
+                    <Col Col xs="9">
+                        <Row className="p-3 rounded m-2 myDashboard">
                             <Row>
-                                <h5>Projects you have created</h5>
+                                <h4 className="text-center mb-3">My Projects</h4>
                             </Row>
                             <Row className="myCards">
-                                <div className="dashCard " style={{ width: "20rem" }}>
-                                    <div className="card-body ">
-                                        <h5 className="card-title">Project Title</h5>
-                                        <p className="card-text">Description text goes here.</p>
-                                    </div>
-                                    <ul className="list-group list-group-flush">
-                                        <li className="list-group-item">Status</li>
-                                        <li className="list-group-item">Start Date</li>
-                                        <li className="list-group-item">Location</li>
-                                        <li className="list-group-item">Contributors</li>
-                                        <li className="list-group-item">End Date</li>
-                                    </ul>
-                                    <div className="card-body">
-                                        <a href="#" className="card-link">Project link</a>
-                                        <a href="#" className="card-link">Another link</a>
-                                    </div>
-                                </div>
-                                <div className="dashCard" style={{ width: "20rem" }}>
-                                    <div className="card-body">
-                                        <h5 className="card-title">Project Title</h5>
-                                        <p className="card-text">Description text goes here.</p>
-                                    </div>
-                                    <ul className="list-group list-group-flush">
-                                        <li className="list-group-item">Status</li>
-                                        <li className="list-group-item">Start Date</li>
-                                        <li className="list-group-item">Location</li>
-                                        <li className="list-group-item">Contributors</li>
-                                        <li className="list-group-item">End Date</li>
-                                    </ul>
-                                    <div className="card-body">
-                                        <a href="#" className="card-link">Project link</a>
-                                        <a href="#" className="card-link">Another link</a>
-                                    </div>
-                                </div>
-                                <div className="dashCard" style={{ width: "20rem" }}>
-                                    <div className="card-body">
-                                        <h5 className="card-title">Project Title</h5>
-                                        <p className="card-text">Description text goes here.</p>
-                                    </div>
-                                    <ul className="list-group list-group-flush">
-                                        <li className="list-group-item">Status</li>
-                                        <li className="list-group-item">Start Date</li>
-                                        <li className="list-group-item">Location</li>
-                                        <li className="list-group-item">Contributors</li>
-                                        <li className="list-group-item">End Date</li>
-                                    </ul>
-                                    <div className="card-body">
-                                        <a href="#" className="card-link">Project link</a>
-                                        <a href="#" className="card-link">Another link</a>
-                                    </div>
-                                </div>
+                                <ProjectCard />
                             </Row>
                         </Row>
 
@@ -119,7 +87,7 @@ const Dashboard = () => {
                                 </div>
                             </div>
                         </Row>
-                    </Col>
+                    </Col >
 
                     <Col className="col col-md p-3 m-2 rounded object-fit float-right justify-content myDashboard">
                         <ul>
@@ -129,7 +97,6 @@ const Dashboard = () => {
                             <li><a>Something else here</a></li>
                         </ul>
                     </Col>
-
                 </Row>
             </Container>
             <br></br>
@@ -138,6 +105,7 @@ const Dashboard = () => {
             <br></br>
             <Footer />
         </div>
+
     );
 }
 
