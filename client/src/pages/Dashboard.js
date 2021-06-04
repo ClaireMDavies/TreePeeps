@@ -132,6 +132,10 @@ const Dashboard = () => {
 
                 </Row>
             </Container>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             <Footer />
         </div>
     );

@@ -89,7 +89,10 @@ function Feeds() {
             </div>
             {/* Contribute Card */}
             {showCard ? <ContributeCard /> : null}
-
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             <Footer />
         </div>
     )

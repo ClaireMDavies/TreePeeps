@@ -209,6 +209,10 @@ function SignUp() {
                     </CardBody>
                 </Card>
             </Container>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             <Footer />
         </div>
     );

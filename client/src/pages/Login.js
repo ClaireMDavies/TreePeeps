@@ -73,6 +73,10 @@ function Login() {
                     </Row>
                 </Card>
             </Container>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             <Footer />
         </div>
     )
