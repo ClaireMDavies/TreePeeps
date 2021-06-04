@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col, Card, CardBody } from 'reactstrap';
 import Navbar from "../components/NavbarTreePeeps";
 import NavItem from "../components/NavItem";
-
+import Footer from "../components/Footer";
 
 function ContactUs() {
 
@@ -68,7 +68,7 @@ function ContactUs() {
                     </Row>
                 </Container>
             </section>
-
+            <Footer />
         </div>
     )
 };

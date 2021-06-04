@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Navbar from "../components/NavbarTreePeeps";
 import NavItem from "../components/NavItem";
 import ContributeCard from "../components/ContributeCard";
+import Footer from "../components/Footer";
 
 const styles = {
     cardStyle: {
@@ -88,6 +89,8 @@ function Feeds() {
             </div>
             {/* Contribute Card */}
             {showCard ? <ContributeCard /> : null}
+
+            <Footer />
         </div>
     )
 };
