@@ -30,7 +30,7 @@ const Dashboard = () => {
                 </NavItem>
             </Navbar>
 
-
+            <Container>
                 <div className="mb-3 p-3">
                     <button type="button" className="btn btn-success" data-bs-toggle="modal" data-bs-target="#Modal" >Create New Project</button>
                 </div>
@@ -52,22 +52,16 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                <div className="row p-3">
-                    <div className="col col-md-9">
-                        <div className="row p-3 rounded m-2 myDashboard">
-                            <div className="row ">
+                <Row>
+                    <Col Col xs="9">
+                        <Row className="p-3 rounded m-2 myDashboard">
+                            <Row>
                                 <h4 className="text-center mb-3">My Projects</h4>
-                            </div>
-                            <div className="row myCards">
+                            </Row>
+                            <Row className="myCards">
                                 <ProjectCard />
-
-                            </div>
-                        </div>
-
-                                </div>
                             </Row>
                         </Row>
-
 
                         <Row className="row p-3 rounded m-2 myDashboard">
                             <div className="row ">
@@ -92,7 +86,7 @@ const Dashboard = () => {
                                 </div>
                             </div>
                         </Row>
-                    </Col>
+                    </Col >
 
                     <Col className="col col-md p-3 m-2 rounded object-fit float-right justify-content myDashboard">
                         <ul>
@@ -102,15 +96,9 @@ const Dashboard = () => {
                             <li><a>Something else here</a></li>
                         </ul>
                     </Col>
-
-
-                </div>
-            </main >
-        </div >
-
                 </Row>
             </Container>
-        </div>
+        </div >
 
     );
 }
