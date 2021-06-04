@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Container } from 'reactstrap';
 import Navbar from "../components/NavbarTreePeeps";
 import NavItem from "../components/NavItem";
 import env from "react-dotenv";
@@ -73,7 +74,7 @@ const Project = () => {
                 </NavItem>
             </Navbar>
             <main className="container-fluid p-3">
-                <div className="container-fluid ">
+                <Container>
 
 
                     <h2 className="text-center">New Project Form</h2>
@@ -161,8 +162,8 @@ const Project = () => {
                             </div>
                         </div>
                     </div>
-
-                </div>
+                
+                </Container>
                 <div className="text-center mb-3 p-3">
                     <button type="button" className="btn btn-success">Create New Project</button>
                 </div>

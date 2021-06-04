@@ -5,6 +5,11 @@ const BASEURL = "https://maps.googleapis.com/maps/api/geocode/json?address="
 const APIKEY = "&language=EN&key=" + env.API_KEY;
 
 export default {
+    //get user
+    getUser: function() {
+        return axios.get("/api/user");
+    },
+
     // Converts city to Lat and Lng coordinates 
     convert: function (city) {
         return axios.get(BASEURL + city + APIKEY)

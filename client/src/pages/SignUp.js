@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import React from "react";
+import { Container, Row, Col, Card, Form, Input, Button, CardBody } from 'reactstrap';
 import Navbar from "../components/NavbarTreePeeps";
 import NavItem from "../components/NavItem";
 import { Link } from "react-router-dom";
@@ -14,18 +15,18 @@ function SignUp() {
     const [location, setLocation] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [emailError, setEmailError]= useState("");
-    
+    const [emailError, setEmailError] = useState("");
 
-    const [country, setCountry]= useState("");
-    const [region, setRegion]= useState("");
+
+    const [country, setCountry] = useState("");
+    const [region, setRegion] = useState("");
 
 
 
     const [passwordError, setPasswordError] = useState("");
 
 
-    
+
     function handleSubmit(event) {
         event.preventDefault();
 
@@ -36,13 +37,13 @@ function SignUp() {
         console.log(country);
         console.log(region);
 
-        
+
 
         if (password.length > 0 && passwordError.length === 0) {
             // we have a valid password
             console.log(password);
         }
-        
+
         // if (emailError.length == 0) {
         //     console.log (emailAddress);
         // }
@@ -50,13 +51,13 @@ function SignUp() {
 
     // function checkEmailValidity() {
     //     if (emailAddress.value ===  emailAddress.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
-        
+
     //         console.log(emailAddress);
     //     }
     //     else {
     //         setEmailError("invalid email");
     //     }
-        
+
     // }
 
     function passwordLostFocus() {
@@ -104,109 +105,109 @@ function SignUp() {
                 </NavItem>
             </Navbar>
 
-            <div className="container">
-                <div className="card border-success" style={{ padding: 40, margin: 20, }}>
-                    <div className="card-body" >
-                        <div className="brand-wrapper">
+            <Container>
+                <Card className="border-success" style={{ padding: 40, margin: 20, }}>
+                    <CardBody>
+                        <Container>
                             <img className='pe-2 pb-2' src='../../favicon-32x32.png' alt='icon'></img>
                             <span className="fs-4">TreePeeps</span>
 
-                        </div>
+                        </Container>
 
                         <h2 className="col-md-12" style={{ textAlign: "center" }}>Create an account</h2>
-                        <form>
 
-                        <div className="row" style={{ margin: 10 }}>
-                            <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
-                                <h4>User name:</h4>
-                            </div>
-                            <div className="col-md-6" style={{ margin: 10 }}>
-                                <input className="form-control" type="text" placeholder="Choose a user name of 8 characters or more" onChange={e => setUserName(e.target.value)}></input>
-                            </div>
-                        </div>
+                        <Form>
+                            <Row style={{ margin: 10 }}>
+                                <Col xs="5" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
+                                    <h4>User name:</h4>
+                                </Col>
+                                <Col xs="6" style={{ margin: 10 }}>
+                                    <Input className="form-control" type="text" placeholder="Choose a user name of 8 characters or more" onChange={e => setUserName(e.target.value)}></Input>
+                                </Col>
+                            </Row>
 
-                        <div className="row" style={{ margin: 10 }}>
-                            <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
-                                <h4>First name:</h4>
-                            </div>
-                            <div className="col-md-6" style={{ margin: 10 }}>
-                                <input className="form-control" type="text" placeholder="Enter first name" onChange={e => setFirstName(e.target.value)}></input>
-                            </div>
-                        </div>
+                            <Row style={{ margin: 10 }}>
+                                <Col xs="5" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
+                                    <h4>First name:</h4>
+                                </Col>
+                                <div className="col-md-6" style={{ margin: 10 }}>
+                                    <Input className="form-control" type="text" placeholder="Enter first name" onChange={e => setFirstName(e.target.value)}></Input>
+                                </div>
+                            </Row>
 
-                        <div className="row" style={{ margin: 10 }}>
-                            <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
-                                <h4>Last name:</h4>
-                            </div>
-                            <div className="col-md-6" style={{ margin: 10 }}>
-                                <input className="form-control" type="text" placeholder="Enter last name" onChange={e => setLastName(e.target.value)}></input>
-                            </div>
-                        </div>
+                            <Row style={{ margin: 10 }}>
+                                <Col xs="5" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
+                                    <h4>Last name:</h4>
+                                </Col>
+                                <Col xs="6" style={{ margin: 10 }}>
+                                    <Input className="form-control" type="text" placeholder="Enter last name" onChange={e => setLastName(e.target.value)}></Input>
+                                </Col>
+                            </Row>
 
-                        <div className="row" style={{ margin: 10 }}>
-                            <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
-                                <h4>Email address:</h4>
-                            </div>
-                            <div className="col-md-6" style={{ margin: 10 }}>
-                                <input className="form-control" type="email"  placeholder="Enter email" onChange={e => setEmailAddress(e.target.value)}></input>
-                            </div>
-                            <div className="col-md-5"></div>
-                            <span className="has-error col-md-6" style= {{ color:"red", textAlign: "center"}}>{emailError}</span>
-                        </div>
+                            <Row style={{ margin: 10 }}>
+                                <Col xs="5" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
+                                    <h4>Email address:</h4>
+                                </Col>
+                                <Col xs="6" style={{ margin: 10 }}>
+                                    <Input className="form-control" type="email" placeholder="Enter email" onChange={e => setEmailAddress(e.target.value)}></Input>
+                                </Col>
+                                <div className="col-md-5"></div>
+                                <span className="has-error col-md-6" style={{ color: "red", textAlign: "center" }}>{emailError}</span>
+                            </Row>
 
-                        <div className="row" style={{ margin: 10 }}>
-                            <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
-                                <h4>Password:</h4>
-                            </div>
-                            <div className="col-md-6" style={{ margin: 10 }}>
-                                <input className="form-control" type="password" onBlur={passwordLostFocus} placeholder="Enter password of 8 or more characters" onChange={e => setPassword(e.target.value)}></input>
-                            </div>
-                        </div>
+                            <Row style={{ margin: 10 }}>
+                                <Col xs="5" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
+                                    <h4>Password:</h4>
+                                </Col>
+                                <Col xs="6" style={{ margin: 10 }}>
+                                    <Input className="form-control" type="password" onBlur={passwordLostFocus} placeholder="Enter password of 8 or more characters" onChange={e => setPassword(e.target.value)}></Input>
+                                </Col>
+                            </Row>
 
-                        <div className="row" style={{ margin: 10 }}>
-                            <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
-                                <h4>Confirm password:</h4>
-                            </div>
-                            <div className="col-md-6" style={{ margin: 10 }} >
-                                <input className="form-control" type="password" onBlur={confirmPasswordLostFocus} placeholder="Re-enter password" onChange={e => setConfirmPassword(e.target.value)}></input>
-                            </div>
-                            <div className="col-md-5"></div>
-                            <span className="has-error col-md-6" style= {{ color:"red", textAlign: "center"}}>{passwordError}</span>
-                        </div>
+                            <Row style={{ margin: 10 }}>
+                                <Col xs="5" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
+                                    <h4>Confirm password:</h4>
+                                </Col>
+                                <Col xs="6" style={{ margin: 10 }} >
+                                    <input className="form-control" type="password" onBlur={confirmPasswordLostFocus} placeholder="Re-enter password" onChange={e => setConfirmPassword(e.target.value)}></input>
+                                </Col>
+                                <Col xs="5"></Col>
+                                <span className="has-error col-md-6" style={{ color: "red", textAlign: "center" }}>{passwordError}</span>
+                            </Row>
 
-                        <div className="row" style={{ margin: 10 }}>
-                            <div className="col-md-5 card" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
-                                <h4>Location:</h4>
-                            </div>
-                            <div className="col-md-6" style={{ margin: 10 }}>
-                                <CountryDropdown className="form-control"
-                                value={country}
-                                onChange={e => setCountry(e)}
-                                type="text" />
-                                <RegionDropdown className="form-control"
-                                country={country}
-                                value={region}
-                                onChange={e => setRegion(e)} />
-                               
-                            </div>
-                        </div>
+                            <Row style={{ margin: 10 }}>
+                                <Col xs="5" style={{ backgroundColor: "lightgray", textAlign: "center", margin: 10 }}>
+                                    <h4>Location:</h4>
+                                </Col>
+                                <Col xs="6" style={{ margin: 10 }}>
+                                    <CountryDropdown className="form-control"
+                                        value={country}
+                                        onChange={e => setCountry(e)}
+                                        type="text" />
+                                    <RegionDropdown className="form-control"
+                                        country={country}
+                                        value={region}
+                                        onChange={e => setRegion(e)} />
 
-                        <div className="row" style={{ margin: 30 }}>
-                            <div className="col-md-5"></div>
-                            <div className="col-md-5">
-                                <button className="btn btn-outline" style={{ backgroundColor: "green", color: "white" }} onClick={handleSubmit} type="submit">Sign Up</button>
-                            </div>
-                        </div>
-                        </form>
+                                </Col>
+                            </Row>
 
-                        <div className="row" style={{ margin: 30 }}>
-                            <h4 style={{ textAlign: "center" }}>Already got an account? <Link  style={{color:"black", textDecorationLine:"underline"}} to="/login">Log in</Link></h4>                
-                 
-                        </div>
+                            <Row style={{ margin: 30 }}>
+                                <Col xs="5"></Col>
+                                <Col xs="5">
+                                    <Button className="btn btn-outline" style={{ backgroundColor: "green", color: "white" }} onClick={handleSubmit} type="submit">Sign Up</Button>
+                                </Col>
+                            </Row>
+                        </Form>
 
-                    </div>
-                </div>
-            </div>
+                        <Row style={{ margin: 30 }}>
+                            <h4 style={{ textAlign: "center" }}>Already got an account? <Link style={{ color: "black", textDecorationLine: "underline" }} to="/login">Log in</Link></h4>
+
+                        </Row>
+
+                    </CardBody>
+                </Card>
+            </Container>
         </div>
     );
 }
