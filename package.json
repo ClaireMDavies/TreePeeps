@@ -19,6 +19,7 @@
     "nodemon": "^1.19.4"
   },
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "concurrently": "^6.2.0",
     "connect-mongo": "^4.4.1",
     "dotenv": "^10.0.0",
