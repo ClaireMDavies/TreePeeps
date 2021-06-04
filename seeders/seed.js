@@ -13,7 +13,8 @@ db.once('open', async () => {
     {
         ownerid: 1, 
         title: "Help me build an Orchard",
-        description: "I have 0.5 acre which is flat and well drained.  I would like to build a apple and pear orchard.",
+        name: "Hagley Orchard",
+        description: "I have 0.5 acre area which is flat and well drained.  I would like to build a apple and pear orchard.",
         image:  "https://unsplash.com/@pavlenko?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText",
         latitude: 51.9044235,
         longitude: -2.2124234,
@@ -24,10 +25,12 @@ db.once('open', async () => {
         numStakes: 240,
         amtFertilizer: 80, 
         numSpirals: 100,
+        status: true,
         timestamps:  new Date().setDate(new Date().getDate()-9)
     },
     {
         ownerid: 2, 
+        name: "Centenary Trees",
         title: "Community Centre celebrating 100 years ",
         description: "As part of our centenary celebrations, we should like to offer space for 10 x 6/8 Light Standard and one 10/12 Selected Standard trees  in the Centenary garden that we are constructing.",
         image:  "https://unsplash.com/@pavlenko?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText",
@@ -40,6 +43,7 @@ db.once('open', async () => {
         numStakes: 240,
         amtFertilizer: 80, 
         numSpirals: 100,
+        status: true,
         timestamps:  new Date().setDate(new Date().getDate()-9)
     }
     ]);

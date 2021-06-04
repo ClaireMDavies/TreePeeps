@@ -8,6 +8,10 @@ const ProjectSchema = new Schema({
         type: String,
         //required:true
     },
+    name: {
+        type: String, 
+        required: true
+    },
     title: {
         type: String,
         required:true
@@ -60,6 +64,10 @@ const ProjectSchema = new Schema({
     numSpirals: {
         type: Number,
         require: false
+    },
+    status: {
+        type: Boolean 
+
     },
     timestamps: {
         type: Date
