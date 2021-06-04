@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 import Navbar from "../components/NavbarTreePeeps";
 import NavItem from "../components/NavItem";
 import "../styles/dashboard.css";
+import Footer from "../components/Footer";
 
 const Dashboard = () => {
     return (
@@ -131,6 +132,7 @@ const Dashboard = () => {
 
                 </Row>
             </Container>
+            <Footer />
         </div>
     );
 }
