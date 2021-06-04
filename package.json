@@ -23,6 +23,9 @@
     "connect-mongo": "^4.4.1",
     "express-session": "^1.17.2",
     "if-env": "^1.0.4",
-    "mongoose": "^5.12.10"
+    "mongoose": "^5.12.10",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "reactstrap": "^8.9.0"
   }
 }
