@@ -10,7 +10,7 @@ const UserSchema = new Schema({
                trim: true, 
                required: true, 
                unique: true, 
-               minlength: 8,
+               minlength: 6,
                description: "Your username should be a minimum of 8 characters"
                },
     firstname: {
@@ -25,7 +25,7 @@ const UserSchema = new Schema({
                 description: 'Enter a last name'
               },
     email:    {
-                type: email, 
+                type: String, 
                 required: true, 
                 description: "Please enter an email"
                 },
@@ -50,21 +50,23 @@ const UserSchema = new Schema({
               type: String,
               required: false
     },
-    timestamp: {
+    timestamps: {
             type: Date
         } 
-  
    });
 
-    hooks: {
-      beforeCreate: async (newUser) => {
-        newUser.password = await bcrypt.hash(newUser.password, 8);
-        return newUser;
-      },
-      beforeUpdate: async (updatedUser) => {
-        updatedUser.password = await bcrypt.hash(updatedUser.password, 8);
-        return updatedUser;
-      };
+UserSchema.pre('save', async function(next) {
+  if (this.isNew || this.isModified('password')) {
+    this.password = await bcrypt.hash(this.password, 8);
+  }
+
+  next();
+});
+
+// compare the incoming password with the hashed password
+UserSchema.methods.isCorrectPassword = async function(password) {
+  return await bcrypt.compare(password, this.password);
+};
     
     // Provision for number of projects created to present
 
