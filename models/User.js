@@ -49,8 +49,13 @@ const UserSchema = new Schema({
     longitude: {
               type: String,
               required: false
-    }
-    {
+    },
+    timestamp: {
+            type: Date
+        } 
+  
+   });
+
     hooks: {
       beforeCreate: async (newUser) => {
         newUser.password = await bcrypt.hash(newUser.password, 8);
@@ -59,8 +64,8 @@ const UserSchema = new Schema({
       beforeUpdate: async (updatedUser) => {
         updatedUser.password = await bcrypt.hash(updatedUser.password, 8);
         return updatedUser;
-      },
-    },
+      };
+    
     // Provision for number of projects created to present
 
     //imgUrl: {
@@ -70,10 +75,7 @@ const UserSchema = new Schema({
      //        },
     
      
-    timestamp: {
-            type: Date
-        } 
-   });
+  
 
 //left in here because believe will be calculation
 // virtual to add the total duration of excercises and add to a new field called totalDuration
