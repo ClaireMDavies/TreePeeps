@@ -147,7 +147,7 @@ const ProjectForm = () => {
                                 <div className="card-body">
                                     <div className="input-group mb-3">
                                         <span className="input-group-text" >Area (m²) </span>
-                                        <input type="number" className="form-control" placeholder="0" value={formObject.area} onChange={handleInputChange} />
+                                        <input type="number" className="form-control" placeholder="0" name="area" value={formObject.area} onChange={handleInputChange} />
                                     </div>
                                     <div className="input-group mb-3">
                                         <span className="input-group-text" >Location </span>
@@ -164,7 +164,7 @@ const ProjectForm = () => {
                                     </div>
                                     <div className="input-group mb-3 pt-3">
                                         <span className="input-group-text" >Owner </span>
-                                        <input type="text" className="form-control" placeholder="Owner" value={formObject.landOwner} onChange={handleInputChange} />
+                                        <input type="text" className="form-control" placeholder="Owner" name="landOwner" value={formObject.landOwner} onChange={handleInputChange} />
                                     </div>
                                 </div>
                             </div>
@@ -175,11 +175,11 @@ const ProjectForm = () => {
                                 <div className="card-body">
                                     <div className="input-group mb-3">
                                         <span className="input-group-text" >Work Hours Needed </span>
-                                        <input type="number" className="form-control" placeholder="0" value={formObject.hoursNeeded} onChange={handleInputChange} />
+                                        <input type="number" className="form-control" placeholder="0" name="hoursNeeded" value={formObject.hoursNeeded} onChange={handleInputChange} />
                                     </div>
                                     <div className="input-group mb-3">
                                         <span className="input-group-text" >Number of trees </span>
-                                        <input type="number" className="form-control" placeholder="0" value={formObject.numTrees} onChange={handleInputChange} />
+                                        <input type="number" className="form-control" placeholder="0" name="numTrees" value={formObject.numTrees} onChange={handleInputChange} />
                                     </div>
                                 </div>
                             </div>
@@ -190,19 +190,19 @@ const ProjectForm = () => {
                                 <div className="card-body">
                                     <div className="input-group mb-3">
                                         <span className="input-group-text" >Fertilizer </span>
-                                        <input type="number" className="form-control" placeholder="0" value={formObject.amtFertilizer} onChange={handleInputChange} />
+                                        <input type="number" className="form-control" placeholder="0" name="amtFertilizer" value={formObject.amtFertilizer} onChange={handleInputChange} />
                                     </div>
                                     <div className="input-group mb-3">
                                         <span className="input-group-text" >Stakes </span>
-                                        <input type="number" className="form-control" placeholder="0" value={formObject.numStakes} onChange={handleInputChange} />
+                                        <input type="number" className="form-control" placeholder="0" name="numStakes" value={formObject.numStakes} onChange={handleInputChange} />
                                     </div>
                                     <div className="input-group mb-3">
                                         <span className="input-group-text" >Spirals </span>
-                                        <input type="number" className="form-control" placeholder="0" value={formObject.numSpirals} onChange={handleInputChange} />
+                                        <input type="number" className="form-control" placeholder="0" name="numSpirals" value={formObject.numSpirals} onChange={handleInputChange} />
                                     </div>
                                     <div className="input-group mb-3">
                                         <span className="input-group-text" >Others </span>
-                                        <input type="text" className="form-control" placeholder="..." value={formObject.otherResources} onChange={handleInputChange} />
+                                        <input type="text" className="form-control" placeholder="..." name="otherResources" value={formObject.otherResources} onChange={handleInputChange} />
                                     </div>
                                 </div>
                             </div>
