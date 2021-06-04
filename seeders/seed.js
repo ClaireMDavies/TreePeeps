@@ -2,10 +2,12 @@
 const db = require('../config/connection.js');
 
 const Project  = require("../models/Project.js");
+const User =  require("../models/User.js");
 
 
 db.once('open', async () => {
   await Project.deleteMany();
+   await User.deleteMany();
 
     const projectSeed = await Project.insertMany([
     {
@@ -53,6 +55,47 @@ db.once('open', async () => {
  //   process.exit(1);
  // });
 console.log('Projects seeded');
+
+  const user1 = await User.create({
+    username: 'Treeguy',  
+    firstname: 'Bill',
+    lastname: 'Gates',
+    email: 'bill@test.com',
+    password: 'password12345',
+    country: 'UK',
+    city: 'Hagley',
+    longitude: 52.42787,
+    latitude: -2.12685,
+    timestamp: new Date().setDate(new Date().getDate()-9)
+  });
+
+  const user2 = await User.create({
+    username: 'Swampie',  
+    firstname: 'Wurzel',
+    lastname: 'Gates',
+    email: 'wurzel@test.com',
+    password: 'password12345',
+    country: 'UK',
+    city: 'Birmingham',
+    longitude: 52.47047,
+    latitude: -1.96454,
+    timestamp: new Date().setDate(new Date().getDate()-9)
+  });
+
+  const user3 = await User.create({
+    username: 'Mick24',  
+    firstname: 'Mickey',
+    lastname: 'Mouse',
+    email: 'mickey@test.com',
+    password: 'password12345',
+    country: 'UK',
+    city: 'Birmingham',
+    longitude: 52.47047,
+    latitude: -1.96454,
+    timestamp: new Date().setDate(new Date().getDate()-9)
+  });
+
+  console.log('Users seeded');
 
 process.exit();
 });
