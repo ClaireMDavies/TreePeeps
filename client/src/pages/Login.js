@@ -3,6 +3,7 @@ import { Container, Row, Col, Card, CardBody, Form, Input, Button } from 'reacts
 import Navbar from "../components/NavbarTreePeeps";
 import loginImg from '../images/login-img.jpg';
 import NavItem from "../components/NavItem";
+import Footer from "../components/Footer";
 
 const styles = {
     cardStyle: {
@@ -72,6 +73,7 @@ function Login() {
                     </Row>
                 </Card>
             </Container>
+            <Footer />
         </div>
     )
 };

@@ -5,6 +5,7 @@ import Navbar from "../components/NavbarTreePeeps";
 import NavItem from "../components/NavItem";
 import { Link } from "react-router-dom";
 import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
+import Footer from "../components/Footer";
 
 function SignUp() {
 
@@ -208,6 +209,7 @@ function SignUp() {
                     </CardBody>
                 </Card>
             </Container>
+            <Footer />
         </div>
     );
 }

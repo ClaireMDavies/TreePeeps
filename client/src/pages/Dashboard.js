@@ -5,6 +5,7 @@ import NavItem from "../components/NavItem";
 import ProjectCard from "../components/ProjectCard";
 import ProjectForm from "../components/ProjectForm";
 import "../styles/dashboard.css";
+import Footer from "../components/Footer";
 
 const Dashboard = () => {
 
@@ -98,7 +99,8 @@ const Dashboard = () => {
                     </Col>
                 </Row>
             </Container>
-        </div >
+            <Footer />
+        </div>
 
     );
 }
