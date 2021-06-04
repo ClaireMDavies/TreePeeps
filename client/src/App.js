@@ -1,6 +1,5 @@
 import React from "react";
-
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SignUp from "../src/pages/SignUp";
 import Project from "../src/pages/ProjectPage";
 import Feeds from "../src/pages/Feeds";
@@ -14,12 +13,23 @@ function App() {
   return (
     <div>
       <Router>
-        <Route exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/ProjectPage" component={Project} />
-        <Route exact path="/feeds" component={Feeds} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/contact" component={ContactUs} />
-        <Route exact path="/signup" component={SignUp} />
+        <Switch>
+          //dashboard
+          <Route exact path="/dashboard" component={Dashboard} />
+          //
+          <Route exact path="/projectpage" component={Project} />
+          //
+          <Route exact path="/feeds" component={Feeds} />
+          
+          //
+          <Route exact path="/login" component={Login} />
+          //
+          <Route exact path="/contact" component={ContactUs} />
+          //
+          <Route exact path="/signup" component={SignUp} />
+          // route else
+          <Route component={Nomatch} />
+        </Switch>  
       </Router>
     </div>
   )

@@ -1,11 +1,16 @@
 const mongoose = require("mongoose");
+
 const Schema = mongoose.Schema;
 
 const ProjectSchema = new Schema({
 
-    Ownerid: {
+    ownerid: {
         type: String,
         //required:true
+    },
+    name: {
+        type: String, 
+        required: true
     },
     title: {
         type: String,
@@ -16,6 +21,7 @@ const ProjectSchema = new Schema({
         required: true
     },
     image: {
+        type: String,
         default: "https://unsplash.com/@pavlenko?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
     },
     latitude: {
@@ -43,9 +49,9 @@ const ProjectSchema = new Schema({
         min: 0
     },
     ContributorNames: {
-        type: String,
+        type: [String],
         require: false
-    }
+    },
     numStakes: {
         type: Number,
         require: false
@@ -59,6 +65,10 @@ const ProjectSchema = new Schema({
         type: Number,
         require: false
     },
+    status: {
+        type: Boolean 
+
+    },
     timestamps: {
         type: Date
     }
@@ -70,7 +80,7 @@ const ProjectSchema = new Schema({
 // latitude and longitude coords
 // northings & eastings
 
-const Project = mongoose.model("Project", UserSchema);
+const Project = mongoose.model("Project", ProjectSchema);
 
 module.exports = Project;
 

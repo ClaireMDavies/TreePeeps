@@ -1,11 +1,14 @@
+require("dotenv").config();
+const db = require("./models")
 const express = require("express");
 const path = require("path");
-// const mongoose = require("mongoose");
-// const routes = require("./routes")
+const mongoose = require("mongoose");
+const routes = require("./routes")
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const PORT = process.env.PORT || 3001;
 const app = express();
+
 
 app.use(session({
   secret: 'SECRET KEY',
@@ -26,12 +29,21 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Connect to the Mongo DB
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/",
-//   { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
-// );
+mongoose.connect(process.env.MONGODB_URI,  {
+  useNewUrlParser: true,
+  useFindAndModify: false, 
+  useUnifiedTopology: true,
+  useCreateIndex: true
+
+});
+
+//testing connections
+mongoose.connection.on('connected', () => console.log('Connected to MongoDB Endpoint'));
+mongoose.connection.on('error', (err) => console.log(`Mongoose default connection error: ${err}`));
+
 
 // Define API routes
-// app.use(routes);
+ app.use(routes);
 
 // Send every other request to the React app
 app.get("*", (req, res) => {
