@@ -113,14 +113,6 @@ const ProjectForm = () => {
                 </div>
                 <div className="card-body">
                     <div className="input-group mb-3">
-                        <span className="input-group-text" >Trees </span>
-                        <input type="number" className="form-control" placeholder="0" />
-                    </div>
-                    <div className="input-group mb-3">
-                        <span className="input-group-text" >Spades </span>
-                        <input type="number" className="form-control" placeholder="0" />
-                    </div>
-                    <div className="input-group mb-3">
                         <span className="input-group-text" >Fertilizer </span>
                         <input type="number" className="form-control" placeholder="0" />
                     </div>
@@ -129,12 +121,12 @@ const ProjectForm = () => {
                         <input type="number" className="form-control" placeholder="0" />
                     </div>
                     <div className="input-group mb-3">
-                        <span className="input-group-text" >Spades </span>
+                        <span className="input-group-text" >Spirals </span>
                         <input type="number" className="form-control" placeholder="0" />
                     </div>
                     <div className="input-group mb-3">
                         <span className="input-group-text" >Others </span>
-                        <input type="number" className="form-control" placeholder="0" />
+                        <input type="text" className="form-control" placeholder="..." />
                     </div>
                 </div>
             </div>

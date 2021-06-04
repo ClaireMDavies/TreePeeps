@@ -18,9 +18,7 @@ function ProjectCard() {
                         <h5 className="card-title text-center">Project Title</h5>
                     </div>
                     <div className="card-body p-0 text-center">
-                    <ul className="list-group list-group-flush">
-                        <li className="list-group-item">Description text goes here</li>
-                        
+                        <ul className="list-group list-group-flush">
                             <li className="list-group-item">Status :
                                 <div className="btn-group ms-3" role="group" aria-label="Basic radio toggle button group">
                                     <input type="radio" className="btn-check" name="btnradio" id="btnradio1" autoComplete="off" defaultChecked={checked} onChange={() => setChecked(!checked)} />
@@ -60,12 +58,6 @@ function ProjectCard() {
                             <li className="list-group-item">End Date :</li>
                         </ul>
                     </div>
-                    <form >
-                        <div className="card-footer text-center">
-                            <button className="btn btn-danger btn-sm m-2">Delete</button>
-                        </div>
-                    </form>
-
                 </div>
             </div>
         </div>
