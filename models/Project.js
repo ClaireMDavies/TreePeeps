@@ -45,7 +45,7 @@ const ProjectSchema = new Schema({
         min: 0
     },
     ContributorNames: {
-        type: String,
+        type: [String],
         require: false
     },
     numStakes: {
