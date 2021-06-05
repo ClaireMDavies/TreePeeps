@@ -14,50 +14,98 @@ function SignUp() {
     const [emailAddress, setEmailAddress] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [emailError, setEmailError] = useState("");
-    const [buttonState, setButtonState] = useState("disabled")
-
-
     const [country, setCountry] = useState("");
     const [region, setRegion] = useState("");
 
-
-
+    const [userNameError, setUserNameError] = useState("");
+    const [firstNameError, setFirstNameError] = useState("");
+    const [lastNameError, setLastNameError] = useState("");
+    const [countryError, setCountryError] = useState("");
+    const [regionError, setRegionError] = useState("");
+    const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState("");
 
+     function validData() {
 
-    
+        
+        if (userNameError.length == 0 && firstNameError.length == 0 && lastNameError.length == 0 && emailError.length == 0 && passwordError.length == 0 && countryError.length == 0 && regionError.length == 0) {
+            
+            console.log("valid data, post to database")
+        }
+        else{
+            console.log("something went wrong");
+        }
+    }
 
     function handleSubmit(event) {
         event.preventDefault();
-        if (userName.length > 7 && firstName.length > 0 && lastName.length > 0 && country.length > 0 && region.length > 0) {
-
-            console.log(userName);
-            console.log(firstName);
-            console.log(lastName);
-            // console.log(emailAddress);
-            console.log(country);
-            console.log(region);
-            checkEmailValidity();
-            if (password.length > 0 && passwordError.length === 0) {
-                // we have a valid password
-                console.log(password);
-
-            }
-            setButtonState("")
-
+        if (userName.length > 7) {
+            // console.log(userName); 
+            console.log("query database for name");
+            setUserNameError("");
         }
-        else{
-            
+        else {
+            setUserNameError("User Name needs to be 8 characters and unique");
+            return
         }
 
+        if (firstName.length === 0 ) {
+           
+            setFirstNameError("field needs completing");
+            return
+        }
+        else {
+            setFirstNameError("");
+        }
+        
+        if (lastName.length === 0 ) {
+           
+            setLastNameError("field needs completing");
+            return
+        }
+        else {
+            setLastNameError("");
+        }
 
-    };
+        if (country.length === 0 ) {
+           
+            setCountryError("field needs completing");
+            return
+        }
+        else {
+            setCountryError("");
+        }
+
+        if (region.length === 0 ) {
+           
+            setRegionError("field needs completing");
+            return
+        }
+        else {
+            setRegionError("");
+        }
+        validData();
+
+        // validData();
+
+        // if (password.length > 0 && passwordError.length === 0) {
+        //         // we have a valid password
+        //         console.log(password);
+
+        // }    
+
+        // checkEmailValidity();
+
+
+
+    }
 
     function checkEmailValidity() {
         if (emailIsValid(emailAddress)) {
 
             console.log(emailAddress);
+            setEmailError("");
+
         }
         else {
             setEmailError("invalid email");
@@ -88,30 +136,15 @@ function SignUp() {
             return;
         }
 
-        if (password.search(/[a-z]/i) < 0 || password.search(/[A-Z]/) < 0 || password.search(/[0-9]/) < 0  || password.length < 8) {
+        if (password.search(/[a-z]/i) < 0 || password.search(/[A-Z]/) < 0 || password.search(/[0-9]/) < 0 || password.length < 8) {
             setPasswordError("Password must contain at least one lowercase letter, one uppercase letter, one digit and be 8 characters long");
             return;
         }
-
-        // if (password.search(/[A-Z]/) < 0) {
-        //     setPasswordError("Password must contain at least one lowercase letter, one uppercase letter, one digit and be 8 characters long");
-        //     return;
-        // }
-
-        // if () {
-        //     setPasswordError("Password must contain at least one digit");
-        //     return;
-        // }
 
         if (password !== confirmPassword) {
             setPasswordError("Passwords don't match");
             return;
         }
-
-        // if (password.length < 8) {
-        //     setPasswordError("Password must be at least 8 characters");
-        //     return;
-        // }
 
         setPasswordError("");
     }
@@ -148,6 +181,8 @@ function SignUp() {
                                 <div className="col-md-6" style={{ margin: 10 }}>
                                     <input className="form-control" type="text" placeholder="Choose a user name of 8 characters or more" onChange={e => setUserName(e.target.value)}></input>
                                 </div>
+                                <div className="col-md-5"></div>
+                                <span className="has-error col-md-6" style={{ color: "red", textAlign: "center" }}>{userNameError}</span>
                             </div>
 
                             <div className="row" style={{ margin: 10 }}>
@@ -157,6 +192,8 @@ function SignUp() {
                                 <div className="col-md-6" style={{ margin: 10 }}>
                                     <input className="form-control" type="text" placeholder="Enter first name" onChange={e => setFirstName(e.target.value)}></input>
                                 </div>
+                                <div className="col-md-5"></div>
+                                <span className="has-error col-md-6" style={{ color: "red", textAlign: "center" }}>{firstNameError}</span>
                             </div>
 
                             <div className="row" style={{ margin: 10 }}>
@@ -166,6 +203,8 @@ function SignUp() {
                                 <div className="col-md-6" style={{ margin: 10 }}>
                                     <input className="form-control" type="text" placeholder="Enter last name" onChange={e => setLastName(e.target.value)}></input>
                                 </div>
+                                <div className="col-md-5"></div>
+                                <span className="has-error col-md-6" style={{ color: "red", textAlign: "center" }}>{lastNameError}</span>
                             </div>
 
                             <div className="row" style={{ margin: 10 }}>
@@ -173,7 +212,7 @@ function SignUp() {
                                     <h4>Email address:</h4>
                                 </div>
                                 <div className="col-md-6" style={{ margin: 10 }}>
-                                    <input className="form-control" type="email" placeholder="Enter email" onChange={e => setEmailAddress(e.target.value)}></input>
+                                    <input className="form-control" type="email" onBlur={checkEmailValidity} placeholder="Enter email" onChange={e => setEmailAddress(e.target.value)}></input>
                                 </div>
                                 <div className="col-md-5"></div>
                                 <span className="has-error col-md-6" style={{ color: "red", textAlign: "center" }}>{emailError}</span>
@@ -217,6 +256,9 @@ function SignUp() {
                                         onChange={e => setRegion(e)} />
 
                                 </div>
+                                <div className="col-md-5"></div>
+                                <span className="has-error col-md-6" style={{ color: "red", textAlign: "center" }}>{countryError}</span>
+                                <span className="has-error col-md-6" style={{ color: "red", textAlign: "center" }}>{regionError}</span>
                             </div>
 
                             <div className="row" style={{ margin: 30 }}>
