@@ -1,61 +1,94 @@
 const mongoose = require("mongoose");
+
 const Schema = mongoose.Schema;
 
 const ProjectSchema = new Schema({
 
-    Ownerid: {
+    userId: {
         type: String,
         //required:true
     },
-    title: {
+    name: {
         type: String,
-        required:true
-        },
-    description: {
-        type: String
-    }
         required: true
     },
-    image: {
-        default: "https://unsplash.com/@pavlenko?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-    },
-    //wip because Ben says is a good idea to store coords: northings and eastings AND
-    // longitude and latitude
-    shortLocation: {
-        type: email,
-        require: true
-    },
-    location: {
+    title: {
         type: String,
-        require: true
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    startDate: {
+        type: Date,
+        required: true
+    },
+    endDate: {
+        type: Date,
+        required: true
+    },
+    // image: {
+    //     type: String,
+    //     default: "https://unsplash.com/@pavlenko?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+    // },
+    latitude: {
+        type: String,
+        required: false
+    },
+    longitude: {
+        type: String,
+        required: false
+    },
+    area: {
+        type: Number,
+        min: 0,
+        required: false
+    },
+    landOwner : {
+        type: String,
+        required: false
     },
     hoursNeeded: {
         type: Number,
         min: 0,
-        require: false
+        required: false
     },
     numTrees: {
         type: Number,
         min: 0,
-        require: false
+        required: false
     },
     //likely to change to array?
-    treeType: {
-        type: String,
-        require: false
+    numContributors: {
+        type: Number,
+        required: false,
+        min: 0
+    },
+    ContributorNames: {
+        type: [String],
+        required: false
     },
     numStakes: {
         type: Number,
-        require: false
+        required: false
     },
     amtFertilizer: {
         type: Number,
         min: 0,
-        require: false
+        required: false
     },
     numSpirals: {
         type: Number,
-        require: false
+        required: false
+    },
+    status: {
+        type: Boolean,
+        default: true
+    },
+    otherResources: {
+        type: String,
+        required: false
     },
     timestamps: {
         type: Date
@@ -68,7 +101,7 @@ const ProjectSchema = new Schema({
 // latitude and longitude coords
 // northings & eastings
 
-const Project = mongoose.model("Project", UserSchema);
+const Project = mongoose.model("Project", ProjectSchema);
 
 module.exports = Project;
 

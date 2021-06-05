@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Card, CardTitle, Form, Input, Label, Button } from 'reactstrap';
 import {toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -46,34 +47,32 @@ function ContributeCard() {
         <div>
             {/* Contribute Card */}
             <div className="row d-flex justify-content-center mb-3">
-                <div className="card" style={styles.cardStyle}>
-                    <div className="card-header bg-success p-2 pb-0">
-                        <h5 className="card-title text-white "><i className="fab fa-wpforms"></i> Contribution Form</h5>
-                    </div>
+                <Card style={styles.cardStyle}>
+                    <CardTitle><h5><i className="fab fa-wpforms"></i> Contribution Form</h5></CardTitle>
                     <div className="card-body">
                         <div className="form-check">
-                            <input className="form-check-input" type="checkbox" value="Land" name="Land" checked={form.Land} onChange={onChange} />
-                            <label className="form-check-label" htmlFor="Land">Land</label>
+                            <Input className="form-check-input" type="checkbox" value="Land" name="Land" checked={form.Land} onChange={onChange} />
+                            <Label className="form-check-label" htmlFor="Land">Land</Label>
                         </div>
                         <div className="form-check">
-                            <input className="form-check-input" type="checkbox" value="Time" name="Time" checked={form.Time} onChange={onChange} />
-                            <label className="form-check-label" htmlFor="Time">Time</label>
+                            <Input className="form-check-input" type="checkbox" value="Time" name="Time" checked={form.Time} onChange={onChange} />
+                            <Label className="form-check-label" htmlFor="Time">Time</Label>
                         </div>
                         <div className="form-check">
-                            <input className="form-check-input" type="checkbox" value="Resources" name="Resources" checked={form.Resources} onChange={onChange} />
-                            <label className="form-check-label" htmlFor="Resources">Resources</label>
+                            <Input className="form-check-input" type="checkbox" value="Resources" name="Resources" checked={form.Resources} onChange={onChange} />
+                            <Label className="form-check-label" htmlFor="Resources">Resources</Label>
                         </div>
                         <div className="input-group mt-3">
                             <span className="input-group-text">Message</span>
-                            <input type="text" aria-label="Message" className="form-control" onChange={e => setMessage(e.target.value)} />
+                            <Input type="text" aria-label="Message" className="form-control" onChange={e => setMessage(e.target.value)} />
                         </div>
                     </div>
-                    <form onSubmit={handleSubmit}>
+                    <Form onSubmit={handleSubmit}>
                         <div className="card-footer text-center">
-                            <button className="btn btn-danger btn-sm m-2" onClick={ContributionNotify}>Submit</button>
+                            <Button color="danger" onClick={ContributionNotify}>Submit</Button>
                         </div>
-                    </form>
-                </div>
+                    </Form>
+                </Card>
             </div>
         </div>
     )
