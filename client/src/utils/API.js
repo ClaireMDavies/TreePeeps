@@ -18,5 +18,8 @@ export default {
     saveProject: function (projectData) {
         return axios.post("/api/projects", projectData);
     },
+    getProjects: function () {
+        return axios.get("/api/projects");
+    },
 
 };

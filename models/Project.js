@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const ProjectSchema = new Schema({
 
-    ownerid: {
+    userId: {
         type: String,
         //required:true
     },
@@ -83,7 +83,8 @@ const ProjectSchema = new Schema({
         required: false
     },
     status: {
-        type: Boolean
+        type: Boolean,
+        default: true
     },
     otherResources: {
         type: String,
