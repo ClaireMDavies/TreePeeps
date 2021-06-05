@@ -1,11 +1,11 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import React from "react";
 import { Container, Row, Col, Card, Form, Input, Button, CardBody } from 'reactstrap';
 import Navbar from "../components/NavbarTreePeeps";
 import NavItem from "../components/NavItem";
 import { Link } from "react-router-dom";
-import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 import Footer from "../components/Footer";
+import API from "../utils/API";
 
 function SignUp() {
 
@@ -15,139 +15,232 @@ function SignUp() {
     const [emailAddress, setEmailAddress] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [country, setCountry] = useState("");
-    const [region, setRegion] = useState("");
+    const [country, setCountry] = useState("United Kingdom");
+    const [town, setTown] = useState("");
 
     const [userNameError, setUserNameError] = useState("");
     const [firstNameError, setFirstNameError] = useState("");
     const [lastNameError, setLastNameError] = useState("");
     const [countryError, setCountryError] = useState("");
-    const [regionError, setRegionError] = useState("");
+    const [townError, setTownError] = useState("");
     const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState("");
 
-     function validData() {
+    const [countries, setCountries] = useState([]);
+    const [towns, setTowns] = useState([]);
 
-        
-        if (userNameError.length == 0 && firstNameError.length == 0 && lastNameError.length == 0 && emailError.length == 0 && passwordError.length == 0 && countryError.length == 0 && regionError.length == 0) {
-            
-            console.log("valid data, post to database")
+    const [townsLoading, setTownsLoading] = useState(false);
+
+    const [location, setLocation] = useState( {} );
+
+    React.useEffect(() => {
+
+        fetch("https://countriesnow.space/api/v0.1/countries/info?returns=name")
+        .then(response => response.json())
+        .then(json => json.data.map((country => country.name)))
+        .then(countries => setCountries(countries.sort()))
+        .then(loadTowns());
+
+    }, []);
+
+    function handleSubmit(event) {
+
+        event.preventDefault();
+
+        API.convert(town)
+        .then(data => setLocation( { lat: data.data.results[0].geometry.location.lat, lon: data.data.results[0].geometry.location.lon }));
+
+
+        let validationResults = [];
+
+        validationResults.push(validateUserName());
+
+        validationResults.push(validateFirstName());
+
+        validationResults.push(validateLastName());
+
+        validationResults.push(validateEmailAddress());
+
+        validationResults.push(validatePassword());
+
+        validationResults.push(validateLocation());
+
+        if (validationResults.some(result => result === false))
+        {
+            // there were some errors
+            // alert("Failed!");
         }
-        else{
-            console.log("something went wrong");
+        else
+        {
+            // TODO: submit
         }
     }
 
-    function handleSubmit(event) {
-        event.preventDefault();
-        if (userName.length > 7) {
-            // console.log(userName); 
-            console.log("query database for name");
-            setUserNameError("");
+    function validateUserName() {
+
+        if (userName.length < 8) {
+
+            setUserNameError("User Name needs to be 8 characters");
+            return false;
+        }
+        else if (userName.length >= 128) {
+
+            setUserNameError("User Name must be less than 128 characters");
+            return false;
+        }
+        else if (isUserNameAlreadyInUse(userName)) {
+
+            setUserNameError("User Name already in user");
+            return false;
         }
         else {
-            setUserNameError("User Name needs to be 8 characters and unique");
-            return
+            setUserNameError();
+            return true;
         }
+    }
 
-        if (firstName.length === 0 ) {
-           
-            setFirstNameError("field needs completing");
-            return
+    function validateFirstName() {
+
+        if (firstName.length === 0) {
+
+            setFirstNameError("Please enter a first name");
+            return false;
         }
         else {
             setFirstNameError("");
+            return true;
         }
-        
-        if (lastName.length === 0 ) {
-           
-            setLastNameError("field needs completing");
-            return
-        }
-        else {
-            setLastNameError("");
-        }
-
-        if (country.length === 0 ) {
-           
-            setCountryError("field needs completing");
-            return
-        }
-        else {
-            setCountryError("");
-        }
-
-        if (region.length === 0 ) {
-           
-            setRegionError("field needs completing");
-            return
-        }
-        else {
-            setRegionError("");
-        }
-        validData();
-
-        // validData();
-
-        // if (password.length > 0 && passwordError.length === 0) {
-        //         // we have a valid password
-        //         console.log(password);
-
-        // }    
-
-        // checkEmailValidity();
-
-
-
     }
 
-    function checkEmailValidity() {
-        if (emailIsValid(emailAddress)) {
+    function validateLastName() {
 
-            console.log(emailAddress);
-            setEmailError("");
+        if (lastName.length === 0) {
 
+            setLastNameError("Please enter a last name");
+            return false;
         }
         else {
-            setEmailError("invalid email");
-        }
 
+            setLastNameError("");
+            return true;
+        }
+    }
+
+    function validateEmailAddress() {
+
+        if (emailIsValid(emailAddress)) {
+
+            setEmailError("");
+            return true;
+        }
+        else {
+
+            setEmailError("Invalid email address");
+            return false;
+        }
+    }
+
+    function validatePassword() {
+
+        if (password.length === 0) {
+
+            setPasswordError("You must enter a password");
+            return false;
+        }
+        else if (password.search(/[a-z]/i) < 0 || password.search(/[A-Z]/) < 0 || password.search(/[0-9]/) < 0 || password.length < 8) {
+
+            setPasswordError("Password must contain at least one lowercase letter, one uppercase letter, one digit and be 8 characters long");
+            return false;
+        }
+        else if (confirmPassword.length > 0 && password !== confirmPassword) {
+
+            setPasswordError("Passwords don't match");
+            return false;
+        }
+        else {
+
+            setPasswordError("");
+            return true;
+        }
+    }   
+
+    function validateLocation() {
+
+        if (country.length === 0) {
+
+            setCountryError("Please select a country");
+            return false;
+        }
+        else if (town.length === 0) {
+
+            setTownError("Please select a Town");
+            return false;
+        }
+        else
+        {
+            setTownError("");
+            return true;
+        }
+    }
+
+    function isUserNameAlreadyInUse(username) {
+        // TODO
+        return false;
     }
 
     function emailIsValid(email) {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
     }
 
+    function emailAddressLostFocus() {
+
+        if (emailAddress.length > 0) {
+
+            validateEmailAddress();
+        }
+    }
+
     function passwordLostFocus() {
-        checkPasswordValidity();
+
+        if (password.length > 0) {
+
+            validatePassword();
+        }
     }
 
     function confirmPasswordLostFocus() {
-        checkPasswordValidity();
+
+        if (confirmPassword.length > 0) {
+
+            validatePassword();
+        }
     }
 
-    function checkPasswordValidity() {
-        if (password === undefined || confirmPassword === undefined) {
-            setPasswordError("");
-            return;
-        }
+    function countryChanged(e)
+    {
+        setCountry(e.target.value);
+        loadTowns();
+    }
 
-        if (password.length === 0) {
-            setPasswordError("You must enter a password");
-            return;
-        }
+    function townChanged(e)
+    {
+        setTown(e.target.value);
+    }
 
-        if (password.search(/[a-z]/i) < 0 || password.search(/[A-Z]/) < 0 || password.search(/[0-9]/) < 0 || password.length < 8) {
-            setPasswordError("Password must contain at least one lowercase letter, one uppercase letter, one digit and be 8 characters long");
-            return;
-        }
+    function loadTowns()
+    {
+        setTownsLoading(true);
 
-        if (password !== confirmPassword) {
-            setPasswordError("Passwords don't match");
-            return;
-        }
-
-        setPasswordError("");
+        fetch("https://countriesnow.space/api/v0.1/countries/cities", {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ country: country })
+        })
+        .then(response => response.json())
+        .then(json => setTowns(json.data.sort()))
+        .then(setTownsLoading(false));
     }
 
     return (
@@ -169,7 +262,6 @@ function SignUp() {
                         <Container>
                             <img className='pe-2 pb-2' src='../../favicon-32x32.png' alt='icon'></img>
                             <span className="fs-4">TreePeeps</span>
-
                         </Container>
 
                         <h2 className="col-md-12" style={{ textAlign: "center" }}>Create an account</h2>
@@ -213,7 +305,7 @@ function SignUp() {
                                     <h4>Email address:</h4>
                                 </Col>
                                 <Col xs="6" style={{ margin: 10 }}>
-                                    <Input className="form-control" type="email" onBlur={checkEmailValidity} placeholder="Enter email" onChange={e => setEmailAddress(e.target.value)}></Input>
+                                    <Input className="form-control" type="email" onBlur={emailAddressLostFocus} placeholder="Enter email" onChange={e => setEmailAddress(e.target.value)}></Input>
                                 </Col>
                                 <Col xs="5"></Col>
                                 <span className="has-error col-md-6" style={{ color: "red", textAlign: "center" }}>{emailError}</span>
@@ -246,19 +338,19 @@ function SignUp() {
                                     <h4>Location:</h4>
                                 </Col>
                                 <Col xs="6" style={{ margin: 10 }}>
-                                    <CountryDropdown className="form-control"
-                                        value={country}
-                                        onChange={e => setCountry(e)}
-                                        type="text" />
-                                    <RegionDropdown className="form-control"
-                                        country={country}
-                                        value={region}
-                                        onChange={e => setRegion(e)} />
+
+                                    <select className="form-control" value={country} onChange={e => countryChanged(e)}>
+                                        {countries.map(country => <option key={country} value={country}>{country}</option>)};
+                                    </select>
+
+                                    <select className="form-control" disabled={townsLoading} onChange={e => townChanged(e)}>
+                                        {towns.map(town => <option key={town} value={town}>{town}</option>)};
+                                    </select>
 
                                 </Col>
                                 <Col xs="5"></Col>
                                 <span className="has-error col-md-6" style={{ color: "red", textAlign: "center" }}>{countryError}</span>
-                                <span className="has-error col-md-6" style={{ color: "red", textAlign: "center" }}>{regionError}</span>
+                                <span className="has-error col-md-6" style={{ color: "red", textAlign: "center" }}>{townError}</span>
                             </Row>
 
                             <Row style={{ margin: 30 }}>
@@ -271,7 +363,6 @@ function SignUp() {
 
                         <Row style={{ margin: 30 }}>
                             <h4 style={{ textAlign: "center" }}>Already got an account? <Link style={{ color: "black", textDecorationLine: "underline" }} to="/login">Log in</Link></h4>
-
                         </Row>
 
                     </CardBody>
