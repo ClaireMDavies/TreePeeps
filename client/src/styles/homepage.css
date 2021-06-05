@@ -2,11 +2,14 @@
     
     background-image: url("../assets/background.jpg");
     position: relative;
+    background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
-    padding-bottom: 30%;
+    background-size: fill;
+    padding-bottom: 0;
     margin-bottom: 0;
+    height: 100%;
+    width: auto;
 }
     
 .masthead h1 {
@@ -75,9 +78,22 @@ img#logo {
 
 .btn-outline-success {
     color: #ffffff8c;
-    border-color: #198754;
+    border-color: #ffffff;
 }
 .btn-outline-success.btn-lg.m-2{
     background-color: #0f5132;
     color: #ffffff8c;
+}
+
+#footer{
+    color: #ffffff8c;
+    font-family:'Paytone One', sans-serif;
+    background-color : #0f5132;
+    font-weight: bold;
+    line-height: 0.1;
+    text-align: center;
+    padding-bottom: 1%;
+    padding-top: 1%;
+    height: auto;
+    width: 100%;
 }
