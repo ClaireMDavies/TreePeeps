@@ -1,14 +1,16 @@
 import React from "react";
-import { FormGroup, Input, Button } from 'reactstrap';
+import { InputGroup, InputGroupAddon, Input, Button } from 'reactstrap';
 
 const SearchForm = () => {
     return (
 
         <form className="d-flex">
-            <FormGroup>
-                <Input type="text" name="message" id="message" placeholder="search-by-location..." />
-            </FormGroup><br></br>  
-            <Button type="submit" value="submit" color="success">Search</Button>
+            <InputGroup>
+                <Input type="text" name="message" id="message" placeholder="Enter Location..." />
+                <InputGroupAddon addonType="append">
+                    <Button type="submit" value="submit" color="success">Search</Button>
+                </InputGroupAddon>
+            </InputGroup>
         </form>
 
     );
