@@ -16,20 +16,20 @@ function SignUp() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [country, setCountry] = useState("United Kingdom");
-    const [town, setTown] = useState("");
+    const [city, setCity] = useState("");
 
     const [userNameError, setUserNameError] = useState("");
     const [firstNameError, setFirstNameError] = useState("");
     const [lastNameError, setLastNameError] = useState("");
     const [countryError, setCountryError] = useState("");
-    const [townError, setTownError] = useState("");
+    const [cityError, setCityError] = useState("");
     const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState("");
 
     const [countries, setCountries] = useState([]);
-    const [towns, setTowns] = useState([]);
+    const [cities, setCities] = useState([]);
 
-    const [townsLoading, setTownsLoading] = useState(false);
+    const [citiesLoading, setCitiesLoading] = useState(false);
 
     const [location, setLocation] = useState( {} );
 
@@ -39,7 +39,7 @@ function SignUp() {
         .then(response => response.json())
         .then(json => json.data.map((country => country.name)))
         .then(countries => setCountries(countries.sort()))
-        .then(loadTowns());
+        .then(loadCities());
 
     }, []);
 
@@ -47,8 +47,8 @@ function SignUp() {
 
         event.preventDefault();
 
-        API.convert(town)
-        .then(data => setLocation( { lat: data.data.results[0].geometry.location.lat, lon: data.data.results[0].geometry.location.lon }));
+        API.convert(city)
+        .then(data => setLocation( { lat: data.data.results[0].geometry.location.lat, lon: data.data.results[0].geometry.location.lng }));
 
 
         let validationResults = [];
@@ -171,14 +171,14 @@ function SignUp() {
             setCountryError("Please select a country");
             return false;
         }
-        else if (town.length === 0) {
+        else if (city.length === 0) {
 
-            setTownError("Please select a Town");
+            setCityError("Please select a City");
             return false;
         }
         else
         {
-            setTownError("");
+            setCityError("");
             return true;
         }
     }
@@ -219,17 +219,17 @@ function SignUp() {
     function countryChanged(e)
     {
         setCountry(e.target.value);
-        loadTowns();
+        loadCities();
     }
 
-    function townChanged(e)
+    function cityChanged(e)
     {
-        setTown(e.target.value);
+        setCity(e.target.value);
     }
 
-    function loadTowns()
+    function loadCities()
     {
-        setTownsLoading(true);
+        setCitiesLoading(true);
 
         fetch("https://countriesnow.space/api/v0.1/countries/cities", {
             method: 'POST',
@@ -239,8 +239,8 @@ function SignUp() {
             body: JSON.stringify({ country: country })
         })
         .then(response => response.json())
-        .then(json => setTowns(json.data.sort()))
-        .then(setTownsLoading(false));
+        .then(json => setCities(json.data.sort()))
+        .then(setCitiesLoading(false));
     }
 
     return (
@@ -343,14 +343,15 @@ function SignUp() {
                                         {countries.map(country => <option key={country} value={country}>{country}</option>)};
                                     </select>
 
-                                    <select className="form-control" disabled={townsLoading} onChange={e => townChanged(e)}>
-                                        {towns.map(town => <option key={town} value={town}>{town}</option>)};
+                                    <select className="form-control" disabled={citiesLoading} onChange={e => cityChanged(e)}>
+                                        {cities.map(city => <option key={city} value={city}>{city}</option>)};
                                     </select>
 
                                 </Col>
                                 <Col xs="5"></Col>
                                 <span className="has-error col-md-6" style={{ color: "red", textAlign: "center" }}>{countryError}</span>
-                                <span className="has-error col-md-6" style={{ color: "red", textAlign: "center" }}>{townError}</span>
+                                <Col xs="5"></Col>
+                                <span className="has-error col-md-6" style={{ color: "red", textAlign: "center" }}>{cityError}</span>
                             </Row>
 
                             <Row style={{ margin: 30 }}>
