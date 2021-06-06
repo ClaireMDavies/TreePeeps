@@ -6,10 +6,10 @@ const APIKEY = "&language=EN&key=" + env.API_KEY;
 
 export default {
     //get user
-    //getUser: function() {
-    //    return axios.get("/api/users");
-    //},
-    getUsers: function() {
+       getUser: function() {
+       return axios.get("/api/users");
+   },
+     getUsers: function() {
         return axios.get("/api/users");
       },
       // Gets the user with the given id
@@ -27,12 +27,12 @@ export default {
     // Converts city to Lat and Lng coordinates 
     convert: function (city) {
         return axios.get(BASEURL + city + APIKEY)
+    }, 
+    //Saves a project to the database
+      saveProject: function (projectData) {
+      return axios.post("/api/projects", projectData);
     },
-    // Saves a project to the database
-  //  saveProject: function (projectData) {
-   //     return axios.post("/api/projects", projectData);
-   // },
-     // Gets all projects
+      // Gets all projects
   getProjects: function() {
     return axios.get("/api/projects");
   },
@@ -47,5 +47,5 @@ export default {
   // Saves a project to the database
   saveBook: function(projectData) {
     return axios.post("/api/projects", projectData);
-  }
+  } 
 };
