@@ -46,9 +46,9 @@ function ContributeCard() {
     return (
         <div>
             {/* Contribute Card */}
-            <div className="row d-flex justify-content-center mb-3">
+            <div className="row d-flex justify-content-center mt-3 mb-3">
                 <Card style={styles.cardStyle}>
-                    <CardTitle><h5><i className="fab fa-wpforms"></i> Contribution Form</h5></CardTitle>
+                    <CardTitle><h5 className="ps-3 pt-3"><i className="fab fa-wpforms"></i> Contribution Form</h5></CardTitle>
                     <div className="card-body">
                         <div className="form-check">
                             <Input className="form-check-input" type="checkbox" value="Land" name="Land" checked={form.Land} onChange={onChange} />
