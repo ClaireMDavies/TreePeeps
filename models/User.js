@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
+const env = require("dotenv").config();
+const axios = require("axios");
 
 const UserSchema = new Schema({
 
@@ -8,7 +10,6 @@ const UserSchema = new Schema({
                type: String,
                required: true,
                trim: true, 
-               required: true, 
                unique: true, 
                minlength: 6,
                description: "Your username should be a minimum of 6 characters"
@@ -60,6 +61,14 @@ UserSchema.pre('save', async function(next) {
     this.password = await bcrypt.hash(this.password, 8);
   }
 
+  const BASEURL = "https://maps.googleapis.com/maps/api/geocode/json?address=";
+  const APIKEY = "&language=EN&key=" + process.env.GOOGLE_API_KEY;
+
+  // get location
+  const response = await axios.get(BASEURL + this.city + APIKEY);
+  this.latitude = response.data.results[0].geometry.location.lat.toString();
+  this.longitude = response.data.results[0].geometry.location.lng.toString();
+
   next();
 });
 
@@ -67,7 +76,7 @@ UserSchema.pre('save', async function(next) {
 UserSchema.methods.isCorrectPassword = async function(password) {
   return await bcrypt.compare(password, this.password);
 };
-    
+
     // Provision for number of projects created to present
 
     //imgUrl: {

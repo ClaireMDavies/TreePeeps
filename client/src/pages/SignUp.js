@@ -9,7 +9,7 @@ import API from "../utils/API";
 
 function SignUp() {
 
-    const [userName, setUserName] = useState("");
+    const [username, setUsername] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [emailAddress, setEmailAddress] = useState("");
@@ -18,7 +18,7 @@ function SignUp() {
     const [country, setCountry] = useState("United Kingdom");
     const [city, setCity] = useState("");
 
-    const [userNameError, setUserNameError] = useState("");
+    const [usernameError, setUsernameError] = useState("");
     const [firstNameError, setFirstNameError] = useState("");
     const [lastNameError, setLastNameError] = useState("");
     const [countryError, setCountryError] = useState("");
@@ -35,7 +35,7 @@ function SignUp() {
 
     React.useEffect(() => {
 
-        fetch("https://countriesnow.space/api/v0.1/countries/info?returns=name")
+        API.getCountries()
         .then(response => response.json())
         .then(json => json.data.map((country => country.name)))
         .then(countries => setCountries(countries.sort()))
@@ -47,13 +47,9 @@ function SignUp() {
 
         event.preventDefault();
 
-        API.convert(city)
-        .then(data => setLocation( { lat: data.data.results[0].geometry.location.lat, lon: data.data.results[0].geometry.location.lng }));
-
-
         let validationResults = [];
 
-        validationResults.push(validateUserName());
+        validationResults.push(validateUsername());
 
         validationResults.push(validateFirstName());
 
@@ -72,29 +68,48 @@ function SignUp() {
         }
         else
         {
-            // TODO: submit
+            let userData = {};
+            userData.username = username;
+            userData.firstname = firstName;
+            userData.lastname = lastName;
+            userData.email= emailAddress;
+            userData.password = password;
+            userData.country = country;
+            userData.city = city;
+
+            API.createUser(userData);
         }
     }
 
-    function validateUserName() {
+    function validateUsername() {
 
-        if (userName.length < 8) {
+        API.doesUsernameExist(username)
+        .then((result) => {
 
-            setUserNameError("User Name needs to be 8 characters");
+            if (result)
+            {
+                setUsernameError("User Name already exists");
+                return false;
+            }
+        });
+
+        if (username.length < 6) {
+
+            setUsernameError("User Name needs to be 6 characters");
             return false;
         }
-        else if (userName.length >= 128) {
+        else if (username.length >= 128) {
 
-            setUserNameError("User Name must be less than 128 characters");
+            setUsernameError("User Name must be less than 128 characters");
             return false;
         }
-        else if (isUserNameAlreadyInUse(userName)) {
+        else if (isUsernameAlreadyInUse(username)) {
 
-            setUserNameError("User Name already in user");
+            setUsernameError("User Name already in user");
             return false;
         }
         else {
-            setUserNameError();
+            setUsernameError();
             return true;
         }
     }
@@ -179,11 +194,12 @@ function SignUp() {
         else
         {
             setCityError("");
+            setCountryError("");
             return true;
         }
     }
 
-    function isUserNameAlreadyInUse(username) {
+    function isUsernameAlreadyInUse(username) {
         // TODO
         return false;
     }
@@ -231,13 +247,7 @@ function SignUp() {
     {
         setCitiesLoading(true);
 
-        fetch("https://countriesnow.space/api/v0.1/countries/cities", {
-            method: 'POST',
-            headers: {
-            'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ country: country })
-        })
+        API.getCitiesForCountry(country)
         .then(response => response.json())
         .then(json => setCities(json.data.sort()))
         .then(setCitiesLoading(false));
@@ -272,10 +282,10 @@ function SignUp() {
                                     <h4>User name:</h4>
                                 </Col>
                                 <Col xs="6" style={{ margin: 10 }}>
-                                    <Input className="form-control" type="text" placeholder="Choose a user name of 8 characters or more" onChange={e => setUserName(e.target.value)}></Input>
+                                    <Input className="form-control" type="text" placeholder="Choose a user name of 8 characters or more" onChange={e => setUsername(e.target.value)}></Input>
                                 </Col>
                                 <Col xs="5"></Col>
-                                <span className="has-error col-md-6" style={{ color: "red", textAlign: "center" }}>{userNameError}</span>
+                                <span className="has-error col-md-6" style={{ color: "red", textAlign: "center" }}>{usernameError}</span>
                             </Row>
 
                             <Row style={{ margin: 10 }}>
