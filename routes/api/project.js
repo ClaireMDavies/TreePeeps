@@ -7,9 +7,9 @@ router.route("/")
   .post(projectController.create);
 
 // Matches with "/api/project/:id"
-// router
-//   .route("/:id")
-//   .get(projectController.findById)
+router
+  .route("/:id")
+  .get(projectController.findById)
 //   .put(projectController.update)
 //   .delete(projectController.remove);
 
