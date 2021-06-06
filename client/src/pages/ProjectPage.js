@@ -3,7 +3,6 @@ import { Container } from 'reactstrap';
 import Navbar from "../components/NavbarTreePeeps";
 import NavItem from "../components/NavItem";
 import env from "react-dotenv";
-import "../styles/project.css"
 import API from "../utils/API"
 
 import MapPicker from 'react-google-map-picker'
