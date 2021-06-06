@@ -3,6 +3,13 @@ const db = require("../models");
 // Defining methods for the userController - findbyId and create
 //included update and delete but not really needed
 module.exports = {
+  findAll: function(req, res) {
+    db.User
+      .find(req.query)
+      .sort({ date: -1 })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
   findById: function(req, res) {
     db.User
       .findById(req.params.id)
@@ -28,4 +35,4 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   }
-  }
+}
