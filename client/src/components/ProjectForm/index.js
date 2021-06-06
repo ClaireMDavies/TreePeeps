@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import env from "react-dotenv";
-import API from "../../utils/API"
-
+import API from "../../utils/API";
 import MapPicker from 'react-google-map-picker'
 
 const DefaultLocation = { lat: 51.5073509, lng: -0.1277583 };
