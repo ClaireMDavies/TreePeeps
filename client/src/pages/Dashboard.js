@@ -40,7 +40,7 @@ const Dashboard = () => {
                             <Row>
                                 <h4 className="text-center mb-3">My Projects</h4>
                             </Row>
-                            <Row className="myCards">
+                            <Row className="row">
                                 <ProjectCard />
                             </Row>
                         </Row>
