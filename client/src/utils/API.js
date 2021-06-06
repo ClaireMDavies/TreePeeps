@@ -23,5 +23,8 @@ export default {
     getProject: function (id) {
         return axios.get("/api/projects " + id);
     },
-
+    // check user for unique name
+    doesUsernameExist: function(username) {
+        return axios.head(`/api/user/${username}`);
+    },
 };
