@@ -1,9 +1,12 @@
 const router = require("express").Router();
+const userController = require("../../controllers/userController");
 
-const userController = require("../../controllers/userController")
+router.head("/:username", userController.usernameExists);
+
+router.get("/:id", userController.findById);
+
+router.post("/", userController.create);
 
 
-// not sure if this is right for api/user
-router.route("/")
-.post(userController.create);
 
+module.exports = router;

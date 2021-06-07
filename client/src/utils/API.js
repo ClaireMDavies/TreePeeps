@@ -25,6 +25,27 @@ export default {
     },
     // check user for unique name
     doesUsernameExist: function(username) {
-        return axios.head(`/api/user/${username}`);
+
+        return fetch(`/api/users/${username}`, { method: 'HEAD' })
+        .then((response) => {
+            return response.ok;
+        });
     },
+    getCountries: function() {
+
+        return fetch("https://countriesnow.space/api/v0.1/countries/info?returns=name");
+    },
+    getCitiesForCountry: function(country) {
+
+        return fetch("https://countriesnow.space/api/v0.1/countries/cities", {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ country: country })
+        });
+    },
+    createUser: function(userData) {
+        return axios.post("/api/users", userData);
+    }
 };
