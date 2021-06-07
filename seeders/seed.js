@@ -26,7 +26,9 @@ db.once('open', async () => {
         amtFertilizer: 80, 
         numSpirals: 100,
         status: true,
-        timestamps:  new Date().setDate(new Date().getDate()-9)
+        timestamps:  new Date().setDate(new Date().getDate()-9),
+        startDate: new Date(),
+        endDate: new Date().setDate(new Date().getDate()+30)
     },
     {
         ownerid: 2, 
@@ -44,7 +46,9 @@ db.once('open', async () => {
         amtFertilizer: 80, 
         numSpirals: 100,
         status: true,
-        timestamps:  new Date().setDate(new Date().getDate()-9)
+        timestamps:  new Date().setDate(new Date().getDate()-9),
+        startDate: new Date(),
+        endDate: new Date().setDate(new Date().getDate()+30)
     }
     ]);
 

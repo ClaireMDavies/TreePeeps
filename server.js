@@ -29,7 +29,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI,  {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/TreePeeps",  {
   useNewUrlParser: true,
   useFindAndModify: false, 
   useUnifiedTopology: true,
