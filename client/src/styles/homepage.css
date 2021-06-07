@@ -1,15 +1,14 @@
 .masthead {
-    
+    background-repeat: no-repeat;
     background-image: url("../assets/background.jpg");
     position: relative;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: fill;
-    padding-bottom: 0;
-    margin-bottom: 0;
-    height: 100%;
-    width: auto;
+    background-attachment: scroll;
+    background-position:center;
+    background-size:cover;
+    max-height: 1920px;
+    max-width: 100%;
+    padding-bottom: 5%;
+    
 }
     
 .masthead h1 {
