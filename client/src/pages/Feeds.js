@@ -97,19 +97,17 @@ function Feeds() {
                             <CardSubtitle tag="h6" className="mb-2 ps-3 text-muted">Username <br /> <Moment format="YYYY/MM/DD">{project.startDate}</Moment> -- <Moment format="YYYY/MM/DD">{project.endDate}</Moment></CardSubtitle>
                             <CardBody className="ps-2">
                                 <CardText>{project.description}
-                                    <p>
-                                        <ul className="pt-3"><h6>Specifications :</h6></ul>
-                                        {project.latitude ? <li>Latitude :  {project.latitude}</li> : null}
-                                        {project.longitude ? <li>Longitude :  {project.longitude} </li> : null}
-                                        {project.area ? <li>Area (m²) :  {project.area}</li> : null}
-                                        {project.landOwner ? <li>Owner : {project.landOwner}</li> : null}
-                                        {project.hoursNeeded ? <li>Work hours needed :  {project.hoursNeeded}</li> : null}
-                                        {project.numTrees ? <li>Trees:  {project.numTrees}</li> : null}
-                                        {project.numStakes ? <li>Stakes : {project.numStakes}</li> : null}
-                                        {project.amtFertilizer ? <li>Fertilizer:  {project.amtFertilizer}</li> : null}
-                                        {project.numSpirals ? <li>Spirals:  {project.numSpirals}</li> : null}
-                                        {project.otherResources ? <li>Other Resources:  {project.otherResources} </li> : null}
-                                    </p>
+                                    <ul className="pt-3">Specifications :</ul>
+                                    {project.latitude ? <li>Latitude :  {project.latitude}</li> : null}
+                                    {project.longitude ? <li>Longitude :  {project.longitude} </li> : null}
+                                    {project.area ? <li>Area (m²) :  {project.area}</li> : null}
+                                    {project.landOwner ? <li>Owner : {project.landOwner}</li> : null}
+                                    {project.hoursNeeded ? <li>Work hours needed :  {project.hoursNeeded}</li> : null}
+                                    {project.numTrees ? <li>Trees:  {project.numTrees}</li> : null}
+                                    {project.numStakes ? <li>Stakes : {project.numStakes}</li> : null}
+                                    {project.amtFertilizer ? <li>Fertilizer:  {project.amtFertilizer}</li> : null}
+                                    {project.numSpirals ? <li>Spirals:  {project.numSpirals}</li> : null}
+                                    {project.otherResources ? <li>Other Resources:  {project.otherResources} </li> : null}
                                 </CardText>
                             </CardBody>
                             <div className="card-footer text-center">
