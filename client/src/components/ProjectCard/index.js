@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Moment from 'react-moment';
 import API from "../../utils/API";
-const styles = {
-    cardStyle: {
-        width: '40%',
-        padding: 0
-    }
-};
+import Wrapper from "../Wrapper";
+import "./style.css";
 
 function ProjectCard() {
     const [projects, setProjects] = useState([]);
     const [currentProject, setCurrentProject] = useState({});
-    const data = {};
     // Load all projects and store them with setProjects
     useEffect(() => {
         loadProjects()
@@ -71,13 +66,13 @@ function ProjectCard() {
 
 
     return (
-        <div>
+        <Wrapper>
             { projects.length ? (
                 <div>
                     {projects.map(project => {
                         return (
                             <div className="d-flex justify-content-center mb-3" key={project._id}>
-                                <div className="card" style={styles.cardStyle}>
+                                <div className="card card-style">
                                     <div className="card-header p-2 pb-0">
                                         <h5 className="card-title text-center">{project.name}</h5>
                                     </div>
@@ -131,8 +126,7 @@ function ProjectCard() {
                 <h3 className="text-center m-3 p-2">No Results to Display</h3>
 
             )}
-
-        </div>
+        </Wrapper>
     )
 };
 
