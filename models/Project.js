@@ -4,70 +4,91 @@ const Schema = mongoose.Schema;
 
 const ProjectSchema = new Schema({
 
-    ownerid: {
+    userId: {
         type: String,
         //required:true
     },
     name: {
-        type: String, 
+        type: String,
         required: true
     },
     title: {
         type: String,
-        required:true
-        },
+        required: true
+    },
     description: {
         type: String,
         required: true
     },
-    image: {
-        type: String,
-        default: "https://unsplash.com/@pavlenko?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+    startDate: {
+        type: Date,
+        required: true
     },
+    endDate: {
+        type: Date,
+        required: true
+    },
+    // image: {
+    //     type: String,
+    //     default: "https://unsplash.com/@pavlenko?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+    // },
     latitude: {
         type: String,
-        require: false
+        required: false
     },
     longitude: {
         type: String,
-        require: false
+        required: false
+    },
+    area: {
+        type: Number,
+        min: 0,
+        required: false
+    },
+    landOwner : {
+        type: String,
+        required: false
     },
     hoursNeeded: {
         type: Number,
         min: 0,
-        require: false
+        required: false
     },
     numTrees: {
         type: Number,
         min: 0,
-        require: false
+        required: false
     },
     //likely to change to array?
     numContributors: {
         type: Number,
-        require: false,
+        required: false,
         min: 0
     },
     ContributorNames: {
         type: [String],
-        require: false
+        required: false
     },
     numStakes: {
         type: Number,
-        require: false
+        required: false
     },
     amtFertilizer: {
         type: Number,
         min: 0,
-        require: false
+        required: false
     },
     numSpirals: {
         type: Number,
-        require: false
+        required: false
     },
     status: {
-        type: Boolean 
-
+        type: Boolean,
+        default: true
+    },
+    otherResources: {
+        type: String,
+        required: false
     },
     timestamps: {
         type: Date
