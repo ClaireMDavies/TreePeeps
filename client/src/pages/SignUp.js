@@ -16,7 +16,7 @@ function SignUp() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [country, setCountry] = useState("United Kingdom");
-    const [city, setCity] = useState("");
+    const [city, setCity] = useState("London");
 
     const [usernameError, setUsernameError] = useState("");
     const [firstNameError, setFirstNameError] = useState("");
@@ -233,14 +233,16 @@ function SignUp() {
 
     function countryChanged(e) {
         setCountry(e.target.value);
-        loadCities();
+        loadCities(e.target.value);
     }
 
     function cityChanged(e) {
         setCity(e.target.value);
     }
 
-    function loadCities() {
+    function loadCities(country) {
+
+        if (country === undefined) country = "United Kingdom";
 
         API.getCitiesForCountry(country)
             .then(response => response.json())
