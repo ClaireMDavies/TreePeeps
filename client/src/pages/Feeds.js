@@ -59,7 +59,6 @@ function Feeds() {
     }
     function handleDistanceChange(event) {
         setDistance(event.target.value*1000);
-        console.log(distance);
     }
     function handleFormSubmit(event) {
         event.preventDefault();

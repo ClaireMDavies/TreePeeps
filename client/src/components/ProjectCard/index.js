@@ -10,7 +10,8 @@ const styles = {
 
 function ProjectCard() {
     const [projects, setProjects] = useState([]);
-
+    const [currentProject, setCurrentProject] = useState({});
+    const data = {};
     // Load all projects and store them with setProjects
     useEffect(() => {
         loadProjects()
@@ -25,10 +26,49 @@ function ProjectCard() {
             )
             .catch(err => console.log(err));
     };
+    const onClickBtn = (id, status) => {
+        console.log(id, status)
+        const data = {
+            id: currentProject._id,
+            title: currentProject.title,
+            name: currentProject.name,
+            status: status,
+            description: currentProject.description,
+            startDate: currentProject.startDate,
+            endDate: currentProject.endDate,
+            location: { type: "Point", coordinates: [currentProject.lng, currentProject.lat] },
+            latitude: currentProject.lat,
+            longitude: currentProject.lng,
+            area: currentProject.area,
+            landOwner: currentProject.landOwner,
+            hoursNeeded: currentProject.hoursNeeded,
+            numTrees: currentProject.numTrees,
+            numStakes: currentProject.numStakes,
+            amtFertilizer: currentProject.amtFertilizer,
+            numSpirals: currentProject.numSpirals,
+            otherResources: currentProject.otherResources
+        };
+        API.getProject(id)
+            .then(response => {
+                setCurrentProject(response.data);
+                console.log(currentProject);
+            })
+            .then(
 
-    function onClickBtn() {
+                API.updateProject(id, data)
+                    .then(response => {
+                        setCurrentProject({ ...currentProject, status: status });
+                        console.log(currentProject);
+                    })
+                    .catch(e => {
+                        console.log(e);
+                    })
+            )
+        //         .catch (e => {
+        //     console.log(e);
+        // });
+    }
 
-    };
 
     return (
         <div>
@@ -44,8 +84,8 @@ function ProjectCard() {
                                     <div className="card-body p-0 text-center">
                                         <ul className="list-group list-group-flush">
                                             <li className="list-group-item">Status :
-                                                <button className={`btn btn-sm ms-3 ${project.status ? 'btn-success' : 'btn-outline-success'}`} onClick={onClickBtn}>Ongoing</button>
-                                                <button className={`btn btn-sm ms-2 ${!project.status ? 'btn-danger' : 'btn-outline-danger'}`} onClick={onClickBtn}>Closed</button>
+                                                <button className={`btn btn-sm ms-3 ${project.status ? 'btn-success' : 'btn-outline-success'}`} onClick={() => { onClickBtn(project._id, true) }}>Ongoing</button>
+                                                <button className={`btn btn-sm ms-2 ${!project.status ? 'btn-danger' : 'btn-outline-danger'}`} onClick={() => { onClickBtn(project._id, false) }}>Closed</button>
                                             </li>
                                             <li className="list-group-item">Start Date : <Moment format="YYYY/MM/DD">{project.startDate}</Moment> </li>
                                             <li className="list-group-item">Location : {project.latitude} , {project.longitude}</li>
@@ -53,7 +93,7 @@ function ProjectCard() {
                                 <div className="list-group mt-2">
                                                     {project.ContributorNames.map(contributor => {
                                                         return (
-                                                            <button type="button" className="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#cntModal" >{contributor}</button>
+                                                            <button type="button" className="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#cntModal" key={contributor + project._id}>{contributor}</button>
                                                         )
                                                     })}
                                                 </div>

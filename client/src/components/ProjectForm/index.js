@@ -81,7 +81,6 @@ const ProjectForm = () => {
         API.convert(city)
             .then(results => {
                 setTimeout(() => {
-                    console.log(results);
                     setDefaultLocation({ lat: results.data.results[0].geometry.location.lat, lng: results.data.results[0].geometry.location.lng });
                 }, 500);
             })

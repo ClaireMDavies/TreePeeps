@@ -37,11 +37,14 @@ export default {
     return axios.get("/api/projects");
   },
   getProject: function (id) {
-    return axios.get("/api/projects " + id);
+    return axios.get("/api/projects/project/" + id);
   },
-  searchByLocation: function (lat,lng,dist) {
+  updateProject: function (id, data) {
+    return axios.put("/api/projects/project/" + id, data);
+  },
+  searchByLocation: function (lat, lng, dist) {
     return axios.get(`/api/projects/location?lat=${lat}&lng=${lng}&dist=${dist}`);
-   },
+  },
   // check user for unique name
   doesUsernameExist: function (username) {
     return fetch(`/api/users/${username}`, { method: 'HEAD' })

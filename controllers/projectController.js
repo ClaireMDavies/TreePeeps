@@ -16,7 +16,6 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findByLocation: function (req, res) {
-    console.log(req.query);
     let lng = req.query.lng;
     let lat = req.query.lat;
     let dist = req.query.dist;
