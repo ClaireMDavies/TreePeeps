@@ -16,6 +16,10 @@ const Dashboard = () => {
                     name="Dashboard">
                 </NavItem>
                 <NavItem
+                    link="/search"
+                    name="Search">
+                </NavItem>
+                <NavItem
                     link="/"
                     name="About Us">
                 </NavItem>
