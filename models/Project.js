@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const Schema = mongoose.Schema;
 
 const ProjectSchema = new Schema({
@@ -28,16 +27,16 @@ const ProjectSchema = new Schema({
         type: Date,
         required: true
     },
-    // image: {
-    //     type: String,
-    //     default: "https://unsplash.com/@pavlenko?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-    // },
+    location: {
+        type: { type: String },
+        coordinates: []
+    },    
     latitude: {
-        type: String,
+        type: Number,
         required: false
     },
     longitude: {
-        type: String,
+        type: Number,
         required: false
     },
     area: {
@@ -45,7 +44,7 @@ const ProjectSchema = new Schema({
         min: 0,
         required: false
     },
-    landOwner : {
+    landOwner: {
         type: String,
         required: false
     },
@@ -94,13 +93,15 @@ const ProjectSchema = new Schema({
         type: Date
     }
 
-
+}, {
+    timestamps: true
 });
 
 //locAation - w3words - three word string - convert to l&l and vice versa - store both, no coversion
 // latitude and longitude coords
 // northings & eastings
 
+ProjectSchema.index({ location: "2dsphere" });
 const Project = mongoose.model("Project", ProjectSchema);
 
 module.exports = Project;

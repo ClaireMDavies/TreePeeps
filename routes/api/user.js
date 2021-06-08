@@ -1,9 +1,24 @@
 const router = require("express").Router();
+const userController = require("../../controllers/userController");
 
-const userController = require("../../controllers/userController")
+router.head("/:username", userController.usernameExists);
 
+router.get("/:id", userController.findById);
 
-// not sure if this is right for api/user
+//Matches with "/api/users"
 router.route("/")
-.post(userController.create);
+ .get(userController.findAll)
+ .post(userController.create);
 
+// Matches with "/api/user/:id"
+router
+ .route("/:id")
+ .get(userController.findById)
+ .put(userController.update)
+ .delete(userController.remove);
+
+module.exports = router;
+
+
+
+module.exports = router;
