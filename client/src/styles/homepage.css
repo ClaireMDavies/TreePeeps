@@ -1,41 +1,44 @@
 .masthead {
-    position: relative;
-    width: 100%;
-    height: auto;
-    min-height: 35rem;
-    padding: 15rem 0;
-    background-image: url("../assets/background.jpg");
-    background-position: center;
     background-repeat: no-repeat;
+    background-image: url("../assets/background.jpg");
+    position: relative;
     background-attachment: scroll;
-    background-size: cover;
+    background-position:center;
+    background-size:cover;
+    max-height: 1920px;
+    max-width: 100%;
+    padding-bottom: 5%;
     
 }
+    
 .masthead h1 {
-    font-family:'Lobster', cursive, Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Paytone One', sans-serif;
     font-size: 4rem;
     line-height: 2.5rem; 
-    color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255, 0.5);
 }
 .masthead h3 {
-    font-family: 'Slabo 27px', serif, Georgia, 'Times New Roman', Times, serif;
+    font-family:'Paytone One', sans-serif;
     font-size: 2rem;
     line-height: 2.5rem; 
     margin-top: 20px;
-    color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255, 0.8);
+    font-style: italic;
+    
 }
 .masthead p {
-    font-family: 'Slabo 27px', serif, Georgia, 'Times New Roman', Times, serif;
+    font-family: 'Paytone One', sans-serif;
     font-size: 1.5rem;
     line-height: 2rem; 
     margin-top: 20px;
-    color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255, 0.7);
 }
 /* icons styling */
 .buttons {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    
 }  
 .buttons li {
     display: inline-block;
@@ -52,9 +55,44 @@
     }
 }
 img#logo {
-        width: 30%;
+        width: 50%;
         height: auto;
+        padding: 20px;
+        border-radius: 25px;
 }
 .div {
     background-color: #0f5132;
+}
+
+.mx-auto.text-center {
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 25px;
+    padding: 20px;
+    margin: 5%;
+}
+
+.btn-outline {
+    background-color: white;
+}
+
+.btn-outline-success {
+    color: #ffffff8c;
+    border-color: #ffffff;
+}
+.btn-outline-success.btn-lg.m-2{
+    background-color: #0f5132;
+    color: #ffffff8c;
+}
+
+#footer{
+    color: #ffffff8c;
+    font-family:'Paytone One', sans-serif;
+    background-color : #0f5132;
+    font-weight: bold;
+    line-height: 0.1;
+    text-align: center;
+    padding-bottom: 1%;
+    padding-top: 1%;
+    height: auto;
+    width: 100%;
 }
