@@ -1,7 +1,9 @@
 const router = require("express").Router();
+const userController = require("../../controllers/userController");
 
-const userController = require("../../controllers/userController")
+router.head("/:username", userController.usernameExists);
 
+router.get("/:id", userController.findById);
 
 //Matches with "/api/users"
 router.route("/")
@@ -17,3 +19,6 @@ router
 
 module.exports = router;
 
+
+
+module.exports = router;

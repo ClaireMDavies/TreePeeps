@@ -24,6 +24,7 @@ export default {
   saveUser: function (userData) {
     return axios.post("/api/users", userData);
   },
+
   // Converts city to Lat and Lng coordinates 
   convert: function (city) {
     return axios.get(BASEURL + city + APIKEY)
@@ -38,8 +39,33 @@ export default {
   getProject: function (id) {
     return axios.get("/api/projects " + id);
   },
+  searchByLocation: function (lat) {
+    // return axios.get(`/api/projects/location?lat=${lat}+lng=${lng}`);
+    // return axios.get(`/api/projects/location/lat=${lat}`);
+    return axios.get(`/api/projects/location`);
+
+  },
   // check user for unique name
   doesUsernameExist: function (username) {
-    return axios.head(`/api/user/${username}`);
+    return fetch(`/api/users/${username}`, { method: 'HEAD' })
+      .then((response) => {
+        return response.ok;
+      });
   },
+  getCountries: function () {
+    return fetch("https://countriesnow.space/api/v0.1/countries/info?returns=name");
+  },
+  getCitiesForCountry: function (country) {
+    return fetch("https://countriesnow.space/api/v0.1/countries/cities", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ country: country })
+    });
+
+  },
+  createUser: function (userData) {
+    return axios.post("/api/users", userData);
+  }
 };

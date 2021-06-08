@@ -19,7 +19,7 @@ function App() {
           //
           <Route exact path="/projectpage" component={Project} />
           //
-          <Route exact path="/feeds" component={Feeds} />
+          <Route exact path="/search" component={Feeds} />
           
           //
           <Route exact path="/login" component={Login} />

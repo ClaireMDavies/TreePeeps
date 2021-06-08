@@ -15,6 +15,28 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  findByLocation: function (req, res) {
+    console.log(req.query)
+    let lng = -0.1277583;
+    let lat = 51.5073509;
+    console.log(lng, lat);
+    db.Project.find({
+      location: {
+        $near: {
+          $maxDistance: 1000,
+          $geometry: {
+            type: "Point",
+            coordinates: [lng, lat]
+          }
+        }
+      }
+    }).find((error, results) => {
+      if (error) {
+        res.json(error);
+      }
+      res.json((results));
+    });
+  },
   create: function (req, res) {
     db.Project
       .create(req.body)

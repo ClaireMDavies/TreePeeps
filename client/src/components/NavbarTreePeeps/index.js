@@ -1,7 +1,7 @@
 import React from "react";
 import SearchForm from "../SearchForm";
 
-const NavbarTreePeeps = (props) => {
+const NavbarTreePeeps = ({ children, handleFormSubmit, handleCityChange }) => {
     return (
         < nav className="navbar navbar-expand-lg navbar-light bg-light shadow mb-3" >
             <div className="container-fluid">
@@ -12,11 +12,10 @@ const NavbarTreePeeps = (props) => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        {props.children}
+                        {children}
 
                     </ul>
-                    {window.location.pathname === "/dashboard" || window.location.pathname === "/feeds" || window.location.pathname === "/project"
-                        ? <SearchForm />
+                    {window.location.pathname === "/search" ? <SearchForm onClick={handleFormSubmit} onChange={handleCityChange} />
                         : ""
                     }
                 </div>
