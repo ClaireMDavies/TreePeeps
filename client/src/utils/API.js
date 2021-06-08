@@ -39,12 +39,9 @@ export default {
   getProject: function (id) {
     return axios.get("/api/projects " + id);
   },
-  searchByLocation: function (lat) {
-    // return axios.get(`/api/projects/location?lat=${lat}+lng=${lng}`);
-    // return axios.get(`/api/projects/location/lat=${lat}`);
-    return axios.get(`/api/projects/location`);
-
-  },
+  searchByLocation: function (lat,lng,dist) {
+    return axios.get(`/api/projects/location?lat=${lat}&lng=${lng}&dist=${dist}`);
+   },
   // check user for unique name
   doesUsernameExist: function (username) {
     return fetch(`/api/users/${username}`, { method: 'HEAD' })

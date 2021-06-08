@@ -59,7 +59,7 @@ const ProjectForm = () => {
                     description: "",
                     startDate: "",
                     endDate: "",
-                    geo:[],
+                    location:{type:"Point",coordinates:[]},
                     latitude: "",
                     longitude: "",
                     area: "",

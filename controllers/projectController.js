@@ -16,14 +16,14 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findByLocation: function (req, res) {
-    console.log(req.query)
-    let lng = -0.1277583;
-    let lat = 51.5073509;
-    console.log(lng, lat);
+    console.log(req.query);
+    let lng = req.query.lng;
+    let lat = req.query.lat;
+    let dist = req.query.dist;
     db.Project.find({
       location: {
         $near: {
-          $maxDistance: 1000,
+          $maxDistance: dist,
           $geometry: {
             type: "Point",
             coordinates: [lng, lat]

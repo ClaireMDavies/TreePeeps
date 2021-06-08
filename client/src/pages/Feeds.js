@@ -29,12 +29,18 @@ const styles = {
 function Feeds() {
     const ContactNotify = () => toast("Your contact info is sent to the project creator");
     const [nearestProjects, setNearestProjects] = useState([]);
-    const [city, setCity] = useState('')
+    const [city, setCity] = useState('');
+    const [distance, setDistance]=useState(1000);
     const [location, setLocation] = useState({ lat: "", lng: "" });
-    const [showCard, setShowCard] = useState(false);
+    const [showCardId, setShowCardId] = useState(null);
     const showContribute = id => () => {
-        console.log(id);
-        if (!showCard) { setShowCard(true) } else { setShowCard(false) }
+        setShowCardId(prevId => {
+            if (prevId === id) {
+                return null;
+            } else {
+                return id;
+            }
+        });
     }
 
     useEffect(() => {
@@ -51,12 +57,16 @@ function Feeds() {
     function handleCityChange(event) {
         setCity(event.target.value);
     }
+    function handleDistanceChange(event) {
+        setDistance(event.target.value*1000);
+        console.log(distance);
+    }
     function handleFormSubmit(event) {
         event.preventDefault();
-        // console.log(location.lat, location.lng)
         API.searchByLocation(
-            // location.lat,
-            // location.lng
+            location.lat,
+            location.lng,
+            distance
         )
             .then(res => {
                 console.log(res.data);
@@ -66,6 +76,7 @@ function Feeds() {
             .catch(err => console.log(err));
 
     }
+
     function sendEmail(e, name) {
         e.preventDefault();
         window.Email.send({
@@ -82,7 +93,7 @@ function Feeds() {
     }
     return (
         <div>
-            <Navbar handleFormSubmit={handleFormSubmit} handleCityChange={handleCityChange}>
+            <Navbar handleFormSubmit={handleFormSubmit} handleCityChange={handleCityChange} handleDistanceChange={handleDistanceChange}>
                 <NavItem
                     link="/dashboard"
                     name="Dashboard">
@@ -116,17 +127,18 @@ function Feeds() {
                                         <CardSubtitle tag="h6" className="mb-2 ps-3 text-muted">Username <br /> <Moment format="YYYY/MM/DD">{project.startDate}</Moment> -- <Moment format="YYYY/MM/DD">{project.endDate}</Moment></CardSubtitle>
                                         <CardBody className="ps-2">
                                             <CardText>{project.description}
-                                                <ul className="pt-3">Specifications :</ul>
+                                                <ul className="pt-3">Specifications :
                                                 {project.latitude ? <li>Latitude :  {project.latitude}</li> : null}
-                                                {project.longitude ? <li>Longitude :  {project.longitude} </li> : null}
-                                                {project.area ? <li>Area (m²) :  {project.area}</li> : null}
-                                                {project.landOwner ? <li>Owner : {project.landOwner}</li> : null}
-                                                {project.hoursNeeded ? <li>Work hours needed :  {project.hoursNeeded}</li> : null}
-                                                {project.numTrees ? <li>Trees:  {project.numTrees}</li> : null}
-                                                {project.numStakes ? <li>Stakes : {project.numStakes}</li> : null}
-                                                {project.amtFertilizer ? <li>Fertilizer:  {project.amtFertilizer}</li> : null}
-                                                {project.numSpirals ? <li>Spirals:  {project.numSpirals}</li> : null}
-                                                {project.otherResources ? <li>Other Resources:  {project.otherResources} </li> : null}
+                                                    {project.longitude ? <li>Longitude :  {project.longitude} </li> : null}
+                                                    {project.area ? <li>Area (m²) :  {project.area}</li> : null}
+                                                    {project.landOwner ? <li>Owner : {project.landOwner}</li> : null}
+                                                    {project.hoursNeeded ? <li>Work hours needed :  {project.hoursNeeded}</li> : null}
+                                                    {project.numTrees ? <li>Trees:  {project.numTrees}</li> : null}
+                                                    {project.numStakes ? <li>Stakes : {project.numStakes}</li> : null}
+                                                    {project.amtFertilizer ? <li>Fertilizer:  {project.amtFertilizer}</li> : null}
+                                                    {project.numSpirals ? <li>Spirals:  {project.numSpirals}</li> : null}
+                                                    {project.otherResources ? <li>Other Resources:  {project.otherResources} </li> : null}
+                                                </ul>
                                             </CardText>
                                         </CardBody>
                                         <div className="card-footer text-center">
@@ -136,7 +148,7 @@ function Feeds() {
                                         </div>
                                     </Card>
                                     {/* Contribute Card */}
-                                    {showCard ? <ContributeCard /> : null}
+                                    {showCardId === project._id ? <ContributeCard /> : null}
                                 </div>
                             )
                         }

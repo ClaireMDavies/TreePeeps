@@ -1,7 +1,7 @@
 import React from "react";
 import SearchForm from "../SearchForm";
 
-const NavbarTreePeeps = ({ children, handleFormSubmit, handleCityChange }) => {
+const NavbarTreePeeps = ({ children, handleFormSubmit, handleCityChange, handleDistanceChange }) => {
     return (
         < nav className="navbar navbar-expand-lg navbar-light bg-light shadow mb-3" >
             <div className="container-fluid">
@@ -15,7 +15,7 @@ const NavbarTreePeeps = ({ children, handleFormSubmit, handleCityChange }) => {
                         {children}
 
                     </ul>
-                    {window.location.pathname === "/search" ? <SearchForm onClick={handleFormSubmit} onChange={handleCityChange} />
+                    {window.location.pathname === "/search" ? <SearchForm onClick={handleFormSubmit} onChange={handleCityChange} onChangeDistance={handleDistanceChange}/>
                         : ""
                     }
                 </div>
