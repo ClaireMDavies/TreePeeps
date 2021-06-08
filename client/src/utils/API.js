@@ -63,7 +63,6 @@ export default {
       },
       body: JSON.stringify({ country: country })
     });
-
   },
   createUser: function (userData) {
     return axios.post("/api/users", userData);

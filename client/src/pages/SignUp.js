@@ -31,15 +31,15 @@ function SignUp() {
 
     const [citiesLoading, setCitiesLoading] = useState(false);
 
-    const [location, setLocation] = useState( {} );
+    const [location, setLocation] = useState({});
 
     React.useEffect(() => {
 
         API.getCountries()
-        .then(response => response.json())
-        .then(json => json.data.map((country => country.name)))
-        .then(countries => setCountries(countries.sort()))
-        .then(loadCities());
+            .then(response => response.json())
+            .then(json => json.data.map((country => country.name)))
+            .then(countries => setCountries(countries.sort()))
+            .then(loadCities());
 
     }, []);
 
@@ -61,18 +61,16 @@ function SignUp() {
 
         validationResults.push(validateLocation());
 
-        if (validationResults.some(result => result === false))
-        {
+        if (validationResults.some(result => result === false)) {
             // there were some errors
             // alert("Failed!");
         }
-        else
-        {
+        else {
             let userData = {};
             userData.username = username;
             userData.firstname = firstName;
             userData.lastname = lastName;
-            userData.email= emailAddress;
+            userData.email = emailAddress;
             userData.password = password;
             userData.country = country;
             userData.city = city;
@@ -82,16 +80,6 @@ function SignUp() {
     }
 
     function validateUsername() {
-
-        API.doesUsernameExist(username)
-        .then((result) => {
-
-            if (result)
-            {
-                setUsernameError("User Name already exists");
-                return false;
-            }
-        });
 
         if (username.length < 6) {
 
@@ -103,10 +91,9 @@ function SignUp() {
             setUsernameError("User Name must be less than 128 characters");
             return false;
         }
-        else if (isUsernameAlreadyInUse(username)) {
-
-            setUsernameError("User Name already in user");
-            return false;
+        else if (usernameError.length > 0)
+        {
+            return false;   
         }
         else {
             setUsernameError();
@@ -177,7 +164,7 @@ function SignUp() {
             setPasswordError("");
             return true;
         }
-    }   
+    }
 
     function validateLocation() {
 
@@ -191,21 +178,33 @@ function SignUp() {
             setCityError("Please select a City");
             return false;
         }
-        else
-        {
+        else {
             setCityError("");
             setCountryError("");
             return true;
         }
     }
 
-    function isUsernameAlreadyInUse(username) {
-        // TODO
-        return false;
-    }
-
     function emailIsValid(email) {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+    }
+
+    function usernameLostFocus() {
+
+        if (username.length > 0) {
+
+            API.doesUsernameExist(username)
+                .then((exists) => {
+
+                    if (exists) {
+                        setUsernameError("User Name already exists");
+                    }
+                    else
+                    {
+                        setUsernameError("");
+                    }
+                });
+        }
     }
 
     function emailAddressLostFocus() {
@@ -232,25 +231,20 @@ function SignUp() {
         }
     }
 
-    function countryChanged(e)
-    {
+    function countryChanged(e) {
         setCountry(e.target.value);
         loadCities();
     }
 
-    function cityChanged(e)
-    {
+    function cityChanged(e) {
         setCity(e.target.value);
     }
 
-    function loadCities()
-    {
-        setCitiesLoading(true);
+    function loadCities() {
 
         API.getCitiesForCountry(country)
-        .then(response => response.json())
-        .then(json => setCities(json.data.sort()))
-        .then(setCitiesLoading(false));
+            .then(response => response.json())
+            .then(json => setCities(json.data.sort()));
     }
 
     return (
@@ -282,7 +276,7 @@ function SignUp() {
                                     <h4>User name:</h4>
                                 </Col>
                                 <Col xs="6" style={{ margin: 10 }}>
-                                    <Input className="form-control" type="text" placeholder="Choose a user name of 8 characters or more" onChange={e => setUsername(e.target.value)}></Input>
+                                    <Input className="form-control" type="text" placeholder="Choose a user name of 8 characters or more" onBlur={usernameLostFocus} onChange={e => setUsername(e.target.value)}></Input>
                                 </Col>
                                 <Col xs="5"></Col>
                                 <span className="has-error col-md-6" style={{ color: "red", textAlign: "center" }}>{usernameError}</span>
