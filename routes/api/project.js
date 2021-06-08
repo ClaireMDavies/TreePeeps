@@ -14,6 +14,9 @@ router
 //   .delete(projectController.remove);
 router
   .route("/location")
+  // .route("/location?lat=/:lat+lng=/:lng")
+  // .route("/location/lat=/:lat")
+
   .get(projectController.findByLocation)
 
 module.exports = router;

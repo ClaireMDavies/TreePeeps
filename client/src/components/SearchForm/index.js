@@ -1,33 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { InputGroup, InputGroupAddon, Input, Button } from 'reactstrap';
-import API from "../../utils/API"
 
-const SearchForm = () => {
-    const [city, setCity] = useState('')
-    const [location, setLocation] = useState({ lat: "", lng: ""});
-    useEffect(() => {
-        if (!city) {
-            return;
-        }
-        API.convert(city)
-            .then(results => {
-                setLocation({ lat: results.data.results[0].geometry.location.lat, lng: results.data.results[0].geometry.location.lng });
-                console.log(location);
-            })
-            .catch(err => console.log(err));
-    }, [city]);
-
-    function handleChangeCity(event) {
-        setCity(event.target.value);
-    }
+const SearchForm = (props) => {
 
     return (
 
         <form className="d-flex">
             <InputGroup>
-                <Input type="text" name="message" id="message" placeholder="Enter Location..." onChange={handleChangeCity} />
+                <Input type="text" name="message" id="message" placeholder="Enter Location..." onChange={props.onChange} />
                 <InputGroupAddon addonType="append">
-                    <Button type="submit" value="submit" color="success">Search</Button>
+                    <Button type="submit" value="submit" color="success" onClick={props.onClick}>Search</Button>
                 </InputGroupAddon>
             </InputGroup>
         </form>

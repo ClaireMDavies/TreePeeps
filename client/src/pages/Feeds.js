@@ -28,28 +28,44 @@ const styles = {
 
 function Feeds() {
     const ContactNotify = () => toast("Your contact info is sent to the project creator");
-    const [projects, setProjects] = useState([]);
+    const [nearestProjects, setNearestProjects] = useState([]);
+    const [city, setCity] = useState('')
+    const [location, setLocation] = useState({ lat: "", lng: "" });
     const [showCard, setShowCard] = useState(false);
     const showContribute = id => () => {
         console.log(id);
         if (!showCard) { setShowCard(true) } else { setShowCard(false) }
     }
-
-    // Load all projects and store them with setProjects
+  
     useEffect(() => {
-        loadProjects()
-    }, [])
-
-    // Loads all projects and sets them to projects
-    function loadProjects() {
-
-        API.getProjects()
-            .then(res => {
-                setProjects(res.data);
-            }
-            )
+        if (!city) {
+            return;
+        }
+        API.convert(city)
+            .then(results => {
+                setLocation({ lat: results.data.results[0].geometry.location.lat, lng: results.data.results[0].geometry.location.lng });
+            })
             .catch(err => console.log(err));
-    };
+    }, [city]);
+
+    function handleCityChange(event) {
+        setCity(event.target.value);
+    }
+    function handleFormSubmit(event) {
+        event.preventDefault();
+        // console.log(location.lat, location.lng)
+        API.searchByLocation(
+            // location.lat,
+            // location.lng
+        )
+            .then(res => {
+                console.log(res.data);
+                setNearestProjects(res.data);
+                console.log(nearestProjects);
+            })
+            .catch(err => console.log(err));
+
+    }
     function sendEmail(e, name) {
         e.preventDefault();
         window.Email.send({
@@ -66,7 +82,7 @@ function Feeds() {
     }
     return (
         <div>
-            <Navbar>
+            <Navbar handleFormSubmit={handleFormSubmit} handleCityChange={handleCityChange}>
                 <NavItem
                     link="/dashboard"
                     name="Dashboard">
@@ -85,7 +101,7 @@ function Feeds() {
                 </NavItem>
             </Navbar>
             {/* Post Card */}
-            {projects.map(project => {
+            {nearestProjects.map(project => {
                 return (
                     <div className="row d-flex justify-content-center mb-3" key={project._id}>
                         <Card style={styles.cardStyle}>

@@ -23,8 +23,14 @@ export default {
     getProject: function (id) {
         return axios.get("/api/projects " + id);
     },
+    searchByLocation: function (lat) {
+        // return axios.get(`/api/projects/location?lat=${lat}+lng=${lng}`);
+        // return axios.get(`/api/projects/location/lat=${lat}`);
+        return axios.get(`/api/projects/location`);
+
+    },
     // check user for unique name
-    doesUsernameExist: function(username) {
+    doesUsernameExist: function (username) {
         return axios.head(`/api/user/${username}`);
     },
 };
