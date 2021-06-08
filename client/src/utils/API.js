@@ -45,6 +45,9 @@ export default {
   searchByLocation: function (lat, lng, dist) {
     return axios.get(`/api/projects/location?lat=${lat}&lng=${lng}&dist=${dist}`);
   },
+  saveContribution: function (ContributionData) {
+    return axios.post("/api/contribution", ContributionData);
+  },
   // check user for unique name
   doesUsernameExist: function (username) {
     return fetch(`/api/users/${username}`, { method: 'HEAD' })
