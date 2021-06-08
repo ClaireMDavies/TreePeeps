@@ -6,8 +6,12 @@ import NavItem from "../components/NavItem";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import API from "../utils/API";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function SignUp() {
+    const accountCreationFailedNotify = () => toast("there were some errors");
+    const accountCreationSuccessNotify = () => toast("yay");
 
     const [username, setUsername] = useState("");
     const [firstName, setFirstName] = useState("");
@@ -64,6 +68,7 @@ function SignUp() {
         if (validationResults.some(result => result === false)) {
             // there were some errors
             // alert("Failed!");
+            accountCreationFailedNotify();
         }
         else {
             let userData = {};
@@ -76,6 +81,7 @@ function SignUp() {
             userData.city = city;
 
             API.createUser(userData);
+            accountCreationSuccessNotify();
         }
     }
 
@@ -278,7 +284,7 @@ function SignUp() {
                                     <h4>User name:</h4>
                                 </Col>
                                 <Col xs="6" style={{ margin: 10 }}>
-                                    <Input className="form-control" type="text" placeholder="Choose a user name of 8 characters or more" onBlur={usernameLostFocus} onChange={e => setUsername(e.target.value)}></Input>
+                                    <Input className="form-control" type="text" placeholder="Choose a user name of 6 characters or more" onBlur={usernameLostFocus} onChange={e => setUsername(e.target.value)}></Input>
                                 </Col>
                                 <Col xs="5"></Col>
                                 <span className="has-error col-md-6" style={{ color: "red", textAlign: "center" }}>{usernameError}</span>
@@ -374,6 +380,7 @@ function SignUp() {
 
                     </CardBody>
                 </Card>
+                <ToastContainer/>
             </Container>
             <Footer />
         </div>
