@@ -1,9 +1,12 @@
 import React from "react";
+import { useState } from "react";
 import { Container, Row, Col, Card, CardBody, Form, Input, Button } from 'reactstrap';
 import Navbar from "../components/NavbarTreePeeps";
 import loginImg from '../images/login-img.jpg';
 import NavItem from "../components/NavItem";
 import Footer from "../components/Footer";
+import API from "../utils/API";
+import { Link } from "react-router-dom";
 
 const styles = {
     cardStyle: {
@@ -26,13 +29,32 @@ const styles = {
 
 };
 
-function Login() {
+function Login(props) {
+
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    
+    function signIn()
+    {
+        API.login(username, password)
+        .then(response => {
+            if (response.data.userId)
+            {
+                localStorage.setItem("userId", response.data.userId);
+                props.history.push("/dashboard");
+            }
+            else
+            {
+                // TODO: failed to log in 
+            }
+        });
+    }
 
     return (
         <div>
             <Navbar>
                 <NavItem
-                    link="/"
+                    link="/about"
                     name="About Us">
                 </NavItem>
                 <NavItem
@@ -57,17 +79,17 @@ function Login() {
                                 <Form>
                                     <div className="input-group mb-3">
                                         <span className="input-group-text" style={styles.cardSpan} >Email  </span>
-                                        <Input type="email" className="form-control" placeholder="Email" aria-label="Email" />
+                                        <Input type="email" className="form-control" placeholder="Email" aria-label="Email" onChange={e => setUsername(e.target.value)} />
                                     </div>
                                     <div className="input-group mb-3">
                                         <span className="input-group-text" style={styles.cardSpan} >Password </span>
-                                        <Input type="password" className="form-control" placeholder="Password" aria-label="Password" />
+                                        <Input type="password" className="form-control" placeholder="Password" aria-label="Password" onChange={e => setPassword(e.target.value)} />
                                     </div>
                                 </Form>
                                 <div className="text-center">
-                                    <Button type="submit" color="danger">Submit</Button>
+                                    <Button type="submit" color="danger" onClick={signIn}>Submit</Button>
                                 </div>
-                                <p className="login-card-footer-text">Don't have an account? <a href="#!" className="text-reset">Register here</a></p>
+                                <p className="login-card-footer-text">Don't have an account? <Link className="text-reset" to="/signup">Register here</Link></p>
                             </CardBody>
                         </Col>
                     </Row>

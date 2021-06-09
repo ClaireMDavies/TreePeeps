@@ -40,8 +40,7 @@ function SignUp() {
     React.useEffect(() => {
 
         API.getCountries()
-            .then(response => response.json())
-            .then(json => json.data.map((country => country.name)))
+            .then(json => json.data.data.map((country => country.name)))
             .then(countries => setCountries(countries.sort()))
             .then(loadCities());
 
@@ -251,15 +250,14 @@ function SignUp() {
         if (country === undefined) country = "United Kingdom";
 
         API.getCitiesForCountry(country)
-            .then(response => response.json())
-            .then(json => setCities(json.data.sort()));
+            .then(json => setCities(json.data.data.sort()));
     }
 
     return (
         <div>
             <Navbar>
                 <NavItem
-                    link="/"
+                    link="/about"
                     name="About Us">
                 </NavItem>
                 <NavItem
