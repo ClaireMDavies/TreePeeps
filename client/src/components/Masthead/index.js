@@ -8,7 +8,7 @@ function Masthead() {
             <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
             <header className="masthead">
                 <div className="container d-flex h-100 align-items-center">
-                    <div className="wrapper mx-auto text-center">
+                    <div className="container-wrapper mx-auto text-center">
                         <img id="logo" src={logo} />
                         <h3 className="mx-auto mt-4"><b>A tree-planting app for tree-minded people</b></h3>
 
