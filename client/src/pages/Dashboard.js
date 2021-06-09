@@ -45,9 +45,7 @@ const Dashboard = () => {
                                 <h4 className="text-center mb-3">My Projects</h4>
                             </div>
                             <div className="card-body">
-                                <div className="row">
-                                    <ProjectCard />
-                                </div>
+                                <ProjectCard />
                             </div>
                         </div>
 
@@ -56,9 +54,7 @@ const Dashboard = () => {
                                 <h4 className="text-center mb-3">My Contributions</h4>
                             </div>
                             <div className="card-body">
-                                <div className="row">
-                                    <ContributedProjectCard />
-                                </div>
+                                <ContributedProjectCard />
                             </div>
                         </div>
                     </Col >
