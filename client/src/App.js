@@ -1,17 +1,32 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Feeds from "../src/pages/Feeds"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import HomePage from "./pages/homepage";
+import SignUp from "../src/pages/SignUp";
+import Project from "../src/pages/ProjectPage";
+import Feeds from "../src/pages/Feeds";
+import Login from "../src/pages/Login";
+import ContactUs from "../src//pages/ContactUs";
+import Dashboard from "../src/pages/Dashboard";
+import NoMatch from "../src/pages/NoMatch";
 
-// Calling all components and using router to render pages
 function App() {
+
   return (
-    <Router>
-      <div>
-        <Route exact path="/feeds" component={Feeds} />
-        <Route exact path="/" component={HomePage} />
-      </div>
-    </Router>
+    <div>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/projectpage" component={Project} />
+          <Route exact path="/search" component={Feeds} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/contact" component={ContactUs} />
+          <Route exact path="/signup" component={SignUp} />
+          <Route component={NoMatch} />
+        </Switch>  
+      </Router>
+    </div>
+
   )
 
 }
