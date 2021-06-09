@@ -33,7 +33,7 @@ const Dashboard = () => {
                 </NavItem>
             </Navbar>
 
-            <Container>
+            <Container className="mt-3">
                 <div className="mb-3">
                     <button type="button" className="btn btn-success" data-bs-toggle="modal" data-bs-target="#Modal" >Create New Project</button>
                 </div>

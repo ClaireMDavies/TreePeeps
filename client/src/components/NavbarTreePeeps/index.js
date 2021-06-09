@@ -3,7 +3,7 @@ import SearchForm from "../SearchForm";
 
 const NavbarTreePeeps = ({ children, handleFormSubmit, handleCityChange, handleDistanceChange }) => {
     return (
-        < nav className="navbar navbar-expand-lg navbar-light bg-light shadow mb-3" >
+        < nav className="navbar navbar-expand-lg navbar-light bg-light shadow" >
             <div className="container-fluid">
                 <img className='ps-3 pe-2' src='../../favicon-32x32.png' alt='icon'></img>
                 <a className="navbar-brand" href="/">TreePeeps</a>

@@ -1,0 +1,69 @@
+.masthead {
+    background-repeat: no-repeat;
+    background-image: url("../../assets/background.jpg");
+    position: relative;
+    background-attachment: scroll;
+    background-position:center;
+    background-size:cover;
+    height :inherit;
+    max-height: 1920px;
+    max-width: 100%;
+    padding-bottom: 5%;
+    
+}
+    
+.masthead h1 {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 4rem;
+    line-height: 2.5rem; 
+    color: rgb(255, 255, 255, 0.5);
+}
+.masthead h3 {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 2rem;
+    line-height: 2.5rem; 
+    margin-top: 20px;
+    color: rgb(255, 255, 255, 0.8);
+    font-style: italic;
+    
+}
+.masthead p {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 1.2rem;
+    line-height: 2rem; 
+    margin-top: 20px;
+    color: rgb(255, 255, 255, 0.7);
+}
+/* icons styling */
+.buttons {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    
+}  
+.buttons li {
+    display: inline-block;
+}
+
+@media (max-width: 768px) {
+    .masthead h1 {
+      font-size: 2.5rem;
+    }
+    .masthead h3 {
+        font-size: 1.5rem;
+    }
+}
+img#logo {
+        width: 50%;
+        height: auto;
+        padding: 20px;
+        border-radius: 25px;
+}
+
+.container-wrapper {
+    background-color: rgba(15, 15, 15, 0.5);
+    border-radius: 25px;
+    padding: 20px;
+    margin: 5%;
+}
+

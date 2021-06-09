@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Moment from 'react-moment';
 import API from "../../utils/API";
 import Wrapper from "../Wrapper";
-import "./style.css";
+import "./style.css"
 
 function ProjectCard() {
     const [projects, setProjects] = useState([]);
@@ -72,7 +72,7 @@ function ProjectCard() {
                     {projects.map(project => {
                         return (
                             <div className="d-flex justify-content-center mb-3" key={project._id}>
-                                <div className="card card-style">
+                                <div className="card">
                                     <div className="card-header p-2 pb-0">
                                         <h5 className="card-title text-center">{project.name}</h5>
                                     </div>
