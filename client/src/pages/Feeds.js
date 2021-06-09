@@ -6,6 +6,7 @@ import ContributeCard from "../components/ContributeCard";
 import Footer from "../components/Footer";
 import Moment from 'react-moment';
 import API from "../utils/API";
+import { ToastContainer, toast } from 'react-toastify';
 
 const styles = {
     cardStyle: {
