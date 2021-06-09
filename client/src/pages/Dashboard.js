@@ -86,6 +86,10 @@ const Dashboard = (props) => {
                     </Col> */}
                 </Row>
             </Container>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             <Footer />
         </div >
     );

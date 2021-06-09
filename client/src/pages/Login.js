@@ -50,6 +50,50 @@ function Login(props) {
         });
     }
 
+    // const [userName, setUserName] = useState("");
+    // const [firstName, setFirstName] = useState("");
+    // const [lastName, setLastName] = useState("");
+    // const [emailAddress, setEmailAddress] = useState("");
+    // const [password, setPassword] = useState("");
+    // const [confirmPassword, setConfirmPassword] = useState("");
+    // const [country, setCountry] = useState("");
+    // const [city, setCity] = useState("");
+
+    // function handleSubmit(event) {
+
+    //     event.preventDefault();
+
+    // }
+
+    // function validateUesrName() {
+
+    // }
+
+    // function validateFirstName() {
+
+    // }
+
+    // function validateLastName() {
+
+    // }
+
+    // function validateEmailAddress() {
+
+    // }
+
+    // function validatePassword() {
+
+    // }
+
+    // function validateLocation() {
+
+    // }
+
+
+    // function isUserNameAlreadyInUse() {
+
+    // }
+
     return (
         <div>
             <Navbar>
@@ -95,6 +139,10 @@ function Login(props) {
                     </Row>
                 </Card>
             </Container>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             <Footer />
         </div>
     )

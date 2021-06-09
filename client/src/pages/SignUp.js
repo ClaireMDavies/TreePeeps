@@ -380,6 +380,10 @@ function SignUp() {
                 </Card>
                 <ToastContainer/>
             </Container>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             <Footer />
         </div>
     );
