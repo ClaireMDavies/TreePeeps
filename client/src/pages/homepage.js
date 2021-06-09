@@ -6,6 +6,7 @@ import logo from "../assets/TREEPEEPS.png"
 function HomePage() {
     return (
         <div>
+            <body id="main">
             <Navbar />
             <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
             <header className="masthead">
@@ -32,6 +33,7 @@ function HomePage() {
                 <p><em>A tree-planting app for tree-minded people</em></p>
                 <p>Copyright © 2021</p>
             </footer>
+        </body>
         </div>
 
     )

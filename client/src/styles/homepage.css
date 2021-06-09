@@ -1,16 +1,15 @@
-.masthead {
+#main{
     background-repeat: no-repeat;
     background-image: url("../assets/background.jpg");
-    position: relative;
+    position:relative;
     background-attachment: scroll;
-    background-position:center;
+    background-position:center;    
     background-size:cover;
-    max-height: 1920px;
-    max-width: 100%;
-    padding-bottom: 5%;
-    
-}
-    
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
 .masthead h1 {
     font-family: 'Paytone One', sans-serif;
     font-size: 4rem;
@@ -93,6 +92,5 @@ img#logo {
     text-align: center;
     padding-bottom: 1%;
     padding-top: 1%;
-    height: auto;
-    width: 100%;
-}
+    margin-top: auto; 
+  }

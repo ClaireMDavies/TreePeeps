@@ -69,23 +69,20 @@
   text-align: center;
   padding-bottom: 1%;
   padding-top: 1%;
-  height: auto;
-  width: 100%;
+  margin-top: auto; 
 }
 
 #main{
-
-  padding-top: 6%;
-  padding-bottom: 6%;
   background-repeat: no-repeat;
   background-image: url("../assets/background.jpg");
   position:relative;
   background-attachment: scroll;
   background-position:center;    
   background-size:cover;
-  max-width: 100%;
-  max-height: auto;
-  padding-bottom: 5%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  
 }
 
 #Projects1{
@@ -109,4 +106,8 @@
   background-color: rgba(0,0,0,0.5);
   color: rgb(255, 255, 255,0.8);
   border-color:rgba(0,0,0,0.0);
+}
+#search{
+padding-left: 2rem;
+padding-right: 2rem;
 }
