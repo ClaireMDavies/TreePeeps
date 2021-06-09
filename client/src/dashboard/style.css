@@ -55,6 +55,7 @@
 }
 
 #navlogo{
+  margin-left: 20%;
   max-width: 8%;
   height: auto;
   padding-left: 2pc;
@@ -111,6 +112,7 @@
 #search{
 padding-left: 2rem;
 padding-right: 2rem;
+margin-left: 30%;
 }
 #align{
   margin-left: 20%;
@@ -120,4 +122,6 @@ padding-right: 2rem;
   margin-top: 3%;
   margin-bottom: 3%;
   margin-left: 50%;
+  font-weight: bolder;
+  font-style: italic;
 }
