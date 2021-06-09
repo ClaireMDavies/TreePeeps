@@ -74,8 +74,39 @@
 }
 
 #main{
-  margin-right: 20%;
-  margin-left: 20%;
+
   padding-top: 6%;
   padding-bottom: 6%;
+  background-repeat: no-repeat;
+  background-image: url("../assets/background.jpg");
+  position:relative;
+  background-attachment: scroll;
+  background-position:center;    
+  background-size:cover;
+  max-width: 100%;
+  max-height: auto;
+  padding-bottom: 5%;
+}
+
+#Projects1{
+  font-family: 'Paytone One', sans-serif;
+  background-color: rgba(0,0,0,0.5);
+  color: rgb(255, 255, 255,0.8);
+  border-radius: 25px;
+  border-color:rgba(0,0,0,0.5);
+  
+}
+
+#projects2{
+  font-family: 'Paytone One', sans-serif;
+  background-color: rgba(0,0,0,0.5);
+  color: rgb(255, 255, 255,0.8);
+  border-color:rgba(0,0,0,0.0);
+}
+
+#aside{
+  font-family: 'Paytone One', sans-serif;
+  background-color: rgba(0,0,0,0.5);
+  color: rgb(255, 255, 255,0.8);
+  border-color:rgba(0,0,0,0.0);
 }
