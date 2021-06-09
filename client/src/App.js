@@ -4,9 +4,11 @@ import SignUp from "../src/pages/SignUp";
 import Project from "../src/pages/ProjectPage";
 import Feeds from "../src/pages/Feeds";
 import Login from "../src/pages/Login";
-import ContactUs from "../src//pages/ContactUs";
+import ContactUs from "../src/pages/ContactUs";
 import Dashboard from "../src/pages/Dashboard";
 import NoMatch from "../src/pages/NoMatch";
+import AboutUs from "../src/pages/AboutUs";
+
 
 function App() {
 
@@ -27,6 +29,8 @@ function App() {
           <Route exact path="/contact" component={ContactUs} />
           //
           <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/aboutus" component={AboutUs} />
+          
           // route else
           <Route component={NoMatch} />
         </Switch>  
