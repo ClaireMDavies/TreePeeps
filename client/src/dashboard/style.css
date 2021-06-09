@@ -27,7 +27,7 @@
   }
 
   .mySearchBtn {
-    background-color: #08771b;
+    background-color:#042214 ;
     border-radius: 25px;
     border: none;
     color: white;
@@ -83,7 +83,6 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  
 }
 
 #Projects1{
@@ -111,4 +110,11 @@
 #search{
 padding-left: 2rem;
 padding-right: 2rem;
+}
+#align{
+  margin-left: 20%;
+  margin-right: 20%;
+}
+#button{
+  padding-left: 50%;
 }
