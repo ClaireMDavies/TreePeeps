@@ -46,13 +46,7 @@ export default {
   },
   // check user for unique name
   doesUsernameExist: function (username) {
-    return axios.head(`/api/users/${username}`)
-      .then((response) => {
-        return response.status === 200;
-      })
-      .catch(() => {
-        return false;
-      });
+    return axios.head(`/api/users/${username}`);
   },
   getCountries: function () {
     return axios.get("https://countriesnow.space/api/v0.1/countries/info?returns=name");

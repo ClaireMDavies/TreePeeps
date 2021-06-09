@@ -23,13 +23,10 @@ module.exports = {
         console.log('req.body:', req.body);
         db.User
             .create(req.body)
-            .then(dbModel =>  {
-                console.log('dbModel:', dbModel);
-                // setAuthentication(dbModel._id, res);
-                res.json(dbModel);
+            .then((user) =>  {
+                res.json({userId: user._id }).send();
             })
             .catch(err => res.status(422).json(err));
-
     },
     update: function (req, res) {
         db.User
@@ -83,11 +80,10 @@ module.exports = {
 
                 if (!passwordMatches)
                 {
-                    res.status(401).send({accessToken: null});
+                    res.status(401).send();
                 }
                 else
                 {
-                    setAuthentication(user._id, res);
                     res.json({userId: user._id }).send();
                 }
             }
