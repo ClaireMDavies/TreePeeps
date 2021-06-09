@@ -1,7 +1,7 @@
 {
-  "name": "treepeeps",
+  "name": "TreePeeps",
   "version": "1.0.0",
-  "description": "Treepeeps Demo",
+  "description": "TreePeeps",
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
@@ -34,5 +34,6 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "reactstrap": "^8.9.0"
+
   }
 }

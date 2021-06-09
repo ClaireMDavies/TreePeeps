@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import HomePage from "./pages/homepage";
 import SignUp from "../src/pages/SignUp";
 import Project from "../src/pages/ProjectPage";
 import Feeds from "../src/pages/Feeds";
@@ -14,6 +15,7 @@ function App() {
     <div>
       <Router>
         <Switch>
+          <Route exact path="/" component={HomePage} />
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/projectpage" component={Project} />
           <Route exact path="/search" component={Feeds} />
@@ -24,6 +26,7 @@ function App() {
         </Switch>  
       </Router>
     </div>
+
   )
 
 }
