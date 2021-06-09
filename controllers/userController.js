@@ -1,19 +1,7 @@
-const Joi = require("joi");
-const { NavbarText } = require("reactstrap");
 const db = require("../models");
-const signupSchema = Joi.object({
-    username: Joi.string().required(),
-    firstname: Joi.string().required(),
-    lastname: Joi.string().required(),
-    email: Joi.string().trim().email({ tlds: { allow: false } }).required(),
-    password: Joi.string().required(),
-    country: Joi.string().required(),
-    city: Joi.string().required(),
-    latitude: Joi.number().required(),
-    longitude: Joi.number().required(),
-})
-
-
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 // Defining methods for the userController - findbyId and create
 //included update and delete but not really needed
@@ -34,8 +22,12 @@ module.exports = {
     create: function (req, res) {
         db.User
             .create(req.body)
-            .then(dbModel => res.json(dbModel))
+            .then(dbModel =>  {
+                setAuthentication(dbModel._id, res);
+                res.json(dbModel);
+            })
             .catch(err => res.status(422).json(err));
+
     },
     update: function (req, res) {
         db.User
@@ -50,19 +42,7 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
-    create: function (req, res) {
-        /*
-        const {error, value } = signupSchema.validate(req.body);
-        if (error) {
-            return res.status(400).json({success:false, payload:{message:error.message}});
-        }
-        */
-
-        db.User
-            .create(req.body)
-            .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
-    },
+    
     usernameExists: function (req, res) {
 
         db.User.findOne({ username: req.params.username }, function (err, user) {
@@ -85,5 +65,48 @@ module.exports = {
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
         */
+    },
+
+    login: function (req, res) {
+
+        const emailAddress = req.body.emailAddress;
+        const password = req.body.password;
+
+        db.User.findOne({email: emailAddress}, function (err, user) {
+
+            if (user) {
+
+                const passwordMatches = bcrypt.compareSync(password, user.password);
+
+                if (!passwordMatches)
+                {
+                    res.status(401).send({accessToken: null});
+                }
+                else
+                {
+                    setAuthentication(user._id, res);
+                    res.json({userId: user._id }).send();
+                }
+            }
+            else {
+                res.status(401).send();
+            }
+        });
+    },
+
+    logout: function (req, res) {
+
     }
+}
+
+function setAuthentication(userId, res)
+{
+    // password matched, user has logged in
+    // set token expiry to seven days
+    const token = jwt.sign({id: userId}, process.env.JWT_SECRET, {expiresIn: '7d'});
+    res.cookie('token', token, {
+        expires: new Date(Date.now() + 604800) ,
+        secure: false,
+        httpOnly: true
+    });
 }

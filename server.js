@@ -31,7 +31,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/TreePeeps", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/treepeeps", {
   useNewUrlParser: true,
   useFindAndModify: false,
   useUnifiedTopology: true,
@@ -46,11 +46,6 @@ mongoose.connection.on('error', (err) => console.log(`Mongoose default connectio
 
 // Define API routes
 app.use(routes);
-
-// Send every other request to the React app
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);

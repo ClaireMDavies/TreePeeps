@@ -10,13 +10,10 @@ router.route("/")
 router
   .route("/project/:id")
   .get(projectController.findById)
-//   .put(projectController.update)
+  .put(projectController.update)
 //   .delete(projectController.remove);
 router
   .route("/location")
-  // .route("/location?lat=/:lat+lng=/:lng")
-  // .route("/location/lat=/:lat")
-
   .get(projectController.findByLocation)
 
 module.exports = router;

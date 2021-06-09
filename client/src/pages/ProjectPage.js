@@ -16,13 +16,20 @@ const styles = {
     }
 }
 
-const Project = () => {
+const Project = (props) => {
     const [city, setCity] = useState('London')
     const [defaultLocation, setDefaultLocation] = useState(DefaultLocation);
     const [location, setLocation] = useState(defaultLocation);
     const [zoom, setZoom] = useState(DefaultZoom);
 
     useEffect(() => {
+
+        if (localStorage.getItem("userId") === null)
+        {
+            props.history.push("/");
+            return;
+        }
+               
         if (!city) {
             return;
         }
@@ -55,12 +62,14 @@ const Project = () => {
     return (
         <div>
             <Navbar>
+                { localStorage.getItem("userId") === null ? "" : 
                 <NavItem
                     link="/dashboard"
                     name="Dashboard">
                 </NavItem>
+                }
                 <NavItem
-                    link="/"
+                    link="/about"
                     name="About Us">
                 </NavItem>
                 <NavItem
@@ -68,7 +77,7 @@ const Project = () => {
                     name="Contact Us">
                 </NavItem>
                 <NavItem
-                    link="/"
+                    link="/logout"
                     name="Logout">
                 </NavItem>
             </Navbar>

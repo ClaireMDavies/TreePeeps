@@ -5,10 +5,6 @@ const BASEURL = "https://maps.googleapis.com/maps/api/geocode/json?address="
 const APIKEY = "&language=EN&key=" + env.API_KEY;
 
 export default {
-  //get user
-  getUser: function () {
-    return axios.get("/api/users");
-  },
   getUsers: function () {
     return axios.get("/api/users");
   },
@@ -37,35 +33,42 @@ export default {
     return axios.get("/api/projects");
   },
   getProject: function (id) {
-    return axios.get("/api/projects " + id);
+    return axios.get("/api/projects/project/" + id);
   },
-  searchByLocation: function (lat) {
-    // return axios.get(`/api/projects/location?lat=${lat}+lng=${lng}`);
-    // return axios.get(`/api/projects/location/lat=${lat}`);
-    return axios.get(`/api/projects/location`);
-
+  updateProject: function (id, data) {
+    return axios.put("/api/projects/project/" + id, data);
+  },
+  searchByLocation: function (lat, lng, dist) {
+    return axios.get(`/api/projects/location?lat=${lat}&lng=${lng}&dist=${dist}`);
+  },
+  saveContribution: function (ContributionData) {
+    return axios.post("/api/contribution", ContributionData);
   },
   // check user for unique name
   doesUsernameExist: function (username) {
-    return fetch(`/api/users/${username}`, { method: 'HEAD' })
+    return axios.head(`/api/users/${username}`)
       .then((response) => {
-        return response.ok;
+        return response.status === 200;
+      })
+      .catch(() => {
+        return false;
       });
   },
   getCountries: function () {
-    return fetch("https://countriesnow.space/api/v0.1/countries/info?returns=name");
+    return axios.get("https://countriesnow.space/api/v0.1/countries/info?returns=name");
   },
   getCitiesForCountry: function (country) {
-    return fetch("https://countriesnow.space/api/v0.1/countries/cities", {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ country: country })
-    });
-
+    return axios.post("https://countriesnow.space/api/v0.1/countries/cities", { country: country });
   },
   createUser: function (userData) {
     return axios.post("/api/users", userData);
+  },
+  login: function(emailAddress, password)
+  {
+    return axios.post("/api/users/login", { emailAddress: emailAddress, password: password });
+  },
+  logout: function()
+  {
+
   }
 };
