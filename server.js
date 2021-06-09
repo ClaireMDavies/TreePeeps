@@ -48,5 +48,6 @@ mongoose.connection.on('error', (err) => console.log(`Mongoose default connectio
 app.use(routes);
 
 app.listen(PORT, () => {
+  console.log('here')
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });

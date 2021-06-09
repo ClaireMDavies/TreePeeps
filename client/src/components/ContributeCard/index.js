@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Card, CardTitle, Form, Input, Label, Button } from 'reactstrap';
 import API from "../../utils/API";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import {toast } from 'react-toastify';
+
 
 const styles = {
     cardStyle: {
@@ -12,23 +12,20 @@ const styles = {
 };
 
 function ContributeCard() {
-    const ContributionNotify = () => toast("Your interest is sent to the project creator");
     const [form, setForm] = useState({
-        land: '',
-        time: '',
-        resources: '',
+        land: false,
+        time: false,
+        resources: false,
         message: ''
     });
-    const onChange = (e) => {
-        var currentState = form[e.target.value]
-        if (!currentState) currentState = e.target.value;
-        else currentState = '';
-        setForm({ ...form, [e.target.value]: currentState });
-        console.log(form);
-    }
+
+    const onChange = (event, type) => {
+        const { checked } = event.target;
+        setForm(prevForm => ({ ...prevForm, [type]: checked }));
+    };
     const onChangeMessage = (event) => {
         const { name, value } = event.target;
-        setForm({ ...form, [name]: value })
+        setForm(prevForm => ({ ...prevForm, [name]: value }))
     }
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -40,9 +37,9 @@ function ContributeCard() {
             message: form.message
         })
             .then(() => setForm({
-                land: '',
-                time: '',
-                resources: '',
+                land: false,
+                time: false,
+                resources: false,
                 message: ''
             }))
             .catch(err => console.log(err));
@@ -56,15 +53,15 @@ function ContributeCard() {
                     <CardTitle><h5 className="ps-3 pt-3"><i className="fab fa-wpforms"></i> Contribution Form</h5></CardTitle>
                     <div className="card-body">
                         <div className="form-check">
-                            <Input className="form-check-input" type="checkbox" value="land" name="Land" checked={form.Land} onChange={onChange} />
+                            <Input className="form-check-input" type="checkbox" value="land" name="Land" checked={form.land} onChange={(event) => onChange(event, "land")} />
                             <Label className="form-check-label" htmlFor="Land">Land</Label>
                         </div>
                         <div className="form-check">
-                            <Input className="form-check-input" type="checkbox" value="time" name="Time" checked={form.Time} onChange={onChange} />
+                            <Input className="form-check-input" type="checkbox" value="time" name="Time" checked={form.time} onChange={(event) => onChange(event, "time")} />
                             <Label className="form-check-label" htmlFor="Time">Time</Label>
                         </div>
                         <div className="form-check">
-                            <Input className="form-check-input" type="checkbox" value="resources" name="Resources" checked={form.Resources} onChange={onChange} />
+                            <Input className="form-check-input" type="checkbox" value="resources" name="Resources" checked={form.resources} onChange={(event) => onChange(event, "resources")} />
                             <Label className="form-check-label" htmlFor="Resources">Resources</Label>
                         </div>
                         <div className="input-group mt-3">
@@ -74,7 +71,10 @@ function ContributeCard() {
                     </div>
                     <Form >
                         <div className="card-footer text-center">
-                            <Button color="danger" onClick={(event) => { handleSubmit(event); ContributionNotify() }}>Submit</Button>
+                            <Button color="danger" onClick={(event) => {
+                                handleSubmit(event);
+                                toast("Your interest is sent to the project creator")
+                            }}>Submit</Button>
                         </div>
                     </Form>
                 </Card>

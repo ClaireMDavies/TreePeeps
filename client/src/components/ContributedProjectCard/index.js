@@ -23,12 +23,12 @@ function ContributedProjectCard() {
     };
 
     return (
-        <Wrapper>
+        <div className='container'>
             { projects.length ? (
-                <div>
+                <div className='row'>
                     {projects.map(project => {
                         return (
-                            <div className="d-flex justify-content-center mb-3" key={project._id}>
+                            <div className="col-md-4 d-flex justify-content-center mb-3" key={project._id}>
                                 <div className="card card-style" >
                                     <div className="card-header p-2 pb-0">
                                         <h5 className="card-title text-center">{project.name}</h5>
@@ -54,7 +54,7 @@ function ContributedProjectCard() {
                 <h3 className="text-center m-3 p-2">No Results to Display</h3>
 
             )}
-        </Wrapper>
+        </div>
     )
 };
 

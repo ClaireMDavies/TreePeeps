@@ -44,8 +44,9 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
-    
+
     usernameExists: function (req, res) {
+
 
         db.User.findOne({ username: req.params.username }, function (err, user) {
 
