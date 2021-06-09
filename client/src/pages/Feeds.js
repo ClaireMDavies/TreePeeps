@@ -1,11 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { Card, CardTitle, CardSubtitle, CardBody, CardText, Button } from 'reactstrap';
-import Navbar from "../components/NavbarTreePeeps";
-import NavItem from "../components/NavItem";
-import ContributeCard from "../components/ContributeCard";
-import Footer from "../components/Footer";
-import Moment from 'react-moment';
-import API from "../utils/API";
+import React from "react";
 
 const styles = {
     cardStyle: {
@@ -25,121 +18,78 @@ const styles = {
 };
 
 function Feeds() {
-    const [nearestProjects, setNearestProjects] = useState([]);
-    const [city, setCity] = useState('');
-    const [distance, setDistance] = useState(1000);
-    const [location, setLocation] = useState({ lat: "", lng: "" });
-    const [showCardId, setShowCardId] = useState(null);
-
-    const showContribute = id => () => {
-        setShowCardId(prevId => {
-            if (prevId === id) {
-                return null;
-            } else {
-                return id;
-            }
-        });
-    }
-
-    useEffect(() => {
-        if (!city) {
-            return;
-        }
-        API.convert(city)
-            .then(results => {
-                setLocation({ lat: results.data.results[0].geometry.location.lat, lng: results.data.results[0].geometry.location.lng });
-            })
-            .catch(err => console.log(err));
-    }, [city]);
-
-    function handleCityChange(event) {
-        setCity(event.target.value);
-    }
-    function handleDistanceChange(event) {
-        setDistance(event.target.value * 1000);
-    }
-    function handleFormSubmit(event) {
-        event.preventDefault();
-        API.searchByLocation(
-            location.lat,
-            location.lng,
-            distance
-        )
-            .then(res => {
-                setNearestProjects(res.data);
-                console.log(nearestProjects);
-            })
-            .catch(err => console.log(err));
-    }
 
     return (
         <div>
-            <Navbar handleFormSubmit={handleFormSubmit} handleCityChange={handleCityChange} handleDistanceChange={handleDistanceChange}>
-                <NavItem
-                    link="/dashboard"
-                    name="Dashboard">
-                </NavItem>
-                <NavItem
-                    link="/"
-                    name="About Us">
-                </NavItem>
-                <NavItem
-                    link="/contact"
-                    name="Contact Us">
-                </NavItem>
-                <NavItem
-                    link="/"
-                    name="Logout">
-                </NavItem>
-            </Navbar>
-            {/* Post Card */}
-            { nearestProjects.length ? (
-                <div>
-                    {
-                        nearestProjects.map(project => {
-                            return (
-                                <div className="row d-flex justify-content-center mb-3" key={project._id}>
-                                    <Card style={styles.cardStyle}>
-                                        <CardTitle tag="h5" className="card-title mt-2 ps-3">{project.title}
-                                            {project.area || project.location ? <i className="fas fa-map-marked-alt ps-3" style={styles.mapIcon} data-bs-toggle="tooltip" data-bs-placement="top" title="Land needed"></i> : null}
-                                            {project.hoursNeeded ? <i className="fas fa-clock ps-3" style={styles.clockIcon} data-bs-toggle="tooltip" data-bs-placement="top" title="Time needed"></i> : null}
-                                            {project.numTrees || project.numStakes || project.numSpirals || project.amtFertilizer || project.otherResources ? <i className="fas fa-tree ps-3" style={styles.treeIcon} data-bs-toggle="tooltip" data-bs-placement="top" title="Resources needed"></i> : null}
-                                        </CardTitle>
-                                        <CardSubtitle tag="h6" className="mb-2 ps-3 text-muted">Username <br /> <Moment format="YYYY/MM/DD">{project.startDate}</Moment> -- <Moment format="YYYY/MM/DD">{project.endDate}</Moment></CardSubtitle>
-                                        <CardBody className="ps-2">
-                                            <CardText>{project.description}
-                                                <ul className="pt-3">Specifications :
-                                                    {project.latitude ? <li>Latitude :  {project.latitude}</li> : null}
-                                                    {project.longitude ? <li>Longitude :  {project.longitude} </li> : null}
-                                                    {project.area ? <li>Area (m²) :  {project.area}</li> : null}
-                                                    {project.landOwner ? <li>Owner : {project.landOwner}</li> : null}
-                                                    {project.hoursNeeded ? <li>Work hours needed :  {project.hoursNeeded}</li> : null}
-                                                    {project.numTrees ? <li>Trees:  {project.numTrees}</li> : null}
-                                                    {project.numStakes ? <li>Stakes : {project.numStakes}</li> : null}
-                                                    {project.amtFertilizer ? <li>Fertilizer:  {project.amtFertilizer}</li> : null}
-                                                    {project.numSpirals ? <li>Spirals:  {project.numSpirals}</li> : null}
-                                                    {project.otherResources ? <li>Other Resources:  {project.otherResources} </li> : null}
-                                                </ul>
-                                            </CardText>
-                                        </CardBody>
-                                        <div className="card-footer text-center">
-                                            <Button className="me-3" color="success" id={project._id} onClick={showContribute(project._id)} ><i className="fas fa-hands-helping"></i> Contribute</Button>
-                                        </div>
-                                    </Card>
-                                    {/* Contribute Card */}
-                                    {showCardId === project._id ? <ContributeCard /> : null}
-                                </div>
-                            )
-                        }
-                        )
-                    };
+            {/* Navbar */}
+            <nav className="navbar navbar-expand-lg navbar-light bg-light shadow mb-3">
+                <div className="container-fluid">
+                    <img className='ps-3 pe-2' src='../../favicon-32x32.png' alt='icon'></img>
+                    <a className="navbar-brand">TreePeeps</a>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">Menu
+                    <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li className="nav-item ps-2"><a className="nav-link" href="#">Dashboard</a></li>
+                            <li className="nav-item ps-2"><a className="nav-link" href="#">About us</a></li>
+                            <li className="nav-item ps-2"><a className="nav-link" href="#">Contact us</a></li>
+                            <li className="nav-item ps-2"><a className="nav-link" href="#">logout</a></li>
+                        </ul>
+                        <form className="d-flex">
+                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                            <button className="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
                 </div>
-            ) : (
-                <h3 className="text-center m-3 p-2">No Results to Display</h3>
+            </nav>
+            {/* Post Card */}
+            <div className="row d-flex justify-content-center mb-3">
+                <div className="card" style={styles.cardStyle}>
+                    <div className="card-header pb-0">
+                        <h5 className="card-title">Project Name <i className="fas fa-map-marked-alt ps-3" style={styles.mapIcon} data-bs-toggle="tooltip" data-bs-placement="top" title="Land needed"></i><i className="fas fa-clock ps-3" style={styles.clockIcon} data-bs-toggle="tooltip" data-bs-placement="top" title="Time needed"></i><i className="fas fa-tree ps-3" style={styles.treeIcon} data-bs-toggle="tooltip" data-bs-placement="top" title="Resources needed"></i></h5>
+                        <h6 className="text-muted">Username</h6>
 
-            )}
-            <Footer />
-        </div >
+                    </div>
+                    <div className="card-body">
+                        <p className="card-text">Project description</p>
+                    </div>
+                    <div className="card-footer text-center">
+                        <button className="btn btn-success btn-sm m-2" ><i className="fas fa-hands-helping"></i> Contribute</button>
+                        <button className="btn btn-success btn-sm m-2"><i className="fas fa-envelope"></i> Contact me</button>
+                    </div>
+                </div>
+            </div>
+            {/* Contribute Card */}
+            <div className="row d-flex justify-content-center mb-3">
+                <div className="card" style={styles.cardStyle}>
+                    <div className="card-header bg-success p-2 pb-0">
+                        <h5 className="card-title text-white "><i className="fab fa-wpforms"></i> Contribution Form</h5>
+                    </div>
+                    <div className="card-body">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="Land" />
+                            <label class="form-check-label" for="Land">Land</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="Time" />
+                            <label class="form-check-label" for="Time">Time</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="Resources" />
+                            <label class="form-check-label" for="Resources">Resources</label>
+                        </div>
+                        <div class="input-group mt-3">
+                            <span class="input-group-text">Message</span>
+                            <input type="text" aria-label="First name" class="form-control" />
+                        </div>
+                    </div>
+                    <div className="card-footer text-center">
+                        <button className="btn btn-danger btn-sm m-2">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     )
 };
 

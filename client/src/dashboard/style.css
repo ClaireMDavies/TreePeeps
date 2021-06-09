@@ -1,22 +1,21 @@
 .btn-create {
-    background-color: #296e2b;
-  border: #443a03;
-  color: #100A00;
+  background-color:  #0f5132;
+  color:white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 20px;
+  border-radius: 25px;
 }
 
 .myNavbar {
-    background-color: #50af53;
-    border: #067B57;
-    color: white;
+  background-color : #0f5132;
+  color: white;
 }
 
 .myNavButton {
-    background-color: #50af53;
+    background-color: #0f5132;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -24,10 +23,12 @@
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    border-radius: 25px;
   }
 
   .mySearchBtn {
     background-color: #08771b;
+    border-radius: 25px;
     border: none;
     color: white;
     padding: 8px 32px;
@@ -39,12 +40,35 @@
   }
 
 .myDashboard {
-    background-color: #8EE0BB;
-    border: #067B57;
-    color: #100A00;
+ color: rgb(255, 255, 255, 0.8);
+ border-radius: 25px;
+ color: #100A00;
     /* padding: 15px 32px; */
     /* text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 20px; */
+}
+.nav-link{
+  color: white;
+}
+
+#navlogo{
+  max-width: 8%;
+  height: auto;
+  padding-left: 2pc;
+  padding-right: 2pc;
+}
+
+#footer{
+  color: #ffffff8c;
+  font-family:'Paytone One', sans-serif;
+  background-color : #0f5132;
+  font-weight: bold;
+  line-height: 0.1;
+  text-align: center;
+  padding-bottom: 1%;
+  padding-top: 1%;
+  height: auto;
+  width: 100%;
 }
