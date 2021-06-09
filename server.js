@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const routes = require("./routes")
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 const app = express();
 
 
@@ -53,5 +53,6 @@ app.get("*", (req, res) => {
 });
 
 app.listen(PORT, () => {
+  console.log('here')
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });

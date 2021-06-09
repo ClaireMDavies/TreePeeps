@@ -7,11 +7,13 @@ import Login from "../src/pages/Login";
 import ContactUs from "../src//pages/ContactUs";
 import Dashboard from "../src/pages/Dashboard";
 import NoMatch from "../src/pages/NoMatch";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-
   return (
     <div>
+      <ToastContainer />
       <Router>
         <Switch>
           <Route exact path="/" component={HomePage} />
@@ -21,7 +23,7 @@ function App() {
           <Route exact path="/contact" component={ContactUs} />
           <Route exact path="/signup" component={SignUp} />
           <Route component={NoMatch} />
-        </Switch>  
+        </Switch>
       </Router>
     </div>
 

@@ -6,16 +6,16 @@ const ContributionSchema = new Schema({
         type: String,
     },
     time: {
-        type: String,
+        type: Boolean,
     },
     land: {
-        type: String,
+        type: Boolean,
     },
     resources: {
-        type: String,
+        type: Boolean,
     },
     message: {
-        type: Date,
+        type: String,
     },
     timestamps: {
         type: Date

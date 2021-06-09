@@ -64,7 +64,7 @@ const ProjectSchema = new Schema({
         required: false,
         min: 0
     },
-    ContributorNames: {
+    Contributors: {
         type: [String],
         required: false
     },

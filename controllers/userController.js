@@ -50,20 +50,7 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
-    create: function (req, res) {
-        /*
-        const {error, value } = signupSchema.validate(req.body);
-        if (error) {
-            return res.status(400).json({success:false, payload:{message:error.message}});
-        }
-        */
-
-        db.User
-            .create(req.body)
-            .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
-    },
-    usernameExists: function (req, res) {
+      usernameExists: function (req, res) {
 
         db.User.findOne({ username: req.params.username }, function (err, user) {
 
