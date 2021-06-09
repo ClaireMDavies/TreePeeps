@@ -50,7 +50,8 @@
     font-size: 20px; */
 }
 .nav-link{
-  color: white;
+  color: rgb(255, 255, 255, 0.8);
+  font-weight: bold;
 }
 
 #navlogo{
