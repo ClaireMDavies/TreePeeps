@@ -1,8 +1,7 @@
 .btn-create {
     background-color: #296e2b;
   border: #443a03;
-  border-style: solid;
-  color: white;
+  color: #100A00;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -39,45 +38,13 @@
     font-size: 16px;
   }
 
-  .myCards {
-    justify-content: space-between;
-    
-  }
-
 .myDashboard {
-    background-color: #8be2b2;
-    border: #067b5e;
-    border-style: solid;
+    background-color: #8EE0BB;
+    border: #067B57;
     color: #100A00;
     /* padding: 15px 32px; */
     /* text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 20px; */
-}
-
-.dashCard {
-    position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #a7e6c3;
-    background-clip: border-box;
-    border: 1px solid #067b5e;
-    border-radius: .25rem;
-    
-}
-
-.dashboard-list-group {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    padding-left: 0;
-    margin-bottom: 0;
-    border-radius: .25rem;
-    background-color: #a7e6c3;
 }
