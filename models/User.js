@@ -56,16 +56,19 @@ const UserSchema = new Schema({
         } 
    });
 
-UserSchema.pre('save', async function(next) {
+UserSchema.pre('save', async function (next) {
   if (this.isNew || this.isModified('password')) {
     this.password = await bcrypt.hash(this.password, 8);
   }
 
   const BASEURL = "https://maps.googleapis.com/maps/api/geocode/json?address=";
-  const APIKEY = "&language=EN&key=" + process.env.GOOGLE_API_KEY;
+  const APIKEY = "&language=EN&key=" + process.env.API_KEY;
 
   // get location
-  const response = await axios.get(BASEURL + this.city + APIKEY);
+  // const response = await axios.get(BASEURL + this.city + APIKEY);
+  const response = await axios.get("https://maps.googleapis.com/maps/api/geocode/json?address=Birmingham&language=EN&key=AIzaSyAz6OTYEn4bTxvnyDOW2NQTXnDVsZeXzVA");
+  const url = BASEURL + this.city + APIKEY 
+  console.log('url:', url);
   this.latitude = response.data.results[0].geometry.location.lat.toString();
   this.longitude = response.data.results[0].geometry.location.lng.toString();
 
@@ -73,20 +76,28 @@ UserSchema.pre('save', async function(next) {
 });
 
 // compare the incoming password with the hashed password
-UserSchema.methods.isCorrectPassword = async function(password) {
+UserSchema.methods.isCorrectPassword = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
 
-    // Provision for number of projects created to present
+// Provision for number of projects created to present
 
-    //imgUrl: {
-    //           type: String, 
-    //           required: false, 
-    //           description: "Load an image - you, a tree or an Avatar!"
-     //        },
-    
-     
-  
+//imgUrl: {
+//           type: String, 
+//           required: false, 
+//           description: "Load an image - you, a tree or an Avatar!"
+//        },
+
+// const token = jwt.sign({ id: newUser.id }, config.jwt.secret, { expiresIn: '24h' });
+
+// res.json({
+//   token,
+//   user: {
+//     id: newUser.id,
+//     username: newUser.username,
+//   },
+// });
+
 
 //left in here because believe will be calculation
 // virtual to add the total duration of excercises and add to a new field called totalDuration

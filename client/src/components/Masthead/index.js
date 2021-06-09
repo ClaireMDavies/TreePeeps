@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.css';
 import logo from "../../assets/TREEPEEPS.png"
+import { Link } from "react-router-dom";
 
 function Masthead() {
     return (
@@ -16,10 +17,14 @@ function Masthead() {
                         Earthwatch, 2021</p>
                         <ul className="buttons">
                             <li>
-                                <button className="btn btn-light m-2" >Login</button>
+                                <Link to="/login">
+                                    <button className="btn btn-light m-2" >Login</button>
+                                </Link>
                             </li>
                             <li>
-                                <button className="btn btn-light m-2" >Sign Up</button>
+                                <Link to="/signup">
+                                    <button className="btn btn-light m-2" >Sign Up</button>
+                                </Link>
                             </li>
                         </ul>
                     </div>

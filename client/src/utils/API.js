@@ -46,25 +46,29 @@ export default {
   },
   // check user for unique name
   doesUsernameExist: function (username) {
-    return fetch(`/api/users/${username}`, { method: 'HEAD' })
+    return axios.head(`/api/users/${username}`)
       .then((response) => {
-        return response.ok;
+        return response.status === 200;
+      })
+      .catch(() => {
+        return false;
       });
   },
   getCountries: function () {
-    return fetch("https://countriesnow.space/api/v0.1/countries/info?returns=name");
+    return axios.get("https://countriesnow.space/api/v0.1/countries/info?returns=name");
   },
   getCitiesForCountry: function (country) {
-    return fetch("https://countriesnow.space/api/v0.1/countries/cities", {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ country: country })
-    });
-
+    return axios.post("https://countriesnow.space/api/v0.1/countries/cities", { country: country });
   },
   createUser: function (userData) {
     return axios.post("/api/users", userData);
+  },
+  login: function(emailAddress, password)
+  {
+    return axios.post("/api/users/login", { emailAddress: emailAddress, password: password });
+  },
+  logout: function()
+  {
+
   }
 };
