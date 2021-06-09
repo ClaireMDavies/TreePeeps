@@ -9,7 +9,7 @@ import API from "../utils/API";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function SignUp() {
+function SignUp(props) {
     const accountCreationFailedNotify = () => toast("there were some errors");
     const accountCreationSuccessNotify = () => toast("yay");
 
@@ -79,8 +79,18 @@ function SignUp() {
             userData.country = country;
             userData.city = city;
 
-            API.createUser(userData);
-            accountCreationSuccessNotify();
+            API.createUser(userData)
+            .then(response => {
+                if (response.data.userId)
+                {
+                    localStorage.setItem("userId", response.data.userId);
+                    props.history.push("/dashboard");
+                }
+                else
+                {
+                   // TODO: handle any error
+                }
+            });
         }
     }
 
@@ -199,15 +209,16 @@ function SignUp() {
         if (username.length > 0) {
 
             API.doesUsernameExist(username)
-                .then((exists) => {
-
-                    if (exists) {
+                .then((response) => {
+                    if (response.status === 200) {
                         setUsernameError("User Name already exists");
                     }
-                    else
-                    {
+                    else {
                         setUsernameError("");
                     }
+                })
+                .catch((e) => {
+                    setUsernameError("");
                 });
         }
     }

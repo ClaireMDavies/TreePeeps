@@ -7,6 +7,10 @@ import NavItem from "../components/NavItem";
 import Footer from "../components/Footer";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 const styles = {
     cardStyle: {
@@ -30,7 +34,7 @@ const styles = {
 };
 
 function Login(props) {
-
+    const loginFailureNotification = () => toast("There was an error with your login please try again");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     
@@ -45,7 +49,7 @@ function Login(props) {
             }
             else
             {
-                // TODO: failed to log in 
+               loginFailureNotification();
             }
         });
     }
