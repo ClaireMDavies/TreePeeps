@@ -1,14 +1,13 @@
 import React from "react";
 import { useState } from "react";
-import { Container, Row, Col, Card, CardBody, Form, Input, Button } from 'reactstrap';
+import { Container, Row, Col, Card, CardBody, CardHeader, Form, Input, Button } from 'reactstrap';
 import Navbar from "../components/NavbarTreePeeps";
 import loginImg from '../images/login-img.jpg';
 import NavItem from "../components/NavItem";
 import Footer from "../components/Footer";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import {toast } from 'react-toastify';
 
 
 
@@ -21,15 +20,7 @@ const styles = {
         display: "inline - block",
         width: "100px"
     },
-    treeIcon: {
-        color: "green"
-    },
-    clockIcon: {
-        color: "red"
-    },
-    mapIcon: {
-        color: "brown"
-    }
+
 
 };
 
@@ -112,18 +103,16 @@ function Login(props) {
             </Navbar>
             {/* Login Card */}
             <Container className="d-flex justify-content-center mb-3 mt-5">
-                <Card className="border-success" style={styles.cardStyle}>
+                <Card className="border-success p-0" >
                     <Row>
-                        <Col xs="6">
+                        <Col xs="6" className='pe-0'>
                             <img className="img-fluid" src={loginImg} alt="login" />
                         </Col>
-                        <Col xs="6">
+                        <Col xs="6" className='ps-0'>
+                        <CardHeader className="border-success" >  <img className='pe-2 pb-2' src='../../favicon-32x32.png' alt='icon'></img>
+                        <span className="fs-4">TreePeeps</span></CardHeader>
                             <CardBody>
-                                <Container>
-                                    <img className='pe-2 pb-2' src='../../favicon-32x32.png' alt='icon'></img>
-                                    <span className="fs-4">TreePeeps</span>
-                                </Container>
-                                <p className="login-card-description">Sign into your account</p>
+                                  <h5 className="text-center mb-3">Sign into your account</h5>
                                 <Form>
                                     <div className="input-group mb-3">
                                         <span className="input-group-text" style={styles.cardSpan} >Email  </span>
@@ -135,18 +124,14 @@ function Login(props) {
                                     </div>
                                 </Form>
                                 <div className="text-center">
-                                    <Button type="submit" color="danger" onClick={signIn}>Submit</Button>
+                                    <Button className="mt-3" type="submit" color="danger" onClick={signIn}>Login</Button>
                                 </div>
-                                <p className="login-card-footer-text">Don't have an account? <Link className="text-reset" to="/signup">Register here</Link></p>
+                                <p className="mt-3 text-center">Don't have an account? <Link className="text-reset" to="/signup">Register here</Link></p>
                             </CardBody>
                         </Col>
                     </Row>
                 </Card>
             </Container>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
             <Footer />
         </div>
     )
