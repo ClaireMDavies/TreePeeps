@@ -7,20 +7,32 @@ import ContributedProjectCard from "../components/ContributedProjectCard";
 import ProjectForm from "../components/ProjectForm";
 import Footer from "../components/Footer";
 
-const Dashboard = () => {
+const Dashboard = (props) => {
+
+    React.useEffect(() => {
+
+        if (localStorage.getItem("userId") === null)
+        {
+            props.history.push("/");
+        }
+
+    }, []);
+    
     return (
         <div>
             <Navbar>
+                { localStorage.getItem("userId") === null ? "" : 
                 <NavItem
                     link="/dashboard"
                     name="Dashboard">
                 </NavItem>
+                }
                 <NavItem
                     link="/search"
                     name="Search">
                 </NavItem>
                 <NavItem
-                    link="/"
+                    link="/about"
                     name="About Us">
                 </NavItem>
                 <NavItem
@@ -28,7 +40,7 @@ const Dashboard = () => {
                     name="Contact Us">
                 </NavItem>
                 <NavItem
-                    link="/"
+                    link="/logout"
                     name="Logout">
                 </NavItem>
             </Navbar>

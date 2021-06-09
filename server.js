@@ -47,11 +47,6 @@ mongoose.connection.on('error', (err) => console.log(`Mongoose default connectio
 // Define API routes
 app.use(routes);
 
-// Send every other request to the React app
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
-
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });

@@ -24,7 +24,8 @@ const styles = {
 
 };
 
-function Feeds() {
+function Feeds(props) {
+    const ContactNotify = () => toast("Your contact info is sent to the project creator");
     const [nearestProjects, setNearestProjects] = useState([]);
     const [city, setCity] = useState('');
     const [distance, setDistance] = useState(1000);
@@ -42,6 +43,13 @@ function Feeds() {
     }
 
     useEffect(() => {
+
+        if (localStorage.getItem("userId") === null)
+        {
+            props.history.push("/");
+            return;
+        }
+
         if (!city) {
             return;
         }
@@ -75,12 +83,14 @@ function Feeds() {
     return (
         <div>
             <Navbar handleFormSubmit={handleFormSubmit} handleCityChange={handleCityChange} handleDistanceChange={handleDistanceChange}>
+            { localStorage.getItem("userId") === null ? "" : 
                 <NavItem
                     link="/dashboard"
                     name="Dashboard">
                 </NavItem>
+                }
                 <NavItem
-                    link="/"
+                    link="/about"
                     name="About Us">
                 </NavItem>
                 <NavItem
@@ -88,7 +98,7 @@ function Feeds() {
                     name="Contact Us">
                 </NavItem>
                 <NavItem
-                    link="/"
+                    link="/logout"
                     name="Logout">
                 </NavItem>
             </Navbar>

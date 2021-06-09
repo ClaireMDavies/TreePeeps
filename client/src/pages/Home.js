@@ -4,7 +4,7 @@ import NavItem from "../components/NavItem";
 import Footer from "../components/Footer"
 import Masthead from "../components/Masthead";
 
-function HomePage() {
+function Home() {
     return (
         <div>
             <Navbar>
@@ -24,6 +24,6 @@ function HomePage() {
     )
 }
 
-export default HomePage;
+export default Home;
 
 
