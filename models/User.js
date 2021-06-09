@@ -85,15 +85,15 @@ UserSchema.methods.isCorrectPassword = async function (password) {
 //           description: "Load an image - you, a tree or an Avatar!"
 //        },
 
-const token = jwt.sign({ id: newUser.id }, config.jwt.secret, { expiresIn: '24h' });
+// const token = jwt.sign({ id: newUser.id }, config.jwt.secret, { expiresIn: '24h' });
 
-res.json({
-  token,
-  user: {
-    id: newUser.id,
-    username: newUser.username,
-  },
-});
+// res.json({
+//   token,
+//   user: {
+//     id: newUser.id,
+//     username: newUser.username,
+//   },
+// });
 
 
 //left in here because believe will be calculation
