@@ -5,10 +5,6 @@ const BASEURL = "https://maps.googleapis.com/maps/api/geocode/json?address="
 const APIKEY = "&language=EN&key=" + env.API_KEY;
 
 export default {
-  //get user
-  getUser: function () {
-    return axios.get("/api/users");
-  },
   getUsers: function () {
     return axios.get("/api/users");
   },
@@ -37,13 +33,16 @@ export default {
     return axios.get("/api/projects");
   },
   getProject: function (id) {
-    return axios.get("/api/projects " + id);
+    return axios.get("/api/projects/project/" + id);
   },
-  searchByLocation: function (lat) {
-    // return axios.get(`/api/projects/location?lat=${lat}+lng=${lng}`);
-    // return axios.get(`/api/projects/location/lat=${lat}`);
-    return axios.get(`/api/projects/location`);
-
+  updateProject: function (id, data) {
+    return axios.put("/api/projects/project/" + id, data);
+  },
+  searchByLocation: function (lat, lng, dist) {
+    return axios.get(`/api/projects/location?lat=${lat}&lng=${lng}&dist=${dist}`);
+  },
+  saveContribution: function (ContributionData) {
+    return axios.post("/api/contribution", ContributionData);
   },
   // check user for unique name
   doesUsernameExist: function (username) {

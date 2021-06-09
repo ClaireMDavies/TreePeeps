@@ -14,20 +14,12 @@ function App() {
     <div>
       <Router>
         <Switch>
-          //dashboard
           <Route exact path="/dashboard" component={Dashboard} />
-          //
           <Route exact path="/projectpage" component={Project} />
-          //
           <Route exact path="/search" component={Feeds} />
-          
-          //
           <Route exact path="/login" component={Login} />
-          //
           <Route exact path="/contact" component={ContactUs} />
-          //
           <Route exact path="/signup" component={SignUp} />
-          // route else
           <Route component={NoMatch} />
         </Switch>  
       </Router>

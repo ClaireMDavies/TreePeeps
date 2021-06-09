@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Card, CardTitle, Form, Input, Label, Button } from 'reactstrap';
-import {toast } from 'react-toastify';
+import API from "../../utils/API";
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const styles = {
@@ -10,38 +11,42 @@ const styles = {
     }
 };
 
-
 function ContributeCard() {
     const ContributionNotify = () => toast("Your interest is sent to the project creator");
-    const [message, setMessage] = useState("Empty message");
     const [form, setForm] = useState({
-        Land: '',
-        Time: '',
-        Resources: ''
+        land: '',
+        time: '',
+        resources: '',
+        message: ''
     });
     const onChange = (e) => {
-        var currentState = form[e.target.name]
+        var currentState = form[e.target.value]
         if (!currentState) currentState = e.target.value;
         else currentState = '';
-        setForm({ ...form, [e.target.name]: currentState})
-        ;
+        setForm({ ...form, [e.target.value]: currentState });
+        console.log(form);
     }
-    const sendEmail = () => {
-        window.Email.send({
-            Host: "smtp.elasticemail.com",
-            Username: "treepeeps@hotmail.com",
-            Password: "A5AD02A0D6C4DE5041F65A10ABAFD7151952",
-            To: 'treepeeps@hotmail.com',
-            From: "treepeeps@hotmail.com",
-            Subject: "Contribution",
-            Body: `<html><h2>Contribution</h2><br><p>I want to contribute by ${form.Land} ${form.Time} ${form.Resources} <br>${message}</p></html>`
-        }).then(
-            console.log("Contribution sent"))
+    const onChangeMessage = (event) => {
+        const { name, value } = event.target;
+        setForm({ ...form, [name]: value })
     }
-    const handleSubmit = e => {
-        e.preventDefault();
-        sendEmail();
-    };
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(form);
+        API.saveContribution({
+            land: form.land,
+            time: form.time,
+            resources: form.resources,
+            message: form.message
+        })
+            .then(() => setForm({
+                land: '',
+                time: '',
+                resources: '',
+                message: ''
+            }))
+            .catch(err => console.log(err));
+    }
 
     return (
         <div>
@@ -51,25 +56,25 @@ function ContributeCard() {
                     <CardTitle><h5 className="ps-3 pt-3"><i className="fab fa-wpforms"></i> Contribution Form</h5></CardTitle>
                     <div className="card-body">
                         <div className="form-check">
-                            <Input className="form-check-input" type="checkbox" value="Land" name="Land" checked={form.Land} onChange={onChange} />
+                            <Input className="form-check-input" type="checkbox" value="land" name="Land" checked={form.Land} onChange={onChange} />
                             <Label className="form-check-label" htmlFor="Land">Land</Label>
                         </div>
                         <div className="form-check">
-                            <Input className="form-check-input" type="checkbox" value="Time" name="Time" checked={form.Time} onChange={onChange} />
+                            <Input className="form-check-input" type="checkbox" value="time" name="Time" checked={form.Time} onChange={onChange} />
                             <Label className="form-check-label" htmlFor="Time">Time</Label>
                         </div>
                         <div className="form-check">
-                            <Input className="form-check-input" type="checkbox" value="Resources" name="Resources" checked={form.Resources} onChange={onChange} />
+                            <Input className="form-check-input" type="checkbox" value="resources" name="Resources" checked={form.Resources} onChange={onChange} />
                             <Label className="form-check-label" htmlFor="Resources">Resources</Label>
                         </div>
                         <div className="input-group mt-3">
                             <span className="input-group-text">Message</span>
-                            <Input type="text" aria-label="Message" className="form-control" onChange={e => setMessage(e.target.value)} />
+                            <Input type="text" aria-label="Message" className="form-control" name='message' onChange={onChangeMessage} />
                         </div>
                     </div>
-                    <Form onSubmit={handleSubmit}>
+                    <Form >
                         <div className="card-footer text-center">
-                            <Button color="danger" onClick={ContributionNotify}>Submit</Button>
+                            <Button color="danger" onClick={(event) => { handleSubmit(event); ContributionNotify() }}>Submit</Button>
                         </div>
                     </Form>
                 </Card>
