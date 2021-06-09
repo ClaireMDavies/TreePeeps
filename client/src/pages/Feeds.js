@@ -94,7 +94,7 @@ function Feeds() {
             </Navbar>
             {/* Post Card */}
             { nearestProjects.length ? (
-                <div>
+                <div className="mt-3">
                     {
                         nearestProjects.map(project => {
                             return (
