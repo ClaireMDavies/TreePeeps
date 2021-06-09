@@ -20,10 +20,12 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     create: function (req, res) {
+        console.log('req.body:', req.body);
         db.User
             .create(req.body)
             .then(dbModel =>  {
-                setAuthentication(dbModel._id, res);
+                console.log('dbModel:', dbModel);
+                // setAuthentication(dbModel._id, res);
                 res.json(dbModel);
             })
             .catch(err => res.status(422).json(err));
@@ -99,14 +101,14 @@ module.exports = {
     }
 }
 
-function setAuthentication(userId, res)
-{
-    // password matched, user has logged in
-    // set token expiry to seven days
-    const token = jwt.sign({id: userId}, process.env.JWT_SECRET, {expiresIn: '7d'});
-    res.cookie('token', token, {
-        expires: new Date(Date.now() + 604800) ,
-        secure: false,
-        httpOnly: true
-    });
-}
+// function setAuthentication(userId, res)
+// {
+//     // password matched, user has logged in
+//     // set token expiry to seven days
+//     const token = jwt.sign({id: userId}, process.env.JWT_SECRET, {expiresIn: '7d'});
+//     res.cookie('token', token, {
+//         expires: new Date(Date.now() + 604800) ,
+//         secure: false,
+//         httpOnly: true
+//     });
+// }
