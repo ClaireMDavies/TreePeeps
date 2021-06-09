@@ -72,3 +72,10 @@
   height: auto;
   width: 100%;
 }
+
+#main{
+  margin-right: 20%;
+  margin-left: 20%;
+  padding-top: 6%;
+  padding-bottom: 6%;
+}
