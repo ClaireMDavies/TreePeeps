@@ -74,7 +74,7 @@ function ContributeCard() {
                     </div>
                     <Form >
                         <div className="card-footer text-center">
-                            <Button color="danger" onClick={(event) => { handleSubmit(event); ContributionNotify() }}>Submit</Button>
+                            <Button color="danger" onClick={(event) => { handleSubmit(event)}, ContributionNotify }>Submit</Button>
                         </div>
                     </Form>
                 </Card>
