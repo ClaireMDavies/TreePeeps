@@ -28,49 +28,49 @@ const styles = {
 
 function Login() {
 
-    const [userName, setUserName] = useState("");
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [emailAddress, setEmailAddress] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
-    const [country, setCountry] = useState("");
-    const [city, setCity] = useState("");
+    // const [userName, setUserName] = useState("");
+    // const [firstName, setFirstName] = useState("");
+    // const [lastName, setLastName] = useState("");
+    // const [emailAddress, setEmailAddress] = useState("");
+    // const [password, setPassword] = useState("");
+    // const [confirmPassword, setConfirmPassword] = useState("");
+    // const [country, setCountry] = useState("");
+    // const [city, setCity] = useState("");
 
-    function handleSubmit(event) {
+    // function handleSubmit(event) {
 
-        event.preventDefault();
+    //     event.preventDefault();
 
-    }
+    // }
 
-    function validateUesrName() {
+    // function validateUesrName() {
 
-    }
+    // }
 
-    function validateFirstName() {
+    // function validateFirstName() {
 
-    }
+    // }
 
-    function validateLastName() {
+    // function validateLastName() {
 
-    }
+    // }
 
-    function validateEmailAddress() {
+    // function validateEmailAddress() {
 
-    }
+    // }
 
-    function validatePassword() {
+    // function validatePassword() {
 
-    }
+    // }
 
-    function validateLocation() {
+    // function validateLocation() {
 
-    }
+    // }
 
 
-    function isUserNameAlreadyInUse() {
+    // function isUserNameAlreadyInUse() {
 
-    }
+    // }
 
     return (
         <div>
