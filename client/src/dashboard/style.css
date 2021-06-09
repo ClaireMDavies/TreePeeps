@@ -73,6 +73,7 @@
 }
 
 #main{
+  font-family: 'Paytone One', sans-serif;
   background-repeat: no-repeat;
   background-image: url("../assets/background.jpg");
   position:relative;
