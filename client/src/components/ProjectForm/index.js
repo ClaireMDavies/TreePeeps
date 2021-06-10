@@ -37,12 +37,12 @@ const ProjectForm = () => {
         if (formObject.title && formObject.name) {
             API.saveProject({
                 title: formObject.title,
-                userId : localStorage.getItem('userId'),
+                userId: localStorage.getItem('userId'),
                 name: formObject.name,
                 description: formObject.description,
                 startDate: formObject.startDate,
                 endDate: formObject.endDate,
-                location:{type:"Point",coordinates:[location.lng,location.lat]},
+                location: { type: "Point", coordinates: [location.lng, location.lat] },
                 latitude: location.lat,
                 longitude: location.lng,
                 area: formObject.area,
@@ -54,24 +54,27 @@ const ProjectForm = () => {
                 numSpirals: formObject.numSpirals,
                 otherResources: formObject.otherResources
             })
-                .then(() => setFormObject({
-                    title: "",
-                    name: "",
-                    description: "",
-                    startDate: "",
-                    endDate: "",
-                    location:{type:"Point",coordinates:[]},
-                    latitude: "",
-                    longitude: "",
-                    area: "",
-                    landOwner: "",
-                    hoursNeeded: "",
-                    numTrees: "",
-                    numStakes: "",
-                    amtFertilizer: "",
-                    numSpirals: "",
-                    otherResources: ""
-                }))
+                .then(() => {
+                    setFormObject({
+                        title: "",
+                        name: "",
+                        description: "",
+                        startDate: "",
+                        endDate: "",
+                        location: { type: "Point", coordinates: [] },
+                        latitude: "",
+                        longitude: "",
+                        area: "",
+                        landOwner: "",
+                        hoursNeeded: "",
+                        numTrees: "",
+                        numStakes: "",
+                        amtFertilizer: "",
+                        numSpirals: "",
+                        otherResources: ""
+                    });
+                    window.location.reload();
+                })
                 .catch(err => console.log(err));
         }
     };

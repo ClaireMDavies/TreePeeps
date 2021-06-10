@@ -137,7 +137,7 @@ function Feeds(props) {
                                         </div>
                                     </Card>
                                     {/* Contribute Card */}
-                                    {showCardId === project._id ? <ContributeCard /> : null}
+                                    {showCardId === project._id ? <ContributeCard project={project} /> : null}
                                 </div>
                                 ) : null
                             )

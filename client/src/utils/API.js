@@ -9,7 +9,7 @@ export default {
     return axios.get("/api/users");
   },
   getContributors: function (contributorsIds) {
-    return axios.get("/api/users/contributors/"+ contributorsIds);
+    return axios.get("/api/users/contributors/" + contributorsIds);
   },
   // Gets the user with the given id
   getUser: function (id) {
@@ -41,6 +41,9 @@ export default {
   updateProject: function (id, data) {
     return axios.put("/api/projects/project/" + id, data);
   },
+  deleteProject: function (id) {
+    return axios.delete("/api/projects/project" + id);
+  },
   searchByLocation: function (lat, lng, dist) {
     return axios.get(`/api/projects/location?lat=${lat}&lng=${lng}&dist=${dist}`);
   },
@@ -60,12 +63,10 @@ export default {
   createUser: function (userData) {
     return axios.post("/api/users", userData);
   },
-  login: function(emailAddress, password)
-  {
+  login: function (emailAddress, password) {
     return axios.post("/api/users/login", { emailAddress: emailAddress, password: password });
   },
-  logout: function()
-  {
+  logout: function () {
 
   }
 };
