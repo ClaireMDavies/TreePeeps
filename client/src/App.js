@@ -4,6 +4,13 @@ import Home from "../src/pages/Home";
 import SignUp from "../src/pages/SignUp";
 import Feeds from "../src/pages/Feeds";
 import Login from "../src/pages/Login";
+<<<<<<< HEAD
+import ContactUs from "../src/pages/ContactUs";
+import Dashboard from "../src/pages/Dashboard";
+import NoMatch from "../src/pages/NoMatch";
+import AboutUs from "../src/pages/AboutUs";
+
+=======
 import Logout from "../src/pages/Logout";
 import ContactUs from "../src//pages/ContactUs";
 import AboutUs from "../src//pages/AboutUs";
@@ -11,6 +18,7 @@ import Dashboard from "../src/pages/Dashboard";
 import NoMatch from "../src/pages/NoMatch";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+>>>>>>> 0b0caed9118a706cb8177064a606dc28103b911f
 
 function App() {
   return (
@@ -27,6 +35,12 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/contact" component={ContactUs} />
           <Route exact path="/signup" component={SignUp} />
+<<<<<<< HEAD
+          <Route exact path="/aboutus" component={AboutUs} />
+          
+          // route else
+=======
+>>>>>>> 0b0caed9118a706cb8177064a606dc28103b911f
           <Route component={NoMatch} />
         </Switch>
       </Router>
