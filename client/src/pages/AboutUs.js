@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< HEAD
 import { Container, Row, Col, Card, CardBody, Form, Input, Button } from 'reactstrap';
 import Navbar from "../components/NavbarTreePeeps";
 import AboutImg from '../images/pavlenko-8BNO4HUQYRw-unsplash.jpg';
@@ -31,10 +32,14 @@ const styles = {
     }
 
 };
+=======
+
+>>>>>>> 0b0caed9118a706cb8177064a606dc28103b911f
 function AboutUs() {
 
     return (
         <div>
+<<<<<<< HEAD
             <Navbar>
                 <NavItem
                     link="/dashboard"
@@ -101,3 +106,12 @@ function AboutUs() {
     )
 };
 export default AboutUs;
+=======
+
+        </div>
+    )
+};
+
+
+export default AboutUs;
+>>>>>>> 0b0caed9118a706cb8177064a606dc28103b911f

@@ -1,85 +1,107 @@
 const mongoose = require("mongoose");
-
 const Schema = mongoose.Schema;
 
 const ProjectSchema = new Schema({
 
-    ownerid: {
+    userId: {
         type: String,
         //required:true
     },
     name: {
-        type: String, 
+        type: String,
         required: true
     },
     title: {
         type: String,
-        required:true
-        },
+        required: true
+    },
     description: {
         type: String,
         required: true
     },
-    image: {
-        type: String,
-        default: "https://unsplash.com/@pavlenko?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+    startDate: {
+        type: Date,
+        required: true
     },
+    endDate: {
+        type: Date,
+        required: true
+    },
+    location: {
+        type: { type: String },
+        coordinates: []
+    },    
     latitude: {
-        type: String,
-        require: false
+        type: Number,
+        required: false
     },
     longitude: {
+        type: Number,
+        required: false
+    },
+    area: {
+        type: Number,
+        min: 0,
+        required: false
+    },
+    landOwner: {
         type: String,
-        require: false
+        required: false
     },
     hoursNeeded: {
         type: Number,
         min: 0,
-        require: false
+        required: false
     },
     numTrees: {
         type: Number,
         min: 0,
-        require: false
+        required: false
     },
     //likely to change to array?
     numContributors: {
         type: Number,
-        require: false,
+        required: false,
         min: 0
     },
-    ContributorNames: {
+    Contributors: {
         type: [String],
-        require: false
+        required: false
     },
     numStakes: {
         type: Number,
-        require: false
+        required: false
     },
     amtFertilizer: {
         type: Number,
         min: 0,
-        require: false
+        required: false
     },
     numSpirals: {
         type: Number,
-        require: false
+        required: false
     },
     status: {
-        type: Boolean 
-
+        type: Boolean,
+        default: true
+    },
+    otherResources: {
+        type: String,
+        required: false
     },
     timestamps: {
         type: Date
     }
 
-
+}, {
+    timestamps: true
 });
 
 //locAation - w3words - three word string - convert to l&l and vice versa - store both, no coversion
 // latitude and longitude coords
 // northings & eastings
 
+ProjectSchema.index({ location: "2dsphere" });
 const Project = mongoose.model("Project", ProjectSchema);
 
 module.exports = Project;

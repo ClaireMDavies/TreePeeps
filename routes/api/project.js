@@ -8,9 +8,12 @@ router.route("/")
 
 // Matches with "/api/project/:id"
 router
- .route("/:id")
- .get(projectController.findById)
- .put(projectController.update)
- .delete(projectController.remove);
+  .route("/project/:id")
+  .get(projectController.findById)
+  .put(projectController.update)
+//   .delete(projectController.remove);
+router
+  .route("/location")
+  .get(projectController.findByLocation)
 
 module.exports = router;

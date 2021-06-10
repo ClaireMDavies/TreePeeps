@@ -9,22 +9,30 @@ function ContactUs() {
     return (
         <div>
            <Navbar>
+               { localStorage.getItem("userId") === null ? "" : 
                 <NavItem
                     link="/dashboard"
                     name="Dashboard">
                 </NavItem>
+                }
                 <NavItem
-                    link="/"
+                    link="/about"
                     name="About Us">
                 </NavItem>
                 <NavItem
                     link="/contact"
                     name="Contact Us">
                 </NavItem>
+                { localStorage.getItem("userId") === null ?
+                  <NavItem
+                  link="/login"
+                  name="Login">
+              </NavItem> : 
                 <NavItem
-                    link="/"
+                    link="/logout"
                     name="Logout">
                 </NavItem>
+                }
             </Navbar>
             {/* Contact Card */}
             <section className="contact-section mt-5">
@@ -68,6 +76,10 @@ function ContactUs() {
                     </Row>
                 </Container>
             </section>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             <Footer />
         </div>
     )
