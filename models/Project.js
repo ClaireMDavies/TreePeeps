@@ -58,13 +58,7 @@ const ProjectSchema = new Schema({
         min: 0,
         required: false
     },
-    //likely to change to array?
-    numContributors: {
-        type: Number,
-        required: false,
-        min: 0
-    },
-    Contributors: {
+    contributors: {
         type: [String],
         required: false
     },

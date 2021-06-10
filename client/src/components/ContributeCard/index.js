@@ -1,17 +1,9 @@
 import React, { useState } from "react";
 import { Card, CardTitle, Form, Input, Label, Button } from 'reactstrap';
 import API from "../../utils/API";
-import {toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
-
-const styles = {
-    cardStyle: {
-        width: '60%',
-        padding: 0
-    }
-};
-
-function ContributeCard() {
+function ContributeCard({ project }) {
     const [form, setForm] = useState({
         land: false,
         time: false,
@@ -29,7 +21,6 @@ function ContributeCard() {
     }
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(form);
         API.saveContribution({
             land: form.land,
             time: form.time,
@@ -43,13 +34,22 @@ function ContributeCard() {
                 message: ''
             }))
             .catch(err => console.log(err));
+
+        const newProject = { ...project };
+        const userId = localStorage.getItem('userId');
+
+        if (!newProject.contributors.includes(userId)) {
+            newProject.contributors.push(userId);
+            API.updateProject(project._id, newProject)
+        }
+
     }
 
     return (
         <div>
             {/* Contribute Card */}
             <div className="row d-flex justify-content-center mt-3 mb-3">
-                <Card style={styles.cardStyle}>
+                <Card className="p-0" style={{ width: '60%' }}>
                     <CardTitle><h5 className="ps-3 pt-3"><i className="fab fa-wpforms"></i> Contribution Form</h5></CardTitle>
                     <div className="card-body">
                         <div className="form-check">
