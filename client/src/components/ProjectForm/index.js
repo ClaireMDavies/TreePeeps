@@ -37,6 +37,7 @@ const ProjectForm = () => {
         if (formObject.title && formObject.name) {
             API.saveProject({
                 title: formObject.title,
+                userId : localStorage.getItem('userId'),
                 name: formObject.name,
                 description: formObject.description,
                 startDate: formObject.startDate,

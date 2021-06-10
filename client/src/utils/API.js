@@ -8,6 +8,9 @@ export default {
   getUsers: function () {
     return axios.get("/api/users");
   },
+  getContributors: function (contributorsIds) {
+    return axios.get("/api/users/contributors/"+ contributorsIds);
+  },
   // Gets the user with the given id
   getUser: function (id) {
     return axios.get("/api/users/" + id);
