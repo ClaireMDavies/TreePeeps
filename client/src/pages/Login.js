@@ -11,66 +11,31 @@ import { toast } from 'react-toastify';
 
 
 function Login(props) {
-    const loginFailureNotification = () => toast("There was an error with your login please try again");
+   
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [loginError, setLoginError] = useState("");
 
     function signIn() {
+        
         API.login(username, password)
             .then(response => {
                 if (response.data.userId) {
                     localStorage.setItem("userId", response.data.userId);
                     props.history.push("/dashboard");
+                    setLoginError("");
                 }
                 else {
-                    loginFailureNotification();
+                     setLoginError("There was an error with your login please try again");
                 }
-            });
+            })
+            .catch(e => {
+                setLoginError("There was an error with your login please try again");
+            })
+   
     }
 
-    // const [userName, setUserName] = useState("");
-    // const [firstName, setFirstName] = useState("");
-    // const [lastName, setLastName] = useState("");
-    // const [emailAddress, setEmailAddress] = useState("");
-    // const [password, setPassword] = useState("");
-    // const [confirmPassword, setConfirmPassword] = useState("");
-    // const [country, setCountry] = useState("");
-    // const [city, setCity] = useState("");
-
-    // function handleSubmit(event) {
-
-    //     event.preventDefault();
-
-    // }
-
-    // function validateUesrName() {
-
-    // }
-
-    // function validateFirstName() {
-
-    // }
-
-    // function validateLastName() {
-
-    // }
-
-    // function validateEmailAddress() {
-
-    // }
-
-    // function validatePassword() {
-
-    // }
-
-    // function validateLocation() {
-
-    // }
-
-
-    // function isUserNameAlreadyInUse() {
-
-    // }
+    
 
     return (
         <div>
@@ -105,9 +70,11 @@ function Login(props) {
                                         <span className="input-group-text" style={{ width: '100px' }} >Password </span>
                                         <Input type="password" className="form-control" placeholder="Password" aria-label="Password" onChange={e => setPassword(e.target.value)} />
                                     </div>
+                                    <span className="has-error col-md-6"><p className="text-center text-danger">{loginError}</p></span>
                                 </Form>
                                 <div className="text-center">
                                     <Button className="mt-3" type="submit" color="success" onClick={signIn}>Login</Button>
+                                    
                                 </div>
                                 <p className="mt-3 text-center">Don't have an account? <Link className="text-reset" to="/signup">Register here</Link></p>
                             </CardBody>

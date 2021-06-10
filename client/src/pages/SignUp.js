@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 
 function SignUp(props) {
     const accountCreationFailedNotify = () => toast("there were some errors");
-    const accountCreationSuccessNotify = () => toast("yay");
+    
 
     const [username, setUsername] = useState("");
     const [firstName, setFirstName] = useState("");
@@ -85,7 +85,7 @@ function SignUp(props) {
                         props.history.push("/dashboard");
                     }
                     else {
-                        // TODO: handle any error
+                        accountCreationFailedNotify();
                     }
                 });
         }
