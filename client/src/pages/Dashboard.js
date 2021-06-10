@@ -8,24 +8,22 @@ import ProjectForm from "../components/ProjectForm";
 import Footer from "../components/Footer";
 
 const Dashboard = (props) => {
-
     React.useEffect(() => {
 
-        if (localStorage.getItem("userId") === null)
-        {
+        if (localStorage.getItem("userId") === null) {
             props.history.push("/");
         }
 
     }, []);
-    
+
     return (
         <div>
             <Navbar>
-                { localStorage.getItem("userId") === null ? "" : 
-                <NavItem
-                    link="/dashboard"
-                    name="Dashboard">
-                </NavItem>
+                {localStorage.getItem("userId") === null ? "" :
+                    <NavItem
+                        link="/dashboard"
+                        name="Dashboard">
+                    </NavItem>
                 }
                 <NavItem
                     link="/search"
@@ -68,18 +66,13 @@ const Dashboard = (props) => {
                             <div className="card-body">
                                 <ContributedProjectCard />
                             </div>
+                            {/* <div className="card-footer text-center">
+                                <Button color="danger" onClick={(event) => {
+                                    handleDelete(event);
+                                }}>Delete</Button>
+                            </div> */}
                         </div>
                     </Col >
-
-                    {/* <Col className="col-md rounded float-right justify-content">
-                        <div className="card text-center">
-                            <div className="card-header">
-                                <h4 className="text-center mb-3">Projects in your area</h4>
-                            </div>
-                            <div className="card-body">
-                            </div>
-                        </div>
-                    </Col> */}
                 </Row>
             </Container>
             <br></br>

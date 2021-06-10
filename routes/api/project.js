@@ -11,7 +11,7 @@ router
   .route("/project/:id")
   .get(projectController.findById)
   .put(projectController.update)
-//   .delete(projectController.remove);
+  .delete(projectController.remove);
 router
   .route("/location")
   .get(projectController.findByLocation)
