@@ -13,6 +13,16 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
+    findAllById: function (req, res) {
+        const string = req.params.ids;
+        const ids = string.split('&');
+        db.User
+            .find()
+            .where('_id')
+            .in(ids)
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
     findById: function (req, res) {
         db.User
             .findById(req.params.id)
@@ -23,8 +33,8 @@ module.exports = {
         console.log('req.body:', req.body);
         db.User
             .create(req.body)
-            .then((user) =>  {
-                res.json({userId: user._id }).send();
+            .then((user) => {
+                res.json({ userId: user._id }).send();
             })
             .catch(err => res.status(422).json(err));
     },
@@ -43,10 +53,7 @@ module.exports = {
     },
 
     usernameExists: function (req, res) {
-
-
         db.User.findOne({ username: req.params.username }, function (err, user) {
-
             if (err) {
                 res.status(422).send();
             }
@@ -68,23 +75,16 @@ module.exports = {
     },
 
     login: function (req, res) {
-
         const emailAddress = req.body.emailAddress;
         const password = req.body.password;
-
-        db.User.findOne({email: emailAddress}, function (err, user) {
-
+        db.User.findOne({ email: emailAddress }, function (err, user) {
             if (user) {
-
                 const passwordMatches = bcrypt.compareSync(password, user.password);
-
-                if (!passwordMatches)
-                {
+                if (!passwordMatches) {
                     res.status(401).send();
                 }
-                else
-                {
-                    res.json({userId: user._id }).send();
+                else {
+                    res.json({ userId: user._id }).send();
                 }
             }
             else {
@@ -92,10 +92,8 @@ module.exports = {
             }
         });
     },
-
     logout: function (req, res) {
-
-    }
+    },
 }
 
 // function setAuthentication(userId, res)
