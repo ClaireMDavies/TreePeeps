@@ -6,7 +6,6 @@ import ContributeCard from "../components/ContributeCard";
 import Footer from "../components/Footer";
 import Moment from 'react-moment';
 import API from "../utils/API";
-import { ToastContainer, toast } from 'react-toastify';
 
 const styles = {
     cardStyle: {
@@ -26,7 +25,6 @@ const styles = {
 };
 
 function Feeds(props) {
-    const ContactNotify = () => toast("Your contact info is sent to the project creator");
     const [nearestProjects, setNearestProjects] = useState([]);
     const [city, setCity] = useState('');
     const [distance, setDistance] = useState(1000);
@@ -109,6 +107,7 @@ function Feeds(props) {
                     {
                         nearestProjects.map(project => {
                             return (
+                                project.status === true ? (
                                 <div className="row d-flex justify-content-center mb-3" key={project._id}>
                                     <Card style={styles.cardStyle}>
                                         <CardTitle tag="h5" className="card-title mt-2 ps-3">{project.title}
@@ -140,6 +139,7 @@ function Feeds(props) {
                                     {/* Contribute Card */}
                                     {showCardId === project._id ? <ContributeCard /> : null}
                                 </div>
+                                ) : null
                             )
                         }
                         )

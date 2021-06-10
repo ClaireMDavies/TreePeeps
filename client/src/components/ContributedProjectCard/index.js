@@ -28,6 +28,7 @@ function ContributedProjectCard() {
                 <div className='row'>
                     {projects.map(project => {
                         return (
+                           project.Contributors.includes(localStorage.getItem('userId'))  ? (
                             <div className="col-md-4 d-flex justify-content-center mb-3" key={project._id}>
                                 <div className="card card-style" >
                                     <div className="card-header p-2 pb-0">
@@ -45,6 +46,7 @@ function ContributedProjectCard() {
                                     </div>
                                 </div>
                             </div>
+                             ) : null
                         );
                     })
                     }

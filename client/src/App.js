@@ -5,8 +5,8 @@ import SignUp from "../src/pages/SignUp";
 import Feeds from "../src/pages/Feeds";
 import Login from "../src/pages/Login";
 import Logout from "../src/pages/Logout";
-import ContactUs from "../src//pages/ContactUs";
-import AboutUs from "../src//pages/AboutUs";
+import ContactUs from "../src/pages/ContactUs";
+import AboutUs from "../src/pages/AboutUs";
 import Dashboard from "../src/pages/Dashboard";
 import NoMatch from "../src/pages/NoMatch";
 import { ToastContainer } from 'react-toastify';
@@ -27,6 +27,9 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/contact" component={ContactUs} />
           <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/aboutus" component={AboutUs} />
+          
+          // route else
           <Route component={NoMatch} />
         </Switch>
       </Router>
