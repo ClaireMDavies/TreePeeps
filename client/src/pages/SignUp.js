@@ -34,7 +34,7 @@ function SignUp(props) {
 
     const [citiesLoading, setCitiesLoading] = useState(false);
 
-    const [location, setLocation] = useState({});
+    // const [location, setLocation] = useState({});
 
     React.useEffect(() => {
 
@@ -64,8 +64,7 @@ function SignUp(props) {
         validationResults.push(validateLocation());
 
         if (validationResults.some(result => result === false)) {
-            // there were some errors
-            // alert("Failed!");
+            
             accountCreationFailedNotify();
         }
         else {
@@ -285,7 +284,7 @@ function SignUp(props) {
                                     <InputGroupAddon addonType="prepend" style={{ width: '200px' }}>Username</InputGroupAddon>
                                     <Input className="form-control" type="text" placeholder="Choose a user name of 6 characters or more" onBlur={usernameLostFocus} onChange={e => setUsername(e.target.value)}></Input>
                                 </InputGroup>
-                                <span className="has-error col-md-6"><p className="text-center text-danger" onBlur={usernameLostFocus} onChange={e => setUsername(e.target.value)}>{usernameError}</p></span>
+                                <span className="has-error col-md-6"><p className="text-center text-danger" >{usernameError}</p></span>
                             </Col>
                             <Col md='8' className='mt-1'>
                                 <InputGroup>

@@ -9,6 +9,7 @@ router.post("/", userController.create);
 
 router.post("/login", userController.login);
 router.post("/logout", userController.logout);
+router
 
 //router.put(userController.update);
 //router.delete(userController.remove);

@@ -7,7 +7,6 @@ import NavItem from "../components/NavItem";
 import Footer from "../components/Footer";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
-import { toast } from 'react-toastify';
 
 
 function Login(props) {
@@ -34,8 +33,6 @@ function Login(props) {
             })
    
     }
-
-    
 
     return (
         <div>
