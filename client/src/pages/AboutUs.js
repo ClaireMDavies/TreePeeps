@@ -36,10 +36,12 @@ function AboutUs() {
     return (
         <div>
             <Navbar>
+            { localStorage.getItem("userId") === null ? "" : 
                 <NavItem
                     link="/dashboard"
                     name="Dashboard">
                 </NavItem>
+                }
                 <NavItem
                     link="/aboutus"
                     name="About Us">
@@ -48,10 +50,16 @@ function AboutUs() {
                     link="/contact"
                     name="Contact Us">
                 </NavItem>
+                { localStorage.getItem("userId") === null ?
+                  <NavItem
+                  link="/login"
+                  name="Login">
+              </NavItem> : 
                 <NavItem
-                    link="/"
+                    link="/logout"
                     name="Logout">
                 </NavItem>
+                }
             </Navbar>
             {/* Login Card */}
             <Container className="d-flex justify-content-center mb-3 mt-5">
