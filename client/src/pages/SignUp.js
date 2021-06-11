@@ -89,7 +89,7 @@ function SignUp(props) {
                 });
         }
     }
-
+    //validating the user name on axios call
     function validateUsername() {
 
         if (username.length < 6) {
@@ -111,6 +111,7 @@ function SignUp(props) {
         }
     }
 
+    //validating first name on axios call
     function validateFirstName() {
 
         if (firstName.length === 0) {
@@ -124,6 +125,7 @@ function SignUp(props) {
         }
     }
 
+    //validating last name on axios call
     function validateLastName() {
 
         if (lastName.length === 0) {
@@ -138,6 +140,7 @@ function SignUp(props) {
         }
     }
 
+    //validating email address on axios call
     function validateEmailAddress() {
 
         if (emailIsValid(emailAddress)) {
@@ -152,6 +155,7 @@ function SignUp(props) {
         }
     }
 
+    //Setting client side validation rules for the password, and various error handling
     function validatePassword() {
 
         if (password.length === 0) {
@@ -199,6 +203,7 @@ function SignUp(props) {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
     }
 
+    //checking whether the user name already exists on via onBlur and an axios call
     function usernameLostFocus() {
 
         if (username.length > 0) {
@@ -218,6 +223,7 @@ function SignUp(props) {
         }
     }
 
+    //checking email address is valid on blur
     function emailAddressLostFocus() {
 
         if (emailAddress.length > 0) {
@@ -226,6 +232,7 @@ function SignUp(props) {
         }
     }
 
+    //checking something has been passed into the password field onBlur
     function passwordLostFocus() {
 
         if (password.length > 0) {
@@ -234,6 +241,7 @@ function SignUp(props) {
         }
     }
 
+    //checking something has been written in the confirm password field
     function confirmPasswordLostFocus() {
 
         if (confirmPassword.length > 0) {
