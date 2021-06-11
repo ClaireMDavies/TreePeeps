@@ -59,7 +59,15 @@ const ProjectSchema = new Schema({
         required: false
     },
     contributors: {
-        type: [String],
+        type: [],
+        required: false
+    },
+    contributorsDetails: {
+        type: [],
+        required: false
+    },
+    contributions :{
+        type: [],
         required: false
     },
     numStakes: {

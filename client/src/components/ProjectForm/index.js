@@ -125,23 +125,23 @@ const ProjectForm = () => {
                                 <div className="card-body">
                                     <div className="input-group mb-3">
                                         <span className="input-group-text" >Project name</span>
-                                        <input type="textarea" className="form-control" placeholder="Name" name="name" value={formObject.name} onChange={handleInputChange} />
+                                        <input type="textarea" className="form-control" placeholder="Name" name="name" value={formObject.name} onChange={handleInputChange} required/>
                                     </div>
                                     <div className="input-group mb-3">
                                         <span className="input-group-text" >Post title</span>
-                                        <input type="textarea" className="form-control" placeholder="Title" name="title" value={formObject.title} onChange={handleInputChange} />
+                                        <input type="textarea" className="form-control" placeholder="Title" name="title" value={formObject.title} onChange={handleInputChange} required />
                                     </div>
                                     <div className="input-group mb-3">
                                         <span className="input-group-text" >Description</span>
-                                        <input type="textarea" className="form-control" placeholder="Description" name="description" value={formObject.description} onChange={handleInputChange} />
+                                        <input type="textarea" className="form-control" placeholder="Description" name="description" value={formObject.description} onChange={handleInputChange}required />
                                     </div>
                                     <div className="input-group mb-3">
                                         <span className="input-group-text" >Start Date </span>
-                                        <input type="date" className="form-control" name="startDate" value={formObject.startDate} onChange={handleInputChange} />
+                                        <input type="date" className="form-control" name="startDate" value={formObject.startDate} onChange={handleInputChange} required />
                                     </div>
                                     <div className="input-group mb-3">
                                         <span className="input-group-text" >End Date </span>
-                                        <input type="date" className="form-control" name="endDate" value={formObject.endDate} onChange={handleInputChange} />
+                                        <input type="date" className="form-control" name="endDate" value={formObject.endDate} onChange={handleInputChange} required />
                                     </div>
                                 </div>
                             </div>
