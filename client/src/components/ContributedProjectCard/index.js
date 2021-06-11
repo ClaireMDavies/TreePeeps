@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Moment from 'react-moment';
 import API from "../../utils/API";
-import Wrapper from "../Wrapper";
 import "./style.css";
 
 function ContributedProjectCard() {
@@ -10,7 +9,7 @@ function ContributedProjectCard() {
     // Load all projects and store them with setProjects
     useEffect(() => {
         loadProjects()
-    }, [])
+    }, [projects])
 
     // Loads all projects and sets them to projects
     function loadProjects() {
