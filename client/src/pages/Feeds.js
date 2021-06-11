@@ -26,8 +26,7 @@ function Feeds(props) {
 
     useEffect(() => {
 
-        if (localStorage.getItem("userId") === null)
-        {
+        if (localStorage.getItem("userId") === null) {
             props.history.push("/");
             return;
         }
@@ -65,11 +64,11 @@ function Feeds(props) {
     return (
         <div>
             <Navbar handleFormSubmit={handleFormSubmit} handleCityChange={handleCityChange} handleDistanceChange={handleDistanceChange}>
-            { localStorage.getItem("userId") === null ? "" : 
-                <NavItem
-                    link="/dashboard"
-                    name="Dashboard">
-                </NavItem>
+                {localStorage.getItem("userId") === null ? "" :
+                    <NavItem
+                        link="/dashboard"
+                        name="Dashboard">
+                    </NavItem>
                 }
                 <NavItem
                     link="/about"
@@ -91,37 +90,43 @@ function Feeds(props) {
                         nearestProjects.map(project => {
                             return (
                                 project.status === true ? (
-                                <div className="row d-flex justify-content-center mb-3" key={project._id}>
-                                    <Card className="p-0" style={{width: '60%'}}>
-                                        <CardTitle tag="h5" className="card-title mt-2 ps-3">{project.title}
-                                            {project.area || project.location ? <i className="fas fa-map-marked-alt ps-3" style={{color : 'brown'}} data-bs-toggle="tooltip" data-bs-placement="top" title="Land needed"></i> : null}
-                                            {project.hoursNeeded ? <i className="fas fa-clock ps-3" style={{color : 'red'}} data-bs-toggle="tooltip" data-bs-placement="top" title="Time needed"></i> : null}
-                                            {project.numTrees || project.numStakes || project.numSpirals || project.amtFertilizer || project.otherResources ? <i className="fas fa-tree ps-3" style={{color : 'green'}} data-bs-toggle="tooltip" data-bs-placement="top" title="Resources needed"></i> : null}
-                                        </CardTitle>
-                                        <CardSubtitle tag="h6" className="mb-2 ps-3 text-muted"><Moment format="YYYY/MM/DD">{project.startDate}</Moment> -- <Moment format="YYYY/MM/DD">{project.endDate}</Moment></CardSubtitle>
-                                        <CardBody className="ps-2">
-                                            <CardText>{project.description}
-                                                <ul className="pt-3">Specifications :
+                                    <div className="row d-flex justify-content-center mb-3" key={project._id}>
+                                        <Card className="p-0" style={{ width: '60%' }}>
+                                            <CardTitle tag="h5" className="card-title mt-2 ps-3">{project.title}
+                                                {project.area || project.location ? <i className="fas fa-map-marked-alt ps-3" style={{ color: 'brown' }} data-bs-toggle="tooltip" data-bs-placement="top" title="Land needed"></i> : null}
+                                                {project.hoursNeeded ? <i className="fas fa-clock ps-3" style={{ color: 'red' }} data-bs-toggle="tooltip" data-bs-placement="top" title="Time needed"></i> : null}
+                                                {project.numTrees || project.numStakes || project.numSpirals || project.amtFertilizer || project.otherResources ? <i className="fas fa-tree ps-3" style={{ color: 'green' }} data-bs-toggle="tooltip" data-bs-placement="top" title="Resources needed"></i> : null}
+                                            </CardTitle>
+                                            <CardSubtitle tag="h6" className="mb-2 ps-3 text-muted"><Moment format="YYYY/MM/DD">{project.startDate}</Moment> -- <Moment format="YYYY/MM/DD">{project.endDate}</Moment></CardSubtitle>
+                                            <CardBody className="ps-2">
+                                                <CardText>
+                                                    <p className="ms-3">
+                                                        {project.description}
+                                                    </p>
+                                                    <ul className="pt-3">
+                                                        <b>
+                                                        Specifications :
+                                                        </b>
                                                     {project.latitude ? <li>Latitude :  {project.latitude}</li> : null}
-                                                    {project.longitude ? <li>Longitude :  {project.longitude} </li> : null}
-                                                    {project.area ? <li>Area (m²) :  {project.area}</li> : null}
-                                                    {project.landOwner ? <li>Owner : {project.landOwner}</li> : null}
-                                                    {project.hoursNeeded ? <li>Work hours needed :  {project.hoursNeeded}</li> : null}
-                                                    {project.numTrees ? <li>Trees:  {project.numTrees}</li> : null}
-                                                    {project.numStakes ? <li>Stakes : {project.numStakes}</li> : null}
-                                                    {project.amtFertilizer ? <li>Fertilizer:  {project.amtFertilizer}</li> : null}
-                                                    {project.numSpirals ? <li>Spirals:  {project.numSpirals}</li> : null}
-                                                    {project.otherResources ? <li>Other Resources:  {project.otherResources} </li> : null}
-                                                </ul>
-                                            </CardText>
-                                        </CardBody>
-                                        <div className="card-footer text-center">
-                                            <Button className="me-3" color="success" id={project._id} onClick={showContribute(project._id)} ><i className="fas fa-hands-helping"></i> Contribute</Button>
-                                        </div>
-                                    </Card>
-                                    {/* Contribute Card */}
-                                    {showCardId === project._id ? <ContributeCard project={project} /> : null}
-                                </div>
+                                                        {project.longitude ? <li>Longitude :  {project.longitude} </li> : null}
+                                                        {project.area ? <li>Area (m²) :  {project.area}</li> : null}
+                                                        {project.landOwner ? <li>Owner : {project.landOwner}</li> : null}
+                                                        {project.hoursNeeded ? <li>Work hours needed :  {project.hoursNeeded}</li> : null}
+                                                        {project.numTrees ? <li>Trees:  {project.numTrees}</li> : null}
+                                                        {project.numStakes ? <li>Stakes : {project.numStakes}</li> : null}
+                                                        {project.amtFertilizer ? <li>Fertilizer:  {project.amtFertilizer}</li> : null}
+                                                        {project.numSpirals ? <li>Spirals:  {project.numSpirals}</li> : null}
+                                                        {project.otherResources ? <li>Other Resources:  {project.otherResources} </li> : null}
+                                                    </ul>
+                                                </CardText>
+                                            </CardBody>
+                                            <div className="card-footer text-center">
+                                                <Button className="me-3" color="success" id={project._id} onClick={showContribute(project._id)} ><i className="fas fa-hands-helping"></i> Contribute</Button>
+                                            </div>
+                                        </Card>
+                                        {/* Contribute Card */}
+                                        {showCardId === project._id ? <ContributeCard project={project} /> : null}
+                                    </div>
                                 ) : null
                             )
                         }
