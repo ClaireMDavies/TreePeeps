@@ -10,7 +10,7 @@ function Masthead() {
             <header className="masthead">
                 <div className="container d-flex h-100 align-items-center">
                     <div className="container-wrapper mx-auto text-center">
-                        <img id="logo" src={logo} />
+                        <img id="logo" src={logo} alt="logo"/>
                         <h3 className="mx-auto mt-4"><b>A tree-planting app for tree-minded people</b></h3>
 
                         <p>Tiny Forests bring all the benefits of a forest – reconnecting people with nature and raising awareness, helping to mitigate the impacts of climate change, as well as providing nature-rich habitat patches to support urban wildlife – right into the heart of our cities and urban spaces.

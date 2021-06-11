@@ -84,7 +84,7 @@ function ProjectCard() {
                 <div className='row'>
                     {projects.map(project => {
                         return (
-                            localStorage.getItem('userId') == project.userId ? (
+                            localStorage.getItem('userId') === project.userId ? (
                                 <div className="col-md-4 justify-content-center mb-3" key={project._id}>
                                     <div className="card">
                                         <div className="card-header p-2 pb-0">
@@ -108,7 +108,7 @@ function ProjectCard() {
                                                                         {/* Contributor Modal */}
                                                                         {project.contributions.map(contribution => {
                                                                             return (
-                                                                                contribution.userId == contributor._id ? (
+                                                                                contribution.userId === contributor._id ? (
                                                                                     <div className="modal fade" id={contributor.username} tabIndex="-1" aria-labelledby="contributorModal" aria-hidden="true">
                                                                                         <div className="modal-dialog">
                                                                                             <div className="modal-content">

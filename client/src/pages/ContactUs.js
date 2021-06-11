@@ -13,7 +13,6 @@ const styles = {
     cardSpan: {
         display: "inline - block",
         width: "100px"
-
     },
     imageStyle:
     {
@@ -21,23 +20,9 @@ const styles = {
         marginLeft: 'auto',
         marginRight: 'auto',
         maxWidth: '85%',
-        
         maxHeight: '35rem',
-     
-        paddingTop: '1rem',
-        paddingBottom: '2rem'
+       
     },
-
-    treeIcon: {
-
-        color: "green"
-    },
-    clockIcon: {
-        color: "red"
-    },
-    mapIcon: {
-        color: "brown"
-    }
 
 };
 
@@ -80,9 +65,7 @@ function ContactUs() {
 
                             <Row>
                                 <Col xs="12">
-                                 
-                                        <img className="img-fluid align-items-center" style={styles.imageStyle} src={ContactImg} alt="waving hello" />
-                                   
+                                    <img className="img-fluid rounded mx-auto d-block img-thumbnail m-3" style={styles.imageStyle} src={ContactImg} alt="waving hello" />
                                 </Col>
                             </Row>
 
@@ -122,10 +105,7 @@ function ContactUs() {
                     </Card>
                 </Container>
             </section>
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
+           
             <Footer />
         </div>
     )

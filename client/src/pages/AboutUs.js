@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Card, CardBody, Form, Input, Button } from 'reactstrap';
+import { Container, Row, Col, Card, CardBody } from 'reactstrap';
 import Navbar from "../components/NavbarTreePeeps";
 import AboutImg from '../images/pavlenko-8BNO4HUQYRw-unsplash.jpg';
 import NavItem from "../components/NavItem";
@@ -26,16 +26,6 @@ const styles = {
 
         paddingTop: '1rem',
         paddingBottom: '2rem'
-    },
-    treeIcon: {
-
-        color: "green"
-    },
-    clockIcon: {
-        color: "red"
-    },
-    mapIcon: {
-        color: "brown"
     }
 
 };
