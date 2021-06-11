@@ -4,6 +4,8 @@ import API from "../../utils/API";
 import { toast } from 'react-toastify';
 
 function ContributeCard({ project }) {
+    const userId = localStorage.getItem('userId');
+
     const [form, setForm] = useState({
         land: false,
         time: false,
@@ -22,6 +24,8 @@ function ContributeCard({ project }) {
     const handleSubmit = (event) => {
         event.preventDefault();
         API.saveContribution({
+            projectId : project._id,
+            userId : userId,
             land: form.land,
             time: form.time,
             resources: form.resources,
@@ -36,7 +40,6 @@ function ContributeCard({ project }) {
             .catch(err => console.log(err));
 
         const newProject = { ...project };
-        const userId = localStorage.getItem('userId');
 
         if (!newProject.contributors.includes(userId)) {
             newProject.contributors.push(userId);

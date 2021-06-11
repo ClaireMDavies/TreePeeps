@@ -5,8 +5,9 @@ import "./style.css"
 
 function ProjectCard() {
     const [projects, setProjects] = useState([]);
-    const [contributors, setContributors] = useState([]);
     let contributorsInfo = [];
+    let contributions;
+
 
 
     // Load all projects and store them with setProjects
@@ -18,25 +19,49 @@ function ProjectCard() {
     function loadProjects() {
         API.getProjects()
             .then(res => {
-
                 setProjects(res.data);
+
                 res.data.map(project => {
-                    let contributorsIds = project.Contributors.join('&');
-                    API.getContributors(contributorsIds)
+                    if (localStorage.getItem('userId') === project.userId) {
+                        let contributorsIds = project.contributors.join('&');
+                        if (contributorsIds) {
+                            API.getContributors(contributorsIds)
+                                .then(res => {
+                                    contributorsInfo = res.data;
+                                    const newProject = { ...project };
+                                    newProject.contributorsDetails = contributorsInfo;
+                                    API.updateProject(project._id, newProject)
+                                        .then(response => {
+                                            loadProjects();
+                                        })
+                                        .catch(e => {
+                                            console.log(e);
+                                        })
+                                })
+                                .catch(err => console.log(err));
+                        }
+                    }
+                    API.getContributions(project._id)
                         .then(res => {
-                            // contributorsInfo.push(res.data);
-                            // setContributors(contributorsInfo);
-                            setContributors(prevArray => [...prevArray, res.data]);
-                            // console.log(contributors)
+                            console.log(res.data);
+                            contributions = res.data;
+                            const newProject = { ...project };
+                            // console.log(contributions, newProject);
+                            // newProject.contributions = contributions;
+                            // API.updateProject(project._id, newProject)
+                            //     .then(response => {
+                            //         loadProjects();
+                            //     })
+                            //     .catch(e => {
+                            //         console.log(e);
+                            //     })
                         })
                         .catch(err => console.log(err));
                 })
-                console.log(contributors)
-                // console.log(contributorsInfo);
-                // setContributors(contributorsInfo);
             }
             )
             .catch(err => console.log(err));
+
     };
     const onClickBtn = (project, status) => {
         project.status = status;
@@ -75,37 +100,35 @@ function ProjectCard() {
                                                 <li className="list-group-item">Start Date : <Moment format="YYYY/MM/DD">{project.startDate}</Moment> </li>
                                                 <li className="list-group-item">Location : {project.latitude} , {project.longitude}</li>
                                                 <li className="list-group-item">Contributors :
-                                            {/* <div className="list-group mt-2">
+                                                    <div className="list-group mt-2">
                                                         {
-                                                            contributors.map(contributor => {
-                                                                console.log(contributors);
+                                                            project.contributorsDetails.map(contributor => {
                                                                 return (
-                                                                    contributor.map(contributor => {
-                                                                        return (
-                                                                            <button type="button" className="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#cntModal" key={contributor._id}>{contributor.username}</button>
-                                                                        )
-                                                                    })
+                                                                    <div>
+                                                                        <button type="button" className="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target={`#${contributor.username}`} key={project._id}>{contributor.username}</button>
+                                                                        {/* Contributor Modal */}
+                                                                        <div className="modal fade" id={contributor.username} tabIndex="-1" aria-labelledby="contributorModal" aria-hidden="true">
+                                                                            <div className="modal-dialog">
+                                                                                <div className="modal-content">
+                                                                                    <div className="modal-header">
+                                                                                        <h5 className="modal-title" id="contributorModal">{contributor.username} Contribution </h5>
+                                                                                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                                    </div>
+                                                                                    <div className="modal-body">
+                                                                                        Do you want to delete {contributor.username} from the project?
+                                                                                    </div>
+                                                                                    <div className="modal-footer">
+                                                                                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                                        <button type="button" className="btn btn-danger">Delete</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 )
                                                             })}
-                                                    </div> */}
-                                                    {/* Contributor Modal
-                                                {/* <div className="modal fade" id="cntModal" tabIndex="-1" aria-labelledby="contributorModal" aria-hidden="true">
-                                                    <div className="modal-dialog">
-                                                        <div className="modal-content">
-                                                            <div className="modal-header">
-                                                                <h5 className="modal-title" id="contributorModal">{project.Contributors[0]}</h5>
-                                                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div className="modal-body">
-                                                                Do you want to delete {project.ContributorNames[0]} from the project?
                                                     </div>
-                                                            <div className="modal-footer">
-                                                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                <button type="button" className="btn btn-danger">Delete</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div> */}
+
 
                                                 </li>
                                                 <li className="list-group-item">End Date : <Moment format="YYYY/MM/DD">{project.endDate}</Moment></li>

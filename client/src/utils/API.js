@@ -11,6 +11,9 @@ export default {
   getContributors: function (contributorsIds) {
     return axios.get("/api/users/contributors/" + contributorsIds);
   },
+  getContributions: function (id) {
+    return axios.get("/api/contribution/" + id);
+  },
   // Gets the user with the given id
   getUser: function (id) {
     return axios.get("/api/users/" + id);
