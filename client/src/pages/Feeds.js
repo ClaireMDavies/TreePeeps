@@ -7,23 +7,6 @@ import Footer from "../components/Footer";
 import Moment from 'react-moment';
 import API from "../utils/API";
 
-const styles = {
-    cardStyle: {
-        width: '60%',
-        padding: 0
-    },
-    treeIcon: {
-        color: "green"
-    },
-    clockIcon: {
-        color: "red"
-    },
-    mapIcon: {
-        color: "brown"
-    }
-
-};
-
 function Feeds(props) {
     const [nearestProjects, setNearestProjects] = useState([]);
     const [city, setCity] = useState('');
@@ -109,13 +92,13 @@ function Feeds(props) {
                             return (
                                 project.status === true ? (
                                 <div className="row d-flex justify-content-center mb-3" key={project._id}>
-                                    <Card style={styles.cardStyle}>
+                                    <Card className="p-0" style={{width: '60%'}}>
                                         <CardTitle tag="h5" className="card-title mt-2 ps-3">{project.title}
-                                            {project.area || project.location ? <i className="fas fa-map-marked-alt ps-3" style={styles.mapIcon} data-bs-toggle="tooltip" data-bs-placement="top" title="Land needed"></i> : null}
-                                            {project.hoursNeeded ? <i className="fas fa-clock ps-3" style={styles.clockIcon} data-bs-toggle="tooltip" data-bs-placement="top" title="Time needed"></i> : null}
-                                            {project.numTrees || project.numStakes || project.numSpirals || project.amtFertilizer || project.otherResources ? <i className="fas fa-tree ps-3" style={styles.treeIcon} data-bs-toggle="tooltip" data-bs-placement="top" title="Resources needed"></i> : null}
+                                            {project.area || project.location ? <i className="fas fa-map-marked-alt ps-3" style={{color : 'brown'}} data-bs-toggle="tooltip" data-bs-placement="top" title="Land needed"></i> : null}
+                                            {project.hoursNeeded ? <i className="fas fa-clock ps-3" style={{color : 'red'}} data-bs-toggle="tooltip" data-bs-placement="top" title="Time needed"></i> : null}
+                                            {project.numTrees || project.numStakes || project.numSpirals || project.amtFertilizer || project.otherResources ? <i className="fas fa-tree ps-3" style={{color : 'green'}} data-bs-toggle="tooltip" data-bs-placement="top" title="Resources needed"></i> : null}
                                         </CardTitle>
-                                        <CardSubtitle tag="h6" className="mb-2 ps-3 text-muted">Username <br /> <Moment format="YYYY/MM/DD">{project.startDate}</Moment> -- <Moment format="YYYY/MM/DD">{project.endDate}</Moment></CardSubtitle>
+                                        <CardSubtitle tag="h6" className="mb-2 ps-3 text-muted"><Moment format="YYYY/MM/DD">{project.startDate}</Moment> -- <Moment format="YYYY/MM/DD">{project.endDate}</Moment></CardSubtitle>
                                         <CardBody className="ps-2">
                                             <CardText>{project.description}
                                                 <ul className="pt-3">Specifications :
