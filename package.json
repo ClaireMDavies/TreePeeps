@@ -10,6 +10,7 @@
     "client": "cd client && npm run start",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
+    "server": "nodemon index.js --ignore client",
     "heroku-postbuild": "npm run build"
   },
   "author": "",
