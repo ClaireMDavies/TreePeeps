@@ -32,22 +32,18 @@ module.exports = {
     create: function (req, res) {
         console.log('req.body:', req.body);
 
-    //     db.User.findOne({ email: req.body.emailAddress }, function (err, user) {
+        //     db.User.findOne({ email: req.body.emailAddress }, function (err, user) {
 
-    //     if (err) {
-    //         res.status(422).send();
-    //     }
-    //     else if (user) {
-    //         res.status(200).send();
-    //     }
-    //     else {
-    //         res.status(404).send();
-    //     }
-    // });
-
-        
-
-
+        //     if (err) {
+        //         res.status(422).send();
+        //     }
+        //     else if (user) {
+        //         res.status(200).send();
+        //     }
+        //     else {
+        //         res.status(404).send();
+        //     }
+        // });
 
         db.User
             .create(req.body)
@@ -112,9 +108,9 @@ module.exports = {
     },
     logout: function (req, res) {
 
-    }, 
+    },
 
-    
+
 
     /*
     // make the seerch case-insensitive
@@ -123,7 +119,7 @@ module.exports = {
     .then(dbModel => res.json(dbModel))
     .catch(err => res.status(422).json(err));
     */
-    }
+}
 
 
 
