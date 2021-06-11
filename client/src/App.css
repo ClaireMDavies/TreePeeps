@@ -1,4 +1,7 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap');
 .App {
+  font-family:'Paytone One', sans-serif;
   text-align: center;
 }
 
@@ -25,7 +28,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #0f5132;
 }
 
 @keyframes App-logo-spin {

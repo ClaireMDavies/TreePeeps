@@ -23,3 +23,16 @@ node_modules
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+.env
+<<<<<<< HEAD
+.env
+client.env
+.env
+/.env
+/client/.env.env
+.env~1fcbd7862b47aa347bd428f3f4d2bd139a2c35cd
+=======
+/.env
+
+>>>>>>> 0b0caed9118a706cb8177064a606dc28103b911f
