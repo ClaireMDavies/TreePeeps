@@ -3,7 +3,8 @@ const contributionController = require("../../controllers/contributionController
 
 // Matches with "/api/contributions"
 router.route("/")
-//   .get(contributionController.findAll)
   .post(contributionController.create);
-
+router.route("/:id")
+  .get(contributionController.findById)
+  .delete(contributionController.remove);
 module.exports = router;

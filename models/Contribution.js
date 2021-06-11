@@ -5,6 +5,9 @@ const ContributionSchema = new Schema({
     userId: {
         type: String,
     },
+    projectId: {
+        type: String,
+    },
     time: {
         type: Boolean,
     },

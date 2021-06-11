@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col} from 'reactstrap';
 import Navbar from "../components/NavbarTreePeeps";
 import NavItem from "../components/NavItem";
 import ProjectCard from "../components/ProjectCard";
@@ -66,11 +66,6 @@ const Dashboard = (props) => {
                             <div className="card-body">
                                 <ContributedProjectCard />
                             </div>
-                            {/* <div className="card-footer text-center">
-                                <Button color="danger" onClick={(event) => {
-                                    handleDelete(event);
-                                }}>Delete</Button>
-                            </div> */}
                         </div>
                     </Col >
                 </Row>

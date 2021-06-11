@@ -5,11 +5,17 @@ const BASEURL = "https://maps.googleapis.com/maps/api/geocode/json?address="
 const APIKEY = "&language=EN&key=" + env.API_KEY;
 
 export default {
-  getUsers: function () {
-    return axios.get("/api/users");
-  },
   getContributors: function (contributorsIds) {
     return axios.get("/api/users/contributors/" + contributorsIds);
+  },
+  getContributions: function (id) {
+    return axios.get("/api/contribution/" + id);
+  },
+  deleteContribution: function (id) {
+    return axios.delete("/api/contribution/" + id);
+  },
+  getUsers: function () {
+    return axios.get("/api/users");
   },
   // Gets the user with the given id
   getUser: function (id) {
@@ -42,7 +48,7 @@ export default {
     return axios.put("/api/projects/project/" + id, data);
   },
   deleteProject: function (id) {
-    return axios.delete("/api/projects/project" + id);
+    return axios.delete("/api/projects/project/" + id);
   },
   searchByLocation: function (lat, lng, dist) {
     return axios.get(`/api/projects/location?lat=${lat}&lng=${lng}&dist=${dist}`);
