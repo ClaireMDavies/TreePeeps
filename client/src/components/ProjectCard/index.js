@@ -43,18 +43,16 @@ function ProjectCard() {
                     }
                     API.getContributions(project._id)
                         .then(res => {
-                            console.log(res.data);
                             contributions = res.data;
                             const newProject = { ...project };
-                            // console.log(contributions, newProject);
-                            // newProject.contributions = contributions;
-                            // API.updateProject(project._id, newProject)
-                            //     .then(response => {
-                            //         loadProjects();
-                            //     })
-                            //     .catch(e => {
-                            //         console.log(e);
-                            //     })
+                            newProject.contributions = contributions;
+                            API.updateProject(project._id, newProject)
+                                .then(response => {
+                                    loadProjects();
+                                })
+                                .catch(e => {
+                                    console.log(e);
+                                })
                         })
                         .catch(err => console.log(err));
                 })
@@ -79,6 +77,7 @@ function ProjectCard() {
             .then(res => loadProjects())
             .catch(err => console.log(err));
     }
+
     return (
         <div className='container'>
             { projects.length ? (
@@ -107,23 +106,42 @@ function ProjectCard() {
                                                                     <div>
                                                                         <button type="button" className="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target={`#${contributor.username}`} key={project._id}>{contributor.username}</button>
                                                                         {/* Contributor Modal */}
-                                                                        <div className="modal fade" id={contributor.username} tabIndex="-1" aria-labelledby="contributorModal" aria-hidden="true">
-                                                                            <div className="modal-dialog">
-                                                                                <div className="modal-content">
-                                                                                    <div className="modal-header">
-                                                                                        <h5 className="modal-title" id="contributorModal">{contributor.username} Contribution </h5>
-                                                                                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        {project.contributions.map(contribution => {
+                                                                            return (
+                                                                                contribution.userId == contributor._id ? (
+                                                                                    <div className="modal fade" id={contributor.username} tabIndex="-1" aria-labelledby="contributorModal" aria-hidden="true">
+                                                                                        <div className="modal-dialog">
+                                                                                            <div className="modal-content">
+                                                                                                <div className="modal-header">
+                                                                                                    <h5 className="modal-title" id="contributorModal">{contributor.username} Contribution </h5>
+                                                                                                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                                                </div>
+                                                                                                <div className="modal-body">
+                                                                                                    <p className="text-start fw-bold mb-0">Message : </p>
+                                                                                                    <p className="text-start">{contribution.message ? contribution.message : 'no message'} </p>
+                                                                                                    <ul className="text-start ps-0">                                                                                                        <b>
+                                                                                                        I want to contribute by :
+                                                                                                            </b>
+                                                                                                        {contribution.land ? <li className="ms-4">Land </li> : null}
+                                                                                                        {contribution.time ? <li className="ms-4">Time</li> : null}
+                                                                                                        {contribution.resources ? <li className="ms-4">Resources</li> : null}
+                                                                                                    </ul>
+                                                                                                    {/* <br />
+                                                                                                    <p className="text-start">
+                                                                                                        Do you want to delete {contributor.username} from the project ?
+                                                                                                        </p> */}
+                                                                                                </div>
+                                                                                                {/* <div className="modal-footer">
+                                                                                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                                                    <button type="button" className="btn btn-danger" onClick={() => deleteContribution(contribution._id)}>Delete</button>
+                                                                                                </div> */}
+                                                                                            </div>
+                                                                                        </div>
                                                                                     </div>
-                                                                                    <div className="modal-body">
-                                                                                        Do you want to delete {contributor.username} from the project?
-                                                                                    </div>
-                                                                                    <div className="modal-footer">
-                                                                                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                                        <button type="button" className="btn btn-danger">Delete</button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                                                ) : null
+                                                                            )
+                                                                        }
+                                                                        )}
                                                                     </div>
                                                                 )
                                                             })}
@@ -152,8 +170,9 @@ function ProjectCard() {
             ) : (
                 <h3 className="text-center m-3 p-2">No Results to Display</h3>
 
-            )}
-        </div>
+            )
+            }
+        </div >
     )
 };
 

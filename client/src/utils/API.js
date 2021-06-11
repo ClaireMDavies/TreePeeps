@@ -5,14 +5,17 @@ const BASEURL = "https://maps.googleapis.com/maps/api/geocode/json?address="
 const APIKEY = "&language=EN&key=" + env.API_KEY;
 
 export default {
-  getUsers: function () {
-    return axios.get("/api/users");
-  },
   getContributors: function (contributorsIds) {
     return axios.get("/api/users/contributors/" + contributorsIds);
   },
   getContributions: function (id) {
     return axios.get("/api/contribution/" + id);
+  },
+  deleteContribution: function (id) {
+    return axios.delete("/api/contribution/" + id);
+  },
+  getUsers: function () {
+    return axios.get("/api/users");
   },
   // Gets the user with the given id
   getUser: function (id) {

@@ -6,4 +6,5 @@ router.route("/")
   .post(contributionController.create);
 router.route("/:id")
   .get(contributionController.findById)
+  .delete(contributionController.remove);
 module.exports = router;
