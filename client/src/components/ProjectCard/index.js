@@ -28,7 +28,7 @@ function ProjectCard() {
                             API.getContributors(contributorsIds)
                                 .then(res => {
                                     contributorsInfo = res.data;
-                                    const newProject = { ...project };
+                                    let newProject = { ...project };
                                     newProject.contributorsDetails = contributorsInfo;
                                     API.updateProject(project._id, newProject)
                                         .then(response => {
@@ -44,7 +44,7 @@ function ProjectCard() {
                     API.getContributions(project._id)
                         .then(res => {
                             contributions = res.data;
-                            const newProject = { ...project };
+                            let newProject = { ...project };
                             newProject.contributions = contributions;
                             API.updateProject(project._id, newProject)
                                 .then(response => {

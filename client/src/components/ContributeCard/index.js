@@ -39,7 +39,7 @@ function ContributeCard({ project }) {
             }))
             .catch(err => console.log(err));
 
-        const newProject = { ...project };
+        let newProject = { ...project };
 
         if (!newProject.contributors.includes(userId)) {
             newProject.contributors.push(userId);
