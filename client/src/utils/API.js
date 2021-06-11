@@ -42,7 +42,7 @@ export default {
     return axios.put("/api/projects/project/" + id, data);
   },
   deleteProject: function (id) {
-    return axios.delete("/api/projects/project" + id);
+    return axios.delete("/api/projects/project/" + id);
   },
   searchByLocation: function (lat, lng, dist) {
     return axios.get(`/api/projects/location?lat=${lat}&lng=${lng}&dist=${dist}`);

@@ -49,6 +49,11 @@ function ProjectCard() {
             })
     }
 
+    const deleteProject = (id) => {
+        API.deleteProject(id)
+            .then(res => loadProjects())
+            .catch(err => console.log(err));
+    }
     return (
         <div className='container'>
             { projects.length ? (
@@ -106,7 +111,14 @@ function ProjectCard() {
                                                 <li className="list-group-item">End Date : <Moment format="YYYY/MM/DD">{project.endDate}</Moment></li>
                                             </ul>
                                         </div>
+                                        <div className="card-footer text-center">
+                                            <button type="button" className="btn btn-sm btn-danger"
+                                                onClick={() => {
+                                                    deleteProject(project._id);
+                                                }}>Delete</button>
+                                        </div>
                                     </div>
+
                                 </div>
                             ) : null
                         );
