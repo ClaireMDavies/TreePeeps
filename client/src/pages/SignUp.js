@@ -34,8 +34,7 @@ function SignUp(props) {
 
     const [citiesLoading, setCitiesLoading] = useState(false);
 
-    // const [location, setLocation] = useState({});
-
+    
     React.useEffect(() => {
 
         API.getCountries()
@@ -45,12 +44,13 @@ function SignUp(props) {
 
     }, []);
 
-    function handleSubmit(event) {
+    // checking through data to see if all passed validation tests, and if passed creating account
+    function handleSubmitAccountCreation(event) {
 
         event.preventDefault();
 
         let validationResults = [];
-
+    
         validationResults.push(validateUsername());
 
         validationResults.push(validateFirstName());
@@ -337,7 +337,7 @@ function SignUp(props) {
                         </Form>
                         <Col className="text-center">
                             <div className="mb-3 mt-3">
-                                <button type="button" className="btn btn-success" onClick={handleSubmit} type="submit">Sign Up</button>
+                                <button  className="btn btn-success" onClick={handleSubmitAccountCreation} type="submit">Sign Up</button>
                             </div>
                         </Col>
                         <Row className="mb-2">
