@@ -1,4 +1,3 @@
-
 const db = require('../config/connection.js');
 
 const Project = require("../models/Project.js");
@@ -14,7 +13,7 @@ db.once('open', async () => {
         firstname: 'Claire',
         lastname: 'Davies',
         email: 'claire@email.com',
-        password: 'password12345',
+        password: 'Password12345',
         country: 'UK',
         city: 'Redditch',
         latitude: -1.96054745742439,
@@ -27,7 +26,7 @@ db.once('open', async () => {
         firstname: 'Sally',
         lastname: 'Rodgers',
         email: 'sally@email.com',
-        password: 'password12345',
+        password: 'Password12345',
         country: 'UK',
         city: 'Hagley',
         latitude: -2.134756486816054,
