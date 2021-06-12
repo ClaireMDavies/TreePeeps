@@ -45,7 +45,7 @@ function Feeds(props) {
         setCity(event.target.value);
     }
     function handleDistanceChange(event) {
-        setDistance(event.target.value * 1000);
+        setDistance(event.target.value);
     }
     function handleFormSubmit(event) {
         event.preventDefault();
@@ -100,14 +100,14 @@ function Feeds(props) {
                                             <CardSubtitle tag="h6" className="mb-2 ps-3 text-muted"><Moment format="YYYY/MM/DD">{project.startDate}</Moment> -- <Moment format="YYYY/MM/DD">{project.endDate}</Moment></CardSubtitle>
                                             <CardBody className="ps-2">
                                                 <CardText>
-                                                    <p className="ms-3">
+                                                    <span className="ms-3">
                                                         {project.description}
-                                                    </p>
+                                                    </span>
                                                     <ul className="pt-3">
                                                         <b>
                                                         Specifications :
                                                         </b>
-                                                    {project.latitude ? <li>Latitude :  {project.latitude}</li> : null}
+                                                        {project.latitude ? <li>Latitude :  {project.latitude}</li> : null}
                                                         {project.longitude ? <li>Longitude :  {project.longitude} </li> : null}
                                                         {project.area ? <li>Area (m²) :  {project.area}</li> : null}
                                                         {project.landOwner ? <li>Owner : {project.landOwner}</li> : null}

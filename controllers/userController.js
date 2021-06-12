@@ -30,27 +30,25 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     create: function (req, res) {
-        console.log('req.body:', req.body);
 
-        //     db.User.findOne({ email: req.body.emailAddress }, function (err, user) {
+        db.User.findOne({ email: req.body.email }, function (err, user) {
 
-        //     if (err) {
-        //         res.status(422).send();
-        //     }
-        //     else if (user) {
-        //         res.status(200).send();
-        //     }
-        //     else {
-        //         res.status(404).send();
-        //     }
-        // });
+            if (err) {
+                res.status(422).send();
+            }
+            else if (user) {
+                res.status(409).send();
+            }
+            else {
 
-        db.User
-            .create(req.body)
-            .then((user) => {
-                res.json({ userId: user._id }).send();
-            })
-            .catch(err => res.status(422).json(err));
+                db.User
+                .create(req.body)
+                .then((user) => {
+                    res.json({ userId: user._id }).send();
+                })
+                .catch(err => res.status(422).json(err));
+            }   
+        });
     },
     update: function (req, res) {
         db.User
@@ -67,7 +65,7 @@ module.exports = {
     },
 
     usernameExists: function (req, res) {
-        db.User.findOne({ username: req.params.username }, function (err, user) {
+        db.User.findOne({username:{'$regex' : `^${req.params.username}$`, '$options' : 'i'}}, function (err, user) {
             if (err) {
                 res.status(422).send();
             }
@@ -78,14 +76,6 @@ module.exports = {
                 res.status(404).send();
             }
         });
-
-        /*
-        // make the seerch case-insensitive
-        db.User
-        .findOne({username:{'$regex' : `^${req.params.username}$`, '$options' : 'i'}})
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
-        */
     },
 
     login: function (req, res) {
@@ -109,29 +99,4 @@ module.exports = {
     logout: function (req, res) {
 
     },
-
-
-
-    /*
-    // make the seerch case-insensitive
-    db.User
-    .findOne({username:{'$regex' : `^${req.params.username}$`, '$options' : 'i'}})
-    .then(dbModel => res.json(dbModel))
-    .catch(err => res.status(422).json(err));
-    */
 }
-
-
-
-
-// function setAuthentication(userId, res)
-// {
-//     // password matched, user has logged in
-//     // set token expiry to seven days
-//     const token = jwt.sign({id: userId}, process.env.JWT_SECRET, {expiresIn: '7d'});
-//     res.cookie('token', token, {
-//         expires: new Date(Date.now() + 604800) ,
-//         secure: false,
-//         httpOnly: true
-//     });
-// }

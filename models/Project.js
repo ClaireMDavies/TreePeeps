@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const contributionSchema = require("./Contribution");
 
 const ProjectSchema = new Schema({
 
-    userId: {
-        type: String,
-        //required:true
+    owner: { 
+        type: Schema.Types.ObjectId, 
+        ref: 'User'
     },
     name: {
         type: String,
@@ -58,18 +59,7 @@ const ProjectSchema = new Schema({
         min: 0,
         required: false
     },
-    contributors: {
-        type: [],
-        required: false
-    },
-    contributorsDetails: {
-        type: [],
-        required: false
-    },
-    contributions :{
-        type: [],
-        required: false
-    },
+    contributions : [contributionSchema],
     numStakes: {
         type: Number,
         required: false

@@ -71,7 +71,6 @@ UserSchema.pre('save', async function (next) {
   // const response = await axios.get(BASEURL + this.city + APIKEY);
   const response = await axios.get("https://maps.googleapis.com/maps/api/geocode/json?address=Birmingham&language=EN&key=AIzaSyAz6OTYEn4bTxvnyDOW2NQTXnDVsZeXzVA");
   const url = BASEURL + this.city + APIKEY 
-  console.log('url:', url);
   this.latitude = response.data.results[0].geometry.location.lat.toString();
   this.longitude = response.data.results[0].geometry.location.lng.toString();
 

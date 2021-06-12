@@ -1,3 +1,4 @@
+const { Contribution } = require("../models");
 const db = require("../models");
 
 // Defining methods for the projectController
@@ -16,17 +17,13 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findByLocation: function (req, res) {
-    let lng = req.query.lng;
-    let lat = req.query.lat;
-    let dist = req.query.dist;
+    let lng = req.params.lng;
+    let lat = req.params.lat;
+    let dist = req.params.dist;
     db.Project.find({
       location: {
-        $near: {
-          $maxDistance: dist,
-          $geometry: {
-            type: "Point",
-            coordinates: [lng, lat]
-          }
+        $geoWithin: {
+            $centerSphere: [[lng, lat], dist / 6371]
         }
       }
     }).find((error, results) => {
@@ -35,6 +32,21 @@ module.exports = {
       }
       res.json((results));
     });
+  },
+  setProjectStatus: function (req, res) {
+    db.Project
+      .findOneAndUpdate({ _id: req.params.id }, {status: req.body.status })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => { console.log(err); res.status(422).json(err) });
+  },
+  addProjectContribution: function (req, res) {
+    db.Project
+      .findById(req.params.id)
+      .then(dbModel => {
+                dbModel.contributions.push(req.body);
+                dbModel.save();
+            })
+      .catch(err => { console.log(err); res.status(422).json(err) });
   },
   create: function (req, res) {
     db.Project
@@ -54,5 +66,23 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  findByUserId: function (req, res) {
+    db.Project
+      .find({ owner: req.params.id })
+      .populate("owner")
+      .populate("contributions.user")
+      .then(dbModel => res.json(dbModel));
+  },
+  findByContributedUserId: function (req, res) {
+
+    // TODO: do we need to get distinct projects, in case user has contributed
+    // more than once to the same project?
+
+    db.Project
+      .find({ "contributions.user": req.params.id })
+      .populate("owner")
+      .populate("contributions.user")
+      .then(dbModel => res.json(dbModel));
   }
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col} from 'reactstrap';
 import Navbar from "../components/NavbarTreePeeps";
 import NavItem from "../components/NavItem";
@@ -6,15 +6,45 @@ import ProjectCard from "../components/ProjectCard";
 import ContributedProjectCard from "../components/ContributedProjectCard";
 import ProjectForm from "../components/ProjectForm";
 import Footer from "../components/Footer";
+import API from "../utils/API";
 
 const Dashboard = (props) => {
+
+    const [createdProjects, setCreatedProjects] = useState([]);
+    const [contributedProjects, setContributedProjects] = useState([]);
+
     React.useEffect(() => {
 
-        if (localStorage.getItem("userId") === null) {
+        const currentUserId = localStorage.getItem("userId");
+
+        if (currentUserId === null) {
+            // there is no user logged in
             props.history.push("/");
+        }
+        else
+        {
+            // get project lists
+
+            loadCreatedProjectsForUser(currentUserId);
+            loadContributedProjectsForUser(currentUserId)
         }
 
     }, []);
+
+    function loadCreatedProjectsForUser(userId) {
+
+        // get all the projects for this user that haven't gone 
+        // beyond their end date i.e. active projects only
+
+        API.getProjectsForUser(userId)
+        .then(response => setCreatedProjects(response.data));
+    }
+
+    function loadContributedProjectsForUser(userId) {
+
+        API.getContributedProjectsForUser(userId)
+        .then(response => setContributedProjects(response.data));
+    }
 
     return (
         <div>
@@ -54,8 +84,12 @@ const Dashboard = (props) => {
                             <div className="card-header">
                                 <h4 className="text-center mb-3">My Projects</h4>
                             </div>
-                            <div className="card-body">
-                                <ProjectCard />
+                            <div className="card-body row">
+
+                            { createdProjects.map(function(project) {
+                                return <ProjectCard key={project._id} {...project} />;
+                            })}
+ 
                             </div>
                         </div>
 
@@ -63,8 +97,12 @@ const Dashboard = (props) => {
                             <div className="card-header">
                                 <h4 className="text-center mb-3">My Contributions</h4>
                             </div>
-                            <div className="card-body">
-                                <ContributedProjectCard />
+                            <div className="card-body row">
+
+                            { contributedProjects.map(function(project) {
+                                return <ContributedProjectCard key={project._id} {...project} />;
+                            })}
+
                             </div>
                         </div>
                     </Col >

@@ -41,17 +41,29 @@ export default {
   getProjects: function () {
     return axios.get("/api/projects");
   },
+  getProjectsForUser: function (userId) {
+    return axios.get("/api/projects/user/" + userId);
+  },
+  getContributedProjectsForUser: function (userId) {
+    return axios.get("/api/projects/usercontributed/" + userId);
+  },
   getProject: function (id) {
-    return axios.get("/api/projects/project/" + id);
+    return axios.get("/api/projects/" + id);
   },
   updateProject: function (id, data) {
-    return axios.put("/api/projects/project/" + id, data);
+    return axios.put("/api/projects/" + id, data);
+  },
+  setProjectStatus: function (id, status) {
+    return axios.put("/api/projects/status/" + id, { status: status });
+  },
+  addProjectContribution: function (id, contribution) {
+    return axios.put("/api/projects/contributions/" + id, contribution);
   },
   deleteProject: function (id) {
-    return axios.delete("/api/projects/project/" + id);
+    return axios.delete("/api/projects/" + id);
   },
   searchByLocation: function (lat, lng, dist) {
-    return axios.get(`/api/projects/location?lat=${lat}&lng=${lng}&dist=${dist}`);
+    return axios.get(`/api/projects/location/${lat}/${lng}/${dist}`);
   },
   saveContribution: function (ContributionData) {
     return axios.post("/api/contribution", ContributionData);

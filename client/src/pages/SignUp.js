@@ -86,7 +86,8 @@ function SignUp(props) {
                     else {
                         accountCreationFailedNotify();
                     }
-                });
+                })
+                .catch(error => setEmailError("Email address is already registered"));
         }
     }
     //validating the user name on axios call

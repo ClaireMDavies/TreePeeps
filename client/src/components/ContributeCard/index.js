@@ -23,9 +23,8 @@ function ContributeCard({ project }) {
     }
     const handleSubmit = (event) => {
         event.preventDefault();
-        API.saveContribution({
-            projectId : project._id,
-            userId : userId,
+        API.addProjectContribution(project._id, {
+            user : userId,
             land: form.land,
             time: form.time,
             resources: form.resources,
@@ -38,14 +37,6 @@ function ContributeCard({ project }) {
                 message: ''
             }))
             .catch(err => console.log(err));
-
-        let newProject = { ...project };
-
-        if (!newProject.contributors.includes(userId)) {
-            newProject.contributors.push(userId);
-            API.updateProject(project._id, newProject)
-        }
-
     }
 
     return (
