@@ -9,7 +9,7 @@ const MongoStore = require("connect-mongo");
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-
+/*
 app.use(session({
   secret: 'SECRET KEY',
   resave: false,
@@ -18,8 +18,7 @@ app.use(session({
     mongoUrl: 'mongodb://localhost:27017/sessions',
   })
 }));
-
-
+*/
 
 // Define middleware 
 app.use(express.urlencoded({ extended: true }));
