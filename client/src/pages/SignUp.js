@@ -107,7 +107,7 @@ function SignUp(props) {
             return false;
         }
         else {
-            setUsernameError();
+            setUsernameError("");
             return true;
         }
     }
@@ -265,7 +265,15 @@ function SignUp(props) {
         if (country === undefined) country = "United Kingdom";
 
         API.getCitiesForCountry(country)
-            .then(json => setCities(json.data.data.sort()));
+            .then(json => {
+                const cityList = json.data.data.sort();
+                setCities(cityList);
+
+                if (cityList.length > 0)
+                {
+                    setCity(cityList[0]);
+                }
+            });
     }
 
     return (

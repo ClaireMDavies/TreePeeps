@@ -34,10 +34,10 @@ module.exports = {
         db.User.findOne({ email: req.body.email }, function (err, user) {
 
             if (err) {
-                res.status(422).send();
+                res.status(422);
             }
             else if (user) {
-                res.status(409).send();
+                res.status(409);
             }
             else {
 
