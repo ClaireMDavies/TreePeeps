@@ -5,86 +5,65 @@ const BASEURL = "https://maps.googleapis.com/maps/api/geocode/json?address="
 const APIKEY = "&language=EN&key=" + env.API_KEY;
 
 export default {
-  getContributors: function (contributorsIds) {
-    return axios.get("/api/users/contributors/" + contributorsIds);
+  // Users routes
+  // Checks user for unique name
+  doesUsernameExist: function (username) {
+    return axios.head(`/api/users/${username}`);
   },
-  getContributions: function (id) {
-    return axios.get("/api/contribution/" + id);
-  },
-  deleteContribution: function (id) {
-    return axios.delete("/api/contribution/" + id);
-  },
-  getUsers: function () {
-    return axios.get("/api/users");
-  },
-  // Gets the user with the given id
-  getUser: function (id) {
-    return axios.get("/api/users/" + id);
-  },
-  // Deletes the user with the given id
-  deleteUser: function (id) {
-    return axios.delete("/api/users/" + id);
-  },
-  // Saves a user to the database
-  saveUser: function (userData) {
+  // Saves new user in db
+  createUser: function (userData) {
     return axios.post("/api/users", userData);
   },
+  // Checks the logins
+  login: function (emailAddress, password) {
+    return axios.post("/api/users/login", { emailAddress: emailAddress, password: password });
+  },
 
+  // Third party APIs
+  // Gets countries in the signup form
+  getCountries: function () {
+    return axios.get("https://countriesnow.space/api/v0.1/countries/info?returns=name");
+  },
+  // Gets cities in the signup form
+  getCitiesForCountry: function (country) {
+    return axios.post("https://countriesnow.space/api/v0.1/countries/cities", { country: country });
+  },
   // Converts city to Lat and Lng coordinates 
   convert: function (city) {
     return axios.get(BASEURL + city + APIKEY)
   },
+
+  // Projects routes
   //Saves a project to the database
   saveProject: function (projectData) {
     return axios.post("/api/projects", projectData);
   },
+  // Gets projects from db
   getProjects: function () {
     return axios.get("/api/projects");
   },
+  // Gets projects from db by userId
   getProjectsForUser: function (userId) {
     return axios.get("/api/projects/user/" + userId);
   },
+  // Gets contributed projects from db by userId
   getContributedProjectsForUser: function (userId) {
     return axios.get("/api/projects/usercontributed/" + userId);
   },
-  getProject: function (id) {
-    return axios.get("/api/projects/" + id);
-  },
-  updateProject: function (id, data) {
-    return axios.put("/api/projects/" + id, data);
-  },
+  // Gets project status from db and updates it
   setProjectStatus: function (id, status) {
     return axios.put("/api/projects/status/" + id, { status: status });
   },
+  // Adds contribution to the project
   addProjectContribution: function (id, contribution) {
     return axios.put("/api/projects/contributions/" + id, contribution);
   },
+  // Deletes the projects
   deleteProject: function (id) {
     return axios.delete("/api/projects/" + id);
   },
+  // Search by location
   searchByLocation: function (lat, lng, dist) {
     return axios.get(`/api/projects/location/${lat}/${lng}/${dist}`);
   },
-  saveContribution: function (ContributionData) {
-    return axios.post("/api/contribution", ContributionData);
-  },
-  // check user for unique name
-  doesUsernameExist: function (username) {
-    return axios.head(`/api/users/${username}`);
-  },
-  getCountries: function () {
-    return axios.get("https://countriesnow.space/api/v0.1/countries/info?returns=name");
-  },
-  getCitiesForCountry: function (country) {
-    return axios.post("https://countriesnow.space/api/v0.1/countries/cities", { country: country });
-  },
-  createUser: function (userData) {
-    return axios.post("/api/users", userData);
-  },
-  login: function (emailAddress, password) {
-    return axios.post("/api/users/login", { emailAddress: emailAddress, password: password });
-  },
-  logout: function () {
-
-  }
 };
