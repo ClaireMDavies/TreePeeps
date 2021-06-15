@@ -8,10 +8,8 @@
     "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
-    "install": "cd client && npm install",
-    "build": "cd client && npm run build",
     "server": "nodemon index.js --ignore client",
-    "heroku-postbuild": "npm run build",
+    "heroku-postbuild": "cd client && npm install && npm run build",
     "seed": "node seeders/seed.js"
   },
   "author": "",
