@@ -90,5 +90,13 @@ module.exports = {
       .populate("owner")
       .populate("contributions.user")
       .then(dbModel => res.json(dbModel));
+  },
+  deleteContribution: function (req, res) {
+    db.Project
+      .findOneAndUpdate({ _id: req.params.id },
+        { "$pull": { "contributions": { "_id": req.params.contributionId } } })
+      // .then(dbModel => dbModel.contributions.remove())
+      // .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
   }
 };

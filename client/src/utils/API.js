@@ -58,6 +58,9 @@ export default {
   addProjectContribution: function (id, contribution) {
     return axios.put("/api/projects/contributions/" + id, contribution);
   },
+  deleteContribution: function (id, contributionId) {
+    return axios.put("/api/projects/contributions/" + id + "/" + contributionId);
+  },
   // Deletes the projects
   deleteProject: function (id) {
     return axios.delete("/api/projects/" + id);

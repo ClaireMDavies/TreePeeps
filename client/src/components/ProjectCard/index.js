@@ -13,14 +13,21 @@ function ProjectCard(project) {
             .then(response => {
                 setProjectStatus(status);
             });
-    }
+    };
 
     const deleteProject = (id) => {
         API.deleteProject(id)
             .then(res => window.location.reload())
             .catch(err => console.log(err));
-    }
+    };
 
+    const deleteContribution = (id, contributionId) => {
+        API.deleteContribution(id, contributionId)
+            .then(res => res.json())
+            .catch(err => console.log(err));
+    };
+
+    const reload = () => { window.location.reload() };
     return (
         <div className="col-md-4 justify-content-center mb-3" key={project._id}>
             <div className="card">
@@ -49,7 +56,7 @@ function ProjectCard(project) {
                                                             <div className="modal-content">
                                                                 <div className="modal-header">
                                                                     <h5 className="modal-title" id="contributorModal">{contribution.user.username} Contribution </h5>
-                                                                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onExit={() => window.location.reload()}></button>
                                                                 </div>
                                                                 <div className="modal-body">
                                                                     <p className="text-start fw-bold mb-0">Message : </p>
@@ -63,13 +70,13 @@ function ProjectCard(project) {
                                                                         {contribution.resources ? <li className="ms-4">Resources</li> : null}
                                                                     </ul>
                                                                     <br />
-                                                                    {/* <p className="text-start mb-0">
+                                                                    <p className="text-start mb-0">
                                                                         Do you want to delete {contribution.user.username} from the project ?
-                                                                    </p> */}
+                                                                    </p>
                                                                 </div>
                                                                 <div className="modal-footer">
                                                                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                    {/* <button type="button" className="btn btn-danger" onClick={() => deleteContribution(project._id, contribution._id)}>Delete</button> */}
+                                                                    <button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={() => { deleteContribution(project._id, contribution._id); reload() }}>Delete</button>
                                                                 </div>
                                                             </div>
                                                         </div>
