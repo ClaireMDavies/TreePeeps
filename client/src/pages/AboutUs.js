@@ -1,5 +1,5 @@
 import React from "react";
-import { Container,Card, CardBody, CardHeader, CardTitle, CardText, CardImg } from 'reactstrap';
+import { Container, Card, CardBody, CardHeader, CardTitle, CardText, CardImg } from 'reactstrap';
 import Navbar from "../components/NavbarTreePeeps";
 import AboutImg from '../images/pavlenko-8BNO4HUQYRw-unsplash.jpg';
 import NavItem from "../components/NavItem";
@@ -17,7 +17,7 @@ function AboutUs() {
                     </NavItem>
                 }
                 <NavItem
-                    link="/aboutus"
+                    link="/about"
                     name="About Us">
                 </NavItem>
                 <NavItem
@@ -43,15 +43,16 @@ function AboutUs() {
                     <CardBody>
                         <CardTitle ><h3 className="text-center mb-3">A tree-planting app for tree-minded people</h3></CardTitle>
                         <CardText className="text-center border p-3">
-                            <h5>The purpose of this app is to connect Tree Peeps:</h5>
+                            <span className="fs-5 fw-bold  pb-2">The purpose of this app is to connect Tree Peeps:</span>
                             <br></br>
-                            <div> Those that can provide space for tree(s) to be planted</div>
-                            <div> Those that are willing to contribute resources:</div>
-                            <div> providing the saplings themselves or </div>
-                            <div> offering their labour to plant the trees</div>
+                            <span> Those that can provide space for tree(s) to be planted</span>
+                            <br />
+                            <span> Those that are willing to contribute resources
+                                <br />
+                                (providing the saplings themselves or offering their labour to plant the trees)</span>
                         </CardText>
                         <CardText className="text-center border p-3 bg-success text-white">
-                            <h2>Our Aim: 1000 Trees Pledged/Planted by 2025!</h2>
+                            <span className="fs-2">Our Aim: 1000 Trees Pledged/Planted by 2025!</span>
                         </CardText>
                     </CardBody>
                 </Card>
