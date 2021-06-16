@@ -10,9 +10,9 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// // Serve up static assets 
+// Serve up static assets 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname,"/client/build")));
+  app.use(express.static("client/build"));
 }
 
 // Connect to the Mongo DB
