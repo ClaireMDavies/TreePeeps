@@ -215,7 +215,7 @@ const ProjectForm = () => {
                                     </div>
                                     <div className="border">
                                         <MapWithAMarker
-                                            googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${env.API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
+                                            googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${env.GOOGLE_API_KEY}&v=3.exp&libraries=geometry,drawing,places`}
                                             loadingElement={<div style={{ height: `100%` }} />}
                                             containerElement={<div style={{ height: `400px` }} />}
                                             mapElement={<div style={{ height: `100%` }} />}

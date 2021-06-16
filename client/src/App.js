@@ -24,7 +24,6 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/logout" component={Logout} />
           <Route exact path="/about" component={AboutUs} />
-          <Route exact path="/login" component={Login} />
           <Route exact path="/contact" component={ContactUs} />
           <Route exact path="/signup" component={SignUp} />
           <Route component={NoMatch} />

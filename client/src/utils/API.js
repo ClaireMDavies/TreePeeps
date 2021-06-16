@@ -2,7 +2,7 @@ import axios from "axios";
 import env from "react-dotenv";
 
 const BASEURL = "https://maps.googleapis.com/maps/api/geocode/json?address="
-const APIKEY = "&language=EN&key=" + env.API_KEY;
+const APIKEY = "&language=EN&key=" + env.GOOGLE_API_KEY;
 
 export default {
   // Users routes
