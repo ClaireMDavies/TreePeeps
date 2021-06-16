@@ -2,7 +2,6 @@
   "name": "treepeeps",
   "version": "1.0.0",
   "description": "TreePeeps Demo",
-  "homepage":"https://treepeeps.herokuapp.com/",
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",

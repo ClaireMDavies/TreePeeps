@@ -1,5 +1,6 @@
 {
   "name": "treepeeps",
+  "homepage":"https://treepeeps.herokuapp.com/",
   "version": "0.1.0",
   "description": "TreePeeps Demo",
   "proxy": "http://localhost:3001/",
