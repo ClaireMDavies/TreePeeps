@@ -90,7 +90,8 @@ function Feeds(props) {
                     {
                         nearestProjects.map(project => {
                             return (
-                                project.status === true && project.userId !== localStorage.getItem("userId")  ? (
+                                project.status === true && project.owner !== localStorage.getItem("userId")  ? (
+
                                     <div className="row d-flex justify-content-center mb-3" key={project._id}>
                                         <Card className="p-0" style={{ width: '60%' }}>
                                             <CardTitle tag="h5" className="card-title mt-2 ps-3">{project.title}
