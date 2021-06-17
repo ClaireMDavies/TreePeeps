@@ -15,7 +15,7 @@ const NavbarTreePeeps = ({ children, handleFormSubmit, handleCityChange, handleD
                         {children}
 
                     </ul>
-                    {window.location.pathname === "/search" ? <SearchForm onClick={handleFormSubmit} onChange={handleCityChange} onChangeDistance={handleDistanceChange}/>
+                    {window.location.href.endsWith("search")? <SearchForm onClick={handleFormSubmit} onChange={handleCityChange} onChangeDistance={handleDistanceChange}/>
                         : ""
                     }
                 </div>

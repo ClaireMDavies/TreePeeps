@@ -1,6 +1,6 @@
 {
   "name": "treepeeps",
-  "homepage":"https://treepeeps.herokuapp.com/",
+  "homepage": "https://treepeeps.herokuapp.com/",
   "version": "0.1.0",
   "description": "TreePeeps Demo",
   "proxy": "http://localhost:3001/",
@@ -11,7 +11,6 @@
     "isemail": "^3.2.0",
     "moment": "^2.29.1",
     "react": "^16.6.3",
-    "react-country-region-selector": "^3.1.0",
     "react-dom": "^16.6.3",
     "react-dotenv": "^0.1.3",
     "react-google-maps": "^9.4.5",
