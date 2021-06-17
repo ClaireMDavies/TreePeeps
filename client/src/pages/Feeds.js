@@ -94,7 +94,7 @@ function Feeds(props) {
                                     <div className="row d-flex justify-content-center mb-3" key={project._id}>
                                         <Card className="p-0" style={{ width: '60%' }}>
                                             <CardTitle tag="h5" className="card-title mt-2 ps-3">{project.title}
-                                                {project.area || project.location ? <i className="fas fa-map-marked-alt ps-3" style={{ color: 'brown' }} data-bs-toggle="tooltip" data-bs-placement="top" title="Land needed"></i> : null}
+                                                {!project.area ? <i className="fas fa-map-marked-alt ps-3" style={{ color: 'brown' }} data-bs-toggle="tooltip" data-bs-placement="top" title="Land needed"></i> : null}
                                                 {project.hoursNeeded ? <i className="fas fa-clock ps-3" style={{ color: 'red' }} data-bs-toggle="tooltip" data-bs-placement="top" title="Time needed"></i> : null}
                                                 {project.numTrees || project.numStakes || project.numSpirals || project.amtFertilizer || project.otherResources ? <i className="fas fa-tree ps-3" style={{ color: 'green' }} data-bs-toggle="tooltip" data-bs-placement="top" title="Resources needed"></i> : null}
                                             </CardTitle>
