@@ -21,6 +21,9 @@ router
   router
   .route("/contributions/:id")
   .put(projectController.addProjectContribution);
+  router
+  .route("/contributions/:id/:contributionId")
+  .put(projectController.deleteContribution);
 router
   .route("/user/:id")
   .get(projectController.findByUserId);

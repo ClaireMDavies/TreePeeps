@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.css';
-import logo from "../../assets/TREEPEEPS.png"
+import logo from "../../images/TREEPEEPS.png"
 import { Link } from "react-router-dom";
 
 function Masthead() {

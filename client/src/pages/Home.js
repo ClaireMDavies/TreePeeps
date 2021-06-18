@@ -9,7 +9,7 @@ function Home() {
         <div>
             <Navbar>
                 <NavItem
-                    link="/"
+                    link="/about"
                     name="About Us">
                 </NavItem>
                 <NavItem

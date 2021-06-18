@@ -1,11 +1,10 @@
 const db = require("../models");
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
-// Defining methods for the userController - findbyId and create
-//included update and delete but not really needed
+// Defining methods for the userController
 module.exports = {
+    // Finding all users
     findAll: function (req, res) {
         db.User
             .find(req.query)
@@ -13,49 +12,40 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
-    findAllById: function (req, res) {
-        const string = req.params.ids;
-        const ids = string.split('&');
-        db.User
-            .find()
-            .where('_id')
-            .in(ids)
-            .then(dbModel => res.json(dbModel))
-            .catch(err => res.status(422).json(err));
-    },
+    // Finding one user by id
     findById: function (req, res) {
         db.User
             .findById(req.params.id)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
+    // Creating new user
     create: function (req, res) {
-
         db.User.findOne({ email: req.body.email }, function (err, user) {
-
             if (err) {
-                res.status(422).send();
+                res.status(422);
             }
             else if (user) {
-                res.status(409).send();
+                res.status(409);
             }
             else {
-
                 db.User
-                .create(req.body)
-                .then((user) => {
-                    res.json({ userId: user._id }).send();
-                })
-                .catch(err => res.status(422).json(err));
-            }   
+                    .create(req.body)
+                    .then((user) => {
+                        res.json({ userId: user._id }).send();
+                    })
+                    .catch(err => res.status(422).json(err));
+            }
         });
     },
+    // Finding user by Id and updating it
     update: function (req, res) {
         db.User
             .findOneAndUpdate({ _id: req.params.id }, req.body)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
+    // Finding user by Id and removing it
     remove: function (req, res) {
         db.User
             .findById({ _id: req.params.id })
@@ -63,9 +53,9 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
-
+    // Finding user by username and checking if the username already exists
     usernameExists: function (req, res) {
-        db.User.findOne({username:{'$regex' : `^${req.params.username}$`, '$options' : 'i'}}, function (err, user) {
+        db.User.findOne({ username: { '$regex': `^${req.params.username}$`, '$options': 'i' } }, function (err, user) {
             if (err) {
                 res.status(422).send();
             }
@@ -77,7 +67,7 @@ module.exports = {
             }
         });
     },
-
+    // Finding user by email and checking if the password matches the email
     login: function (req, res) {
         const emailAddress = req.body.emailAddress;
         const password = req.body.password;
@@ -95,8 +85,5 @@ module.exports = {
                 res.status(401).send();
             }
         });
-    },
-    logout: function (req, res) {
-
-    },
+    }
 }

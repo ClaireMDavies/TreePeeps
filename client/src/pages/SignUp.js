@@ -31,9 +31,6 @@ function SignUp(props) {
 
     const [countries, setCountries] = useState([]);
     const [cities, setCities] = useState([]);
-
-    const [citiesLoading, setCitiesLoading] = useState(false);
-
     
     React.useEffect(() => {
 
@@ -107,7 +104,7 @@ function SignUp(props) {
             return false;
         }
         else {
-            setUsernameError();
+            setUsernameError("");
             return true;
         }
     }
@@ -265,7 +262,15 @@ function SignUp(props) {
         if (country === undefined) country = "United Kingdom";
 
         API.getCitiesForCountry(country)
-            .then(json => setCities(json.data.data.sort()));
+            .then(json => {
+                const cityList = json.data.data.sort();
+                setCities(cityList);
+
+                if (cityList.length > 0)
+                {
+                    setCity(cityList[0]);
+                }
+            });
     }
 
     return (
@@ -336,7 +341,7 @@ function SignUp(props) {
                                     <select className="form-control" value={country} onChange={e => countryChanged(e)}>
                                         {countries.map(country => <option key={country} value={country}>{country}</option>)};
                                     </select>
-                                    <select className="form-control" disabled={citiesLoading} onChange={e => cityChanged(e)}>
+                                    <select className="form-control" disabled={false} onChange={e => cityChanged(e)}>
                                         {cities.map(city => <option key={city} value={city}>{city}</option>)};
                                     </select>
                                 </InputGroup>

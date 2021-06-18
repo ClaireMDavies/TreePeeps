@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, CardTitle, CardSubtitle, CardBody, CardText, Button } from 'reactstrap';
+import { Card, CardTitle, CardSubtitle, CardBody, Button } from 'reactstrap';
 import Navbar from "../components/NavbarTreePeeps";
 import NavItem from "../components/NavItem";
 import ContributeCard from "../components/ContributeCard";
@@ -22,7 +22,7 @@ function Feeds(props) {
                 return id;
             }
         });
-    }
+    };
 
     useEffect(() => {
 
@@ -43,10 +43,12 @@ function Feeds(props) {
 
     function handleCityChange(event) {
         setCity(event.target.value);
-    }
+    };
+
     function handleDistanceChange(event) {
         setDistance(event.target.value);
-    }
+    };
+
     function handleFormSubmit(event) {
         event.preventDefault();
         API.searchByLocation(
@@ -56,10 +58,9 @@ function Feeds(props) {
         )
             .then(res => {
                 setNearestProjects(res.data);
-                console.log(nearestProjects);
             })
             .catch(err => console.log(err));
-    }
+    };
 
     return (
         <div>
@@ -89,17 +90,17 @@ function Feeds(props) {
                     {
                         nearestProjects.map(project => {
                             return (
-                                project.status === true && project.userId !== localStorage.getItem("userId")  ? (
+                                project.status === true && project.owner !== localStorage.getItem("userId")  ? (
+
                                     <div className="row d-flex justify-content-center mb-3" key={project._id}>
                                         <Card className="p-0" style={{ width: '60%' }}>
                                             <CardTitle tag="h5" className="card-title mt-2 ps-3">{project.title}
-                                                {project.area || project.location ? <i className="fas fa-map-marked-alt ps-3" style={{ color: 'brown' }} data-bs-toggle="tooltip" data-bs-placement="top" title="Land needed"></i> : null}
+                                                {!project.area ? <i className="fas fa-map-marked-alt ps-3" style={{ color: 'brown' }} data-bs-toggle="tooltip" data-bs-placement="top" title="Land needed"></i> : null}
                                                 {project.hoursNeeded ? <i className="fas fa-clock ps-3" style={{ color: 'red' }} data-bs-toggle="tooltip" data-bs-placement="top" title="Time needed"></i> : null}
                                                 {project.numTrees || project.numStakes || project.numSpirals || project.amtFertilizer || project.otherResources ? <i className="fas fa-tree ps-3" style={{ color: 'green' }} data-bs-toggle="tooltip" data-bs-placement="top" title="Resources needed"></i> : null}
                                             </CardTitle>
                                             <CardSubtitle tag="h6" className="mb-2 ps-3 text-muted"><Moment format="YYYY/MM/DD">{project.startDate}</Moment> -- <Moment format="YYYY/MM/DD">{project.endDate}</Moment></CardSubtitle>
                                             <CardBody className="ps-2">
-                                                <CardText>
                                                     <span className="ms-3">
                                                         {project.description}
                                                     </span>
@@ -118,7 +119,6 @@ function Feeds(props) {
                                                         {project.numSpirals ? <li>Spirals:  {project.numSpirals}</li> : null}
                                                         {project.otherResources ? <li>Other Resources:  {project.otherResources} </li> : null}
                                                     </ul>
-                                                </CardText>
                                             </CardBody>
                                             <div className="card-footer text-center">
                                                 <Button className="me-3" color="success" id={project._id} onClick={showContribute(project._id)} ><i className="fas fa-hands-helping"></i> Contribute</Button>
@@ -137,6 +137,7 @@ function Feeds(props) {
                 <h3 className="text-center m-3 p-2">No Results to Display</h3>
 
             )}
+            <br/>
             <Footer />
         </div >
     )

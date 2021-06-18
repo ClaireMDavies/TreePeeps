@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Moment from 'react-moment';
 import "./style.css"
 import API from "../../utils/API";
@@ -13,17 +13,21 @@ function ProjectCard(project) {
             .then(response => {
                 setProjectStatus(status);
             });
-    }
+    };
 
     const deleteProject = (id) => {
-
-        /*
         API.deleteProject(id)
-            .then(res => loadProjects())
+            .then(res => window.location.reload())
             .catch(err => console.log(err));
-            */
-    }
+    };
 
+    const deleteContribution = (id, contributionId) => {
+        API.deleteContribution(id, contributionId)
+            .then(res => res.json())
+            .catch(err => console.log(err));
+    };
+
+    const reload = () => { window.location.reload() };
     return (
         <div className="col-md-4 justify-content-center mb-3" key={project._id}>
             <div className="card">
@@ -40,40 +44,60 @@ function ProjectCard(project) {
                         <li className="list-group-item">Location : {project.latitude} , {project.longitude}</li>
                         <li className="list-group-item">Contributors :
                             <div className="list-group mt-2">
-
-                                { project.contributions.length > 0 ? 
-                                <table className="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Contributor</th>
-                                            <th scope="col">Message</th>
-                                            <th scope="col">Land</th>
-                                            <th scope="col">Time</th>
-                                            <th scope="col">Resources</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                                {project.contributions.length > 0 ?
+                                    <div>
                                         {project.contributions.map(contribution => {
                                             return (
-                                                <tr key={contribution._id}>
-                                                    <td>{contribution.user.username}</td>
-                                                    <td>{contribution.message}</td>
-                                                    <td>{contribution.land ? "YES" : "NO"}</td>
-                                                    <td>{contribution.time ? "YES" : "NO"}</td>
-                                                    <td>{contribution.resources ? "YES" : "NO"}</td>
-                                                </tr>
+                                                <div key={contribution._id}>
+                                                    <button type="button" className="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target={`#id${contribution._id}`} key={contribution._id}>{contribution.user.username}</button>
+                                                    {/* Contributor Modal */}
+                                                    <div className="modal fade" id={`id${contribution._id}`} tabIndex="-1" aria-labelledby="contributorModal" aria-hidden="true">
+                                                        <div className="modal-dialog">
+                                                            <div className="modal-content">
+                                                                <div className="modal-header">
+                                                                    <h5 className="modal-title" id="contributorModal">{contribution.user.username} Contribution </h5>
+                                                                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onExit={() => window.location.reload()}></button>
+                                                                </div>
+                                                                <div className="modal-body">
+                                                                    <p className="text-start fw-bold mb-0">Message : </p>
+                                                                    <p className="text-start">{contribution.message ? contribution.message : 'no message'} </p>
+                                                                    <ul className="text-start ps-0">
+                                                                        <b>
+                                                                            I want to contribute by :
+                                                                        </b>
+                                                                        {contribution.land ? <li className="ms-4">Land </li> : null}
+                                                                        {contribution.time ? <li className="ms-4">Time</li> : null}
+                                                                        {contribution.resources ? <li className="ms-4">Resources</li> : null}
+                                                                    </ul>
+                                                                    <br />
+                                                                    <p className="text-start mb-0">
+                                                                        Do you want to delete {contribution.user.username} from the project ?
+                                                                    </p>
+                                                                </div>
+                                                                <div className="modal-footer">
+                                                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                    <button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={() => { deleteContribution(project._id, contribution._id); reload() }}>Delete</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             )
-                                        }
-                                        )}
-                                    </tbody>
-                                </table>
-                                : "n/a"}
-
+                                        })}
+                                    </div>
+                                    : "n/a"}
                             </div>
+
 
                         </li>
                         <li className="list-group-item">End Date : <Moment format="DD/MM/YYYY">{project.endDate}</Moment></li>
                     </ul>
+                </div>
+                <div className="card-footer text-center">
+                    <button type="button" className="btn btn-sm btn-danger"
+                        onClick={() => {
+                            deleteProject(project._id);
+                        }}>Delete</button>
                 </div>
             </div>
 

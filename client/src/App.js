@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "../src/pages/Home";
 import SignUp from "../src/pages/SignUp";
 import Feeds from "../src/pages/Feeds";
@@ -24,10 +24,8 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/logout" component={Logout} />
           <Route exact path="/about" component={AboutUs} />
-          <Route exact path="/login" component={Login} />
           <Route exact path="/contact" component={ContactUs} />
           <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/aboutus" component={AboutUs} />
           <Route component={NoMatch} />
         </Switch>
       </Router>

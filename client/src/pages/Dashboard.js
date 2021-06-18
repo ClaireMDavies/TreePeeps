@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Row, Col} from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import Navbar from "../components/NavbarTreePeeps";
 import NavItem from "../components/NavItem";
 import ProjectCard from "../components/ProjectCard";
@@ -21,8 +21,7 @@ const Dashboard = (props) => {
             // there is no user logged in
             props.history.push("/");
         }
-        else
-        {
+        else {
             // get project lists
 
             loadCreatedProjectsForUser(currentUserId);
@@ -37,13 +36,13 @@ const Dashboard = (props) => {
         // beyond their end date i.e. active projects only
 
         API.getProjectsForUser(userId)
-        .then(response => setCreatedProjects(response.data));
+            .then(response => setCreatedProjects(response.data));
     }
 
     function loadContributedProjectsForUser(userId) {
 
         API.getContributedProjectsForUser(userId)
-        .then(response => setContributedProjects(response.data));
+            .then(response => setContributedProjects(response.data));
     }
 
     return (
@@ -84,12 +83,19 @@ const Dashboard = (props) => {
                             <div className="card-header">
                                 <h4 className="text-center mb-3">My Projects</h4>
                             </div>
-                            <div className="card-body row">
+                            <div className="card-body ">
+                                {
+                                    createdProjects.length ? (
+                                        <div className="row">
+                                            {createdProjects.map(function (project) {
+                                                return <ProjectCard key={project._id} {...project} />;
+                                            })}
+                                        </div>
+                                    ) : (
+                                        <h3 className="text-center m-3 p-2">No Results to Display</h3>
 
-                            { createdProjects.map(function(project) {
-                                return <ProjectCard key={project._id} {...project} />;
-                            })}
- 
+                                    )
+                                }
                             </div>
                         </div>
 
@@ -97,11 +103,19 @@ const Dashboard = (props) => {
                             <div className="card-header">
                                 <h4 className="text-center mb-3">My Contributions</h4>
                             </div>
-                            <div className="card-body row">
+                            <div className="card-body">
+                                {
+                                    contributedProjects.length ? (
+                                        <div className="row">
+                                            {contributedProjects.map(function (project) {
+                                                return <ContributedProjectCard key={project._id} {...project} />;
+                                            })}
+                                        </div>
+                                    ) : (
+                                        <h3 className="text-center m-3 p-2">No Results to Display</h3>
 
-                            { contributedProjects.map(function(project) {
-                                return <ContributedProjectCard key={project._id} {...project} />;
-                            })}
+                                    )
+                                }
 
                             </div>
                         </div>
