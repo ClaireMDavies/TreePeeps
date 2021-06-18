@@ -42,8 +42,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
 The purpose of the TreePeeps app is to support sustainability and reforestation through helping people bring together the land, time and funding necessary to create small to medium forested areas. The core functionality of the app is to allow people to post one of three resources to other users: land available for planting trees, the time and energy needed to actually plant trees and the trees themselves or financial support to purchase them, on whatever scale is appropriate.
 In addition, the app should provide a means of tracking and/or monitoring projects and trees. The app should be able to flag tree-planting sites through use of the What3Words app, or something similar. Progress of sites can then be tracked through user-posted blogs and images.
 App Details
@@ -55,6 +53,31 @@ The App will allow users to post requests for land, trees or other resources, or
 ·        Additional functionality may include:
 o   A blog in which to post success stories facilitated by the app, posting details of trees planted so far.
 
+Here are some screenshots of how the application appears in the web browser:
+
+1. Home Page:
+
+![Homepage](https://user-images.githubusercontent.com/73832871/122608123-9dab5580-d073-11eb-9671-e0e91a809b61.JPG)
+
+2. Signup Page:
+
+![Signup](https://user-images.githubusercontent.com/73832871/122608147-a439cd00-d073-11eb-9088-7b2e9ebe823b.JPG)
+
+3. Login Page:
+
+![login](https://user-images.githubusercontent.com/73832871/122608157-a734bd80-d073-11eb-8ced-bebf115c07c9.JPG)
+
+4. Dashboard:
+
+![Dashboard](https://user-images.githubusercontent.com/73832871/122608169-aac84480-d073-11eb-9ff2-dbaeff58ed5d.JPG)
+
+5. About Page:
+
+![About](https://user-images.githubusercontent.com/73832871/122608451-21fdd880-d074-11eb-8da5-f9810ff86768.JPG)
+
+6. Contact Page:
+
+![Contact](https://user-images.githubusercontent.com/73832871/122608460-26c28c80-d074-11eb-993f-789037c78074.JPG)
 
 ### Built With
 
