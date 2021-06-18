@@ -22,7 +22,6 @@ function Login(props) {
                 if (response.data.userId) {
                     localStorage.setItem("userId", response.data.userId);
                     props.history.push("/dashboard");
-                    setLoginError("");
                 }
                 else {
                      setLoginError("There was an error with your login please try again");
